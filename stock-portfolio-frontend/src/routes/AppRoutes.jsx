@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Layouts
 import PublicLayout from "../layouts/PublicLayout";
@@ -7,7 +7,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 // Guards
 import ProtectedRoute from "../components/ProtectedRoute";
 
-// Public pages (lazy-load friendly but kept simple)
+// Public pages
 import Home from "../pages/Home";
 import SectorPage from "../pages/SectorPage";
 import StockDetail from "../pages/StockDetail";
@@ -41,7 +41,10 @@ export default function AppRoutes() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/portfolios" element={<PortfolioList />} />
         <Route path="/portfolios/:id" element={<PortfolioDetail />} />
-        <Route path="/portfolios/:portfolioId/stocks/:symbol" element={<StockAnalytics />} />
+        <Route
+          path="/portfolios/:portfolioId/stocks/:symbol"
+          element={<StockAnalytics />}
+        />
       </Route>
     </Routes>
   );

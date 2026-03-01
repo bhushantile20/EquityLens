@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-
+import API from "../api/axios";
 /**
  * CandlestickChart
  *

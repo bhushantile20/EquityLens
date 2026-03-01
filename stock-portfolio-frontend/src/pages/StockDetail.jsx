@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import api from "../api/axios";
+import API from "../api/axios";
 import CandlestickChart from "../components/CandlestickChart";
 
 function StatCard({ label, value, sub, color }) {
   return (
     <div className="stat-card flex flex-col gap-1">
-      <span className="text-xs text-slate-500 font-display uppercase tracking-wider">{label}</span>
-      <span className={`text-2xl font-display font-semibold ${color ?? "text-slate-100"}`}>
+      <span className="text-xs text-slate-500 font-display uppercase tracking-wider">
+        {label}
+      </span>
+      <span
+        className={`text-2xl font-display font-semibold ${color ?? "text-slate-100"}`}
+      >
         {value ?? "—"}
       </span>
       {sub && <span className="text-xs text-slate-600">{sub}</span>}
@@ -19,27 +23,50 @@ function RsiMeter({ value }) {
   const pct = Math.min(100, Math.max(0, parseFloat(value)));
   let color = "#3b82f6";
   let label = "Neutral";
-  if (pct > 70) { color = "#ef4444"; label = "Overbought"; }
-  if (pct < 30) { color = "#22c55e"; label = "Oversold"; }
+  if (pct > 70) {
+    color = "#ef4444";
+    label = "Overbought";
+  }
+  if (pct < 30) {
+    color = "#22c55e";
+    label = "Oversold";
+  }
 
   return (
     <div className="stat-card">
       <div className="flex items-center justify-between mb-3">
-        <span className="text-xs text-slate-500 font-display uppercase tracking-wider">RSI</span>
-        <span className="text-xs font-display px-2 py-0.5 rounded"
-          style={{ color, background: color + "20" }}>{label}</span>
+        <span className="text-xs text-slate-500 font-display uppercase tracking-wider">
+          RSI
+        </span>
+        <span
+          className="text-xs font-display px-2 py-0.5 rounded"
+          style={{ color, background: color + "20" }}
+        >
+          {label}
+        </span>
       </div>
-      <div className="text-2xl font-display font-semibold text-slate-100 mb-3">{pct.toFixed(1)}</div>
+      <div className="text-2xl font-display font-semibold text-slate-100 mb-3">
+        {pct.toFixed(1)}
+      </div>
       <div className="relative h-2 bg-surface rounded-full overflow-visible">
         {/* gradient track */}
-        <div className="absolute inset-0 rounded-full"
-          style={{ background: "linear-gradient(90deg, #22c55e, #3b82f6, #ef4444)" }} />
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: "linear-gradient(90deg, #22c55e, #3b82f6, #ef4444)",
+          }}
+        />
         {/* needle */}
-        <div className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border-2 border-base bg-white shadow"
-          style={{ left: `calc(${pct}% - 6px)` }} />
+        <div
+          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border-2 border-base bg-white shadow"
+          style={{ left: `calc(${pct}% - 6px)` }}
+        />
       </div>
       <div className="flex justify-between text-xs text-slate-600 font-display mt-1.5">
-        <span>0</span><span>30</span><span>70</span><span>100</span>
+        <span>0</span>
+        <span>30</span>
+        <span>70</span>
+        <span>100</span>
       </div>
     </div>
   );
@@ -60,14 +87,36 @@ function ScoreRing({ value }) {
         Opportunity Score
       </span>
       <svg width="96" height="96" viewBox="0 0 96 96" className="mt-1">
-        <circle cx="48" cy="48" r={r} fill="none" stroke="#1e293b" strokeWidth="8" />
-        <circle cx="48" cy="48" r={r} fill="none" stroke={color} strokeWidth="8"
+        <circle
+          cx="48"
+          cy="48"
+          r={r}
+          fill="none"
+          stroke="#1e293b"
+          strokeWidth="8"
+        />
+        <circle
+          cx="48"
+          cy="48"
+          r={r}
+          fill="none"
+          stroke={color}
+          strokeWidth="8"
           strokeDasharray={`${dash} ${circ - dash}`}
           strokeLinecap="round"
           transform="rotate(-90 48 48)"
-          style={{ transition: "stroke-dasharray 0.6s ease" }} />
-        <text x="48" y="48" textAnchor="middle" dominantBaseline="central"
-          fill={color} fontSize="18" fontFamily="DM Mono, monospace" fontWeight="600">
+          style={{ transition: "stroke-dasharray 0.6s ease" }}
+        />
+        <text
+          x="48"
+          y="48"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill={color}
+          fontSize="18"
+          fontFamily="DM Mono, monospace"
+          fontWeight="600"
+        >
           {pct.toFixed(0)}
         </text>
       </svg>
@@ -81,7 +130,9 @@ function Skeleton() {
       <div className="h-8 w-48 bg-surface rounded" />
       <div className="h-4 w-32 bg-surface rounded" />
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
-        {[...Array(4)].map((_, i) => <div key={i} className="h-24 bg-surface rounded-xl" />)}
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="h-24 bg-surface rounded-xl" />
+        ))}
       </div>
       <div className="h-96 bg-surface rounded-xl mt-6" />
     </div>
@@ -98,9 +149,17 @@ export default function StockDetail() {
   useEffect(() => {
     setLoading(true);
     setError(null);
-    api.get(`/stocks/${symbol}/analysis/`)
-      .then((res) => setData(res.data))
-      .catch((err) => setError(err.response?.data?.detail ?? "Failed to load stock data"))
+    // Fetch stock details and analysis
+    Promise.all([
+      API.get(`stocks/${symbol}/`),
+      API.get(`stocks/${symbol}/analysis/`),
+    ])
+      .then(([detailRes, analysisRes]) => {
+        setData({ ...detailRes.data, ...analysisRes.data });
+      })
+      .catch((err) =>
+        setError(err.response?.data?.detail ?? "Failed to load stock data"),
+      )
       .finally(() => setLoading(false));
   }, [symbol]);
 
@@ -109,10 +168,22 @@ export default function StockDetail() {
       {/* Header */}
       <div className="border-b border-border bg-surface/30 px-6 py-6">
         <div className="max-w-7xl mx-auto">
-          <button onClick={() => navigate(-1)}
-            className="text-slate-500 hover:text-slate-300 text-sm font-display flex items-center gap-1.5 mb-4 transition-colors">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <button
+            onClick={() => navigate(-1)}
+            className="text-slate-500 hover:text-slate-300 text-sm font-display flex items-center gap-1.5 mb-4 transition-colors"
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
             Back
           </button>
@@ -124,7 +195,9 @@ export default function StockDetail() {
                     {symbol?.slice(0, 2)}
                   </div>
                   <h1 className="text-2xl font-bold text-white">{symbol}</h1>
-                  <span className="text-slate-500 font-medium">{data.company_name}</span>
+                  <span className="text-slate-500 font-medium">
+                    {data.company_name}
+                  </span>
                 </div>
                 <div className="flex items-baseline gap-3 ml-13">
                   {data.current_price && (
@@ -133,8 +206,11 @@ export default function StockDetail() {
                     </span>
                   )}
                   {data.change_pct != null && (
-                    <span className={`font-display text-sm ${parseFloat(data.change_pct) >= 0 ? "text-profit" : "text-loss"}`}>
-                      {parseFloat(data.change_pct) >= 0 ? "+" : ""}{parseFloat(data.change_pct).toFixed(2)}%
+                    <span
+                      className={`font-display text-sm ${parseFloat(data.change_pct) >= 0 ? "text-profit" : "text-loss"}`}
+                    >
+                      {parseFloat(data.change_pct) >= 0 ? "+" : ""}
+                      {parseFloat(data.change_pct).toFixed(2)}%
                     </span>
                   )}
                 </div>
@@ -156,7 +232,12 @@ export default function StockDetail() {
           <div className="flex flex-col items-center justify-center py-24 text-center">
             <div className="text-4xl text-slate-700 mb-4">⚠</div>
             <p className="text-slate-400 font-medium">{error}</p>
-            <button onClick={() => navigate(-1)} className="mt-4 btn-ghost text-sm">Go back</button>
+            <button
+              onClick={() => navigate(-1)}
+              className="mt-4 btn-ghost text-sm"
+            >
+              Go back
+            </button>
           </div>
         )}
 
@@ -164,13 +245,36 @@ export default function StockDetail() {
           <>
             {/* Stat cards */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-              <StatCard label="P/E Ratio" value={data.pe_ratio != null ? parseFloat(data.pe_ratio).toFixed(2) : null}
-                sub="Price / Earnings" />
+              <StatCard
+                label="P/E Ratio"
+                value={
+                  data.pe_ratio != null
+                    ? parseFloat(data.pe_ratio).toFixed(2)
+                    : null
+                }
+                sub="Price / Earnings"
+              />
               <RsiMeter value={data.rsi ?? 50} />
-              <StatCard label="Volatility" value={data.volatility != null ? `${parseFloat(data.volatility).toFixed(2)}%` : null}
+              <StatCard
+                label="Volatility"
+                value={
+                  data.volatility != null
+                    ? `${parseFloat(data.volatility).toFixed(2)}%`
+                    : null
+                }
                 sub="Annualised"
-                color={parseFloat(data.volatility) > 30 ? "text-loss" : "text-profit"} />
-              <StatCard label="52W High" value={data.high_52w != null ? `$${parseFloat(data.high_52w).toFixed(2)}` : null} />
+                color={
+                  parseFloat(data.volatility) > 30 ? "text-loss" : "text-profit"
+                }
+              />
+              <StatCard
+                label="52W High"
+                value={
+                  data.high_52w != null
+                    ? `$${parseFloat(data.high_52w).toFixed(2)}`
+                    : null
+                }
+              />
               <ScoreRing value={data.opportunity_score} />
             </div>
 
@@ -180,7 +284,9 @@ export default function StockDetail() {
                 <h2 className="text-sm font-display text-slate-400 uppercase tracking-wider">
                   Price History
                 </h2>
-                <span className="text-xs text-slate-600 font-display">Scroll to zoom · Drag to pan</span>
+                <span className="text-xs text-slate-600 font-display">
+                  Scroll to zoom · Drag to pan
+                </span>
               </div>
               <CandlestickChart
                 data={data.candles ?? data.price_history ?? []}
@@ -192,8 +298,12 @@ export default function StockDetail() {
             {/* About */}
             {data.description && (
               <div className="bg-surface border border-border rounded-xl p-6">
-                <h2 className="text-sm font-display text-slate-400 uppercase tracking-wider mb-3">About</h2>
-                <p className="text-slate-400 text-sm leading-relaxed">{data.description}</p>
+                <h2 className="text-sm font-display text-slate-400 uppercase tracking-wider mb-3">
+                  About
+                </h2>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  {data.description}
+                </p>
               </div>
             )}
           </>

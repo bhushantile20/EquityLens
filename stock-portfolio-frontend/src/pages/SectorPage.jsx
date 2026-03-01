@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import api from "../api/axios";
+import API from "../api/axios";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -53,7 +53,10 @@ function TableSkeleton({ rows = 8 }) {
             <td key={j} className="px-4 py-3.5">
               <div
                 className="h-4 bg-surface rounded animate-pulse"
-                style={{ width: `${60 + Math.random() * 30}%`, animationDelay: `${i * 40}ms` }}
+                style={{
+                  width: `${60 + Math.random() * 30}%`,
+                  animationDelay: `${i * 40}ms`,
+                }}
               />
             </td>
           ))}
@@ -68,8 +71,12 @@ function EmptyState({ sector }) {
     <tr>
       <td colSpan={7} className="px-4 py-16 text-center">
         <div className="text-slate-600 text-4xl mb-3">◈</div>
-        <p className="text-slate-400 font-medium">No stocks found in {sector}</p>
-        <p className="text-slate-600 text-sm mt-1">Try selecting a different sector</p>
+        <p className="text-slate-400 font-medium">
+          No stocks found in {sector}
+        </p>
+        <p className="text-slate-600 text-sm mt-1">
+          Try selecting a different sector
+        </p>
       </td>
     </tr>
   );
@@ -77,9 +84,18 @@ function EmptyState({ sector }) {
 
 function SearchIcon() {
   return (
-    <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-        d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+    <svg
+      className="w-4 h-4 text-slate-500"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"
+      />
     </svg>
   );
 }
@@ -88,7 +104,9 @@ function SortIcon({ col, sortKey, sortDir }) {
   if (sortKey !== col) {
     return <span className="text-slate-700 ml-1">↕</span>;
   }
-  return <span className="text-accent ml-1">{sortDir === "asc" ? "↑" : "↓"}</span>;
+  return (
+    <span className="text-accent ml-1">{sortDir === "asc" ? "↑" : "↓"}</span>
+  );
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -118,8 +136,7 @@ export default function SectorPage() {
 
   // ── Fetch sectors list ──
   useEffect(() => {
-    api
-      .get("/sectors/")
+    API.get("sectors/")
       .then((res) => {
         setSectors(res.data);
         // Honour route state (coming from Home sector card)
@@ -137,13 +154,12 @@ export default function SectorPage() {
     setLoadingStocks(true);
     setStocks([]);
     setQuery("");
-    api
-      .get("/sectors/", { params: { sector: activeSector } })
+    API.get("stocks/", { params: { sector: activeSector } })
       .then((res) => {
         // API may return stocks nested inside the sector object or as flat list
         const data = Array.isArray(res.data)
-          ? res.data.find((s) => s.name === activeSector)?.stocks ?? res.data
-          : res.data.stocks ?? res.data;
+          ? (res.data.find((s) => s.name === activeSector)?.stocks ?? res.data)
+          : (res.data.stocks ?? res.data);
         setStocks(Array.isArray(data) ? data : []);
       })
       .catch(() => setStocks([]))
@@ -160,7 +176,7 @@ export default function SectorPage() {
         setSortDir("desc");
       }
     },
-    [sortKey]
+    [sortKey],
   );
 
   // ── Derived: filter + sort ──
@@ -168,7 +184,7 @@ export default function SectorPage() {
     .filter(
       (s) =>
         s.symbol?.toLowerCase().includes(query.toLowerCase()) ||
-        s.name?.toLowerCase().includes(query.toLowerCase())
+        s.name?.toLowerCase().includes(query.toLowerCase()),
     )
     .sort((a, b) => {
       const field = SORT_KEYS[sortKey] ?? sortKey;
@@ -176,7 +192,10 @@ export default function SectorPage() {
       const bv = b[field];
       if (av == null) return 1;
       if (bv == null) return -1;
-      const diff = typeof av === "string" ? av.localeCompare(bv) : parseFloat(av) - parseFloat(bv);
+      const diff =
+        typeof av === "string"
+          ? av.localeCompare(bv)
+          : parseFloat(av) - parseFloat(bv);
       return sortDir === "asc" ? diff : -diff;
     });
 
@@ -203,7 +222,10 @@ export default function SectorPage() {
         {loadingSectors ? (
           <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-9 w-24 bg-surface rounded-lg animate-pulse shrink-0" />
+              <div
+                key={i}
+                className="h-9 w-24 bg-surface rounded-lg animate-pulse shrink-0"
+              />
             ))}
           </div>
         ) : (
@@ -246,7 +268,9 @@ export default function SectorPage() {
 
           {/* Result count */}
           <p className="text-sm text-slate-600 font-display">
-            {loadingStocks ? "Loading…" : `${filtered.length} stock${filtered.length !== 1 ? "s" : ""}`}
+            {loadingStocks
+              ? "Loading…"
+              : `${filtered.length} stock${filtered.length !== 1 ? "s" : ""}`}
           </p>
         </div>
 
@@ -257,23 +281,43 @@ export default function SectorPage() {
               <thead className="bg-surface/80 border-b border-border">
                 <tr>
                   <th className={thClass} onClick={() => handleSort("symbol")}>
-                    Symbol <SortIcon col="symbol" sortKey={sortKey} sortDir={sortDir} />
+                    Symbol{" "}
+                    <SortIcon
+                      col="symbol"
+                      sortKey={sortKey}
+                      sortDir={sortDir}
+                    />
                   </th>
                   <th className={`${thClass} hidden md:table-cell`}>Name</th>
                   <th className={thClass} onClick={() => handleSort("price")}>
-                    Price <SortIcon col="price" sortKey={sortKey} sortDir={sortDir} />
+                    Price{" "}
+                    <SortIcon col="price" sortKey={sortKey} sortDir={sortDir} />
                   </th>
                   <th className={thClass} onClick={() => handleSort("change")}>
-                    Change <SortIcon col="change" sortKey={sortKey} sortDir={sortDir} />
+                    Change{" "}
+                    <SortIcon
+                      col="change"
+                      sortKey={sortKey}
+                      sortDir={sortDir}
+                    />
                   </th>
-                  <th className={`${thClass} hidden lg:table-cell`} onClick={() => handleSort("pe")}>
-                    P/E <SortIcon col="pe" sortKey={sortKey} sortDir={sortDir} />
+                  <th
+                    className={`${thClass} hidden lg:table-cell`}
+                    onClick={() => handleSort("pe")}
+                  >
+                    P/E{" "}
+                    <SortIcon col="pe" sortKey={sortKey} sortDir={sortDir} />
                   </th>
-                  <th className={`${thClass} hidden lg:table-cell`} onClick={() => handleSort("rsi")}>
-                    RSI <SortIcon col="rsi" sortKey={sortKey} sortDir={sortDir} />
+                  <th
+                    className={`${thClass} hidden lg:table-cell`}
+                    onClick={() => handleSort("rsi")}
+                  >
+                    RSI{" "}
+                    <SortIcon col="rsi" sortKey={sortKey} sortDir={sortDir} />
                   </th>
                   <th className={thClass} onClick={() => handleSort("score")}>
-                    Opp. Score <SortIcon col="score" sortKey={sortKey} sortDir={sortDir} />
+                    Opp. Score{" "}
+                    <SortIcon col="score" sortKey={sortKey} sortDir={sortDir} />
                   </th>
                 </tr>
               </thead>
@@ -337,7 +381,9 @@ export default function SectorPage() {
                         {stock.opportunity_score != null ? (
                           <div className="flex items-center gap-2">
                             <ScoreBar value={stock.opportunity_score} />
-                            <span className={`font-display text-xs ${scoreColor(stock.opportunity_score)}`}>
+                            <span
+                              className={`font-display text-xs ${scoreColor(stock.opportunity_score)}`}
+                            >
                               {parseFloat(stock.opportunity_score).toFixed(0)}
                             </span>
                           </div>
@@ -355,9 +401,15 @@ export default function SectorPage() {
 
         {/* Legend */}
         <div className="mt-4 flex flex-wrap gap-6 text-xs text-slate-600 font-display">
-          <span><span className="text-profit">■</span> RSI &gt; 70 Overbought</span>
-          <span><span className="text-loss">■</span> RSI &lt; 30 Oversold</span>
-          <span><span className="text-accent">■</span> RSI 30–70 Neutral</span>
+          <span>
+            <span className="text-profit">■</span> RSI &gt; 70 Overbought
+          </span>
+          <span>
+            <span className="text-loss">■</span> RSI &lt; 30 Oversold
+          </span>
+          <span>
+            <span className="text-accent">■</span> RSI 30–70 Neutral
+          </span>
           <span className="ml-auto">Click any row to view full analysis →</span>
         </div>
       </div>
@@ -372,7 +424,9 @@ function RsiBadge({ value }) {
   if (value > 70) color = "text-loss bg-loss/10";
   if (value < 30) color = "text-profit bg-profit/10";
   return (
-    <span className={`inline-block px-2 py-0.5 rounded text-xs font-display ${color}`}>
+    <span
+      className={`inline-block px-2 py-0.5 rounded text-xs font-display ${color}`}
+    >
       {value.toFixed(1)}
     </span>
   );

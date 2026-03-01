@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api/axios";
+import API from "../api/axios";
 
 // ─── Fallback data ────────────────────────────────────────────────────────────
 const SECTOR_META = [
@@ -29,7 +29,7 @@ const TICKER_ITEMS = [
   { symbol: "NVDA", price: "875.40", change: "+2.67%" },
   { symbol: "AMZN", price: "185.20", change: "-0.54%" },
   { symbol: "META", price: "503.67", change: "+1.91%" },
-  { symbol: "JPM",  price: "198.33", change: "+0.43%" },
+  { symbol: "JPM", price: "198.33", change: "+0.43%" },
 ];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -40,13 +40,23 @@ function TickerBar() {
     <div className="border-y border-border bg-surface/50 overflow-hidden py-2.5">
       <div
         className="flex gap-10 whitespace-nowrap"
-        style={{ width: "max-content", animation: "ticker 30s linear infinite" }}
+        style={{
+          width: "max-content",
+          animation: "ticker 30s linear infinite",
+        }}
       >
         {doubled.map((item, i) => (
-          <span key={i} className="inline-flex items-center gap-2 text-sm font-display">
+          <span
+            key={i}
+            className="inline-flex items-center gap-2 text-sm font-display"
+          >
             <span className="text-slate-300">{item.symbol}</span>
             <span className="text-slate-500">{item.price}</span>
-            <span className={item.change.startsWith("+") ? "text-profit" : "text-loss"}>
+            <span
+              className={
+                item.change.startsWith("+") ? "text-profit" : "text-loss"
+              }
+            >
               {item.change}
             </span>
             <span className="text-border ml-4">|</span>
@@ -81,9 +91,16 @@ function SectorCard({ sector, index, onClick }) {
           <span>Explore</span>
           <svg
             className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200"
-            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </div>
       </div>
@@ -94,8 +111,12 @@ function SectorCard({ sector, index, onClick }) {
 function StatPill({ label, value }) {
   return (
     <div className="flex flex-col items-center gap-0.5">
-      <span className="text-xl font-display font-medium text-profit">{value}</span>
-      <span className="text-xs text-slate-500 uppercase tracking-widest">{label}</span>
+      <span className="text-xl font-display font-medium text-profit">
+        {value}
+      </span>
+      <span className="text-xs text-slate-500 uppercase tracking-widest">
+        {label}
+      </span>
     </div>
   );
 }
@@ -114,8 +135,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api
-      .get("/sectors/")
+    API.get("sectors/")
       .then((res) => setSectors(res.data))
       .catch(() => setSectors(FALLBACK_SECTORS))
       .finally(() => setLoading(false));
@@ -160,8 +180,8 @@ export default function Home() {
           </h1>
 
           <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed mb-10">
-            Track your holdings, analyse sector trends, and surface opportunities
-            with real-time fundamental &amp; technical signals.
+            Track your holdings, analyse sector trends, and surface
+            opportunities with real-time fundamental &amp; technical signals.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -197,15 +217,27 @@ export default function Home() {
               <p className="text-xs text-accent font-display uppercase tracking-widest mb-2">
                 Market Sectors
               </p>
-              <h2 className="text-2xl font-semibold text-white">Browse by sector</h2>
+              <h2 className="text-2xl font-semibold text-white">
+                Browse by sector
+              </h2>
             </div>
             <button
               onClick={() => navigate("/sectors")}
               className="text-sm text-slate-500 hover:text-accent-light transition-colors font-display flex items-center gap-1"
             >
               View all
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
@@ -236,7 +268,8 @@ export default function Home() {
               Start tracking your portfolio today
             </h2>
             <p className="relative text-slate-400 mb-8">
-              Connect to real-time data. Understand your risk. Make informed decisions.
+              Connect to real-time data. Understand your risk. Make informed
+              decisions.
             </p>
             <button
               onClick={() => navigate("/login")}
@@ -250,7 +283,8 @@ export default function Home() {
 
       {/* ── Footer ── */}
       <footer className="border-t border-border px-6 py-8 text-center text-slate-600 text-sm font-display">
-        EquityLens © {new Date().getFullYear()} — Market data is for informational purposes only.
+        EquityLens © {new Date().getFullYear()} — Market data is for
+        informational purposes only.
       </footer>
 
       {/* Ticker keyframe */}

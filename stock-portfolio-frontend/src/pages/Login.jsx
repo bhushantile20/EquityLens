@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import api from "../api/axios";
+import API from "../api/axios";
 import { login as saveTokens, isAuthenticated } from "../utils/auth";
 
 export default function Login() {
@@ -28,7 +28,7 @@ export default function Login() {
     }
     setLoading(true);
     try {
-      const res = await api.post("/auth/login/", form);
+      const res = await API.post("auth/login/", form);
       const { access, refresh } = res.data;
       saveTokens(access, refresh);
       navigate("/dashboard", { replace: true });
@@ -46,8 +46,10 @@ export default function Login() {
   return (
     <div className="min-h-[calc(100vh-57px)] bg-base flex items-center justify-center px-4">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                      w-[600px] h-[400px] bg-accent/8 blur-[100px] rounded-full pointer-events-none" />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                      w-[600px] h-[400px] bg-accent/8 blur-[100px] rounded-full pointer-events-none"
+      />
 
       <div className="relative w-full max-w-sm">
         {/* Card */}
@@ -58,7 +60,9 @@ export default function Login() {
               <span className="text-accent font-display text-lg">◈</span>
             </div>
             <h1 className="text-xl font-bold text-white">Welcome back</h1>
-            <p className="text-slate-500 text-sm mt-1">Sign in to your portfolio</p>
+            <p className="text-slate-500 text-sm mt-1">
+              Sign in to your portfolio
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -114,9 +118,24 @@ export default function Login() {
             >
               {loading ? (
                 <>
-                  <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+                  <svg
+                    className="w-4 h-4 animate-spin"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8H4z"
+                    />
                   </svg>
                   Signing in…
                 </>
