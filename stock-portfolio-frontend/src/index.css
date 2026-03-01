@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-base text-slate-100 font-body;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #1e3a5f #0f172a;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    @apply bg-base;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply bg-border rounded;
+  }
+}
+
+@layer components {
+  .stat-card {
+    @apply bg-surface border border-border rounded-xl p-5;
+  }
+
+  .btn-primary {
+    @apply bg-accent hover:bg-accent-light text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent border border-border hover:border-accent text-slate-300 hover:text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .table-row-hover {
+    @apply hover:bg-white/5 transition-colors duration-150 cursor-pointer;
+  }
+
+  .badge-profit {
+    @apply text-profit bg-profit/10 px-2 py-0.5 rounded text-sm font-display;
+  }
+
+  .badge-loss {
+    @apply text-loss bg-loss/10 px-2 py-0.5 rounded text-sm font-display;
+  }
+}
