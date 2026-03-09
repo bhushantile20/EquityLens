@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-slate-200 antialiased;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top right, #1e1b4b 0%, #0f111a 40%),
+      radial-gradient(circle at bottom left, #052e16 0%, #0f111a 40%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-surface backdrop-blur-md border border-white/10 shadow-card transition-all duration-300;
+  }
+
+  .input {
+    @apply w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 text-sm text-white placeholder-slate-400 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-500 disabled:opacity-50 disabled:hover:bg-brand-600 transition-all duration-300 shadow-brand-glow hover:shadow-brand-glow-lg;
+  }
+
+  .btn-secondary {
+    @apply rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white transition-all duration-300;
+  }
+
+  .btn-danger {
+    @apply rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30 px-4 py-2 text-sm font-medium hover:bg-rose-500/30 transition-all duration-300;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
