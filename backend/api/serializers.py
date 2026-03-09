@@ -68,6 +68,8 @@ class StockListSerializer(serializers.ModelSerializer):
             "currency",
             "pe_ratio",
             "discount_level",
+            "buy_price",
+            "quantity",
         )
 
     def _price_series(self, obj):
@@ -121,6 +123,8 @@ class StockDetailSerializer(serializers.ModelSerializer):
             "max_price",
             "today_price",
             "currency",
+            "buy_price",
+            "quantity",
             "analytics",
         )
 

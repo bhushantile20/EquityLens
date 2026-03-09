@@ -10,6 +10,9 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  ScatterChart,
+  Scatter,
+  ZAxis,
 } from "recharts";
 import Loader from "../components/Loader";
 import SearchBar from "../components/SearchBar";
@@ -43,18 +46,39 @@ export default function Stocks() {
   const [loading, setLoading] = useState(true);
   const [tableLoading, setTableLoading] = useState(false);
   const [error, setError] = useState("");
+  const [portfolioMetrics, setPortfolioMetrics] = useState(null);
 
   const selectedPortfolio = useMemo(
     () => portfolios.find((item) => String(item.id) === String(portfolioId)) || null,
     [portfolios, portfolioId]
   );
 
-  const peChartData = useMemo(
+  const investmentChartData = useMemo(() => {
+    if (!portfolioMetrics) return [];
+    return [
+      { name: "Investment", value: portfolioMetrics.total_investment, fill: "#6366f1" },
+      { name: "Current Value", value: portfolioMetrics.total_current_value, fill: "#818cf8" },
+      { name: "Return", value: portfolioMetrics.total_return, fill: portfolioMetrics.total_return >= 0 ? "#10b981" : "#f43f5e" },
+    ];
+  }, [portfolioMetrics]);
+
+  const scatterChartData = useMemo(
     () =>
-      stocks.map((stock) => ({
-        symbol: stock.symbol,
-        pe_ratio: Number(stock.pe_ratio || 0),
-      })),
+      stocks.map((stock) => {
+        const currentPrice = Number(stock.current_price || 0);
+        const maxPrice = Number(stock.max_price || 0);
+        let calculatedDiscount = 0;
+        if (maxPrice > 0 && maxPrice >= currentPrice) {
+          calculatedDiscount = ((maxPrice - currentPrice) / maxPrice) * 100;
+        }
+
+        return {
+          symbol: stock.symbol,
+          company_name: stock.company_name,
+          pe_ratio: Number(stock.pe_ratio || 0),
+          discount_percentage: Number(calculatedDiscount.toFixed(2)),
+        };
+      }),
     [stocks]
   );
 
@@ -72,7 +96,9 @@ export default function Stocks() {
           fetchPortfolio(),
           fetchStocks(portfolioId),
         ]);
-        const normalizedStocks = Array.isArray(stockData) ? stockData : [];
+        const normalizedStocks = Array.isArray(stockData?.stocks) ? stockData.stocks : (Array.isArray(stockData) ? stockData : []);
+        setPortfolioMetrics(stockData?.portfolio_metrics || null);
+
         const normalizedPortfolios = Array.isArray(portfolioData) ? portfolioData : [];
         const portfolioExists = normalizedPortfolios.some(
           (item) => String(item.id) === String(portfolioId)
@@ -317,21 +343,54 @@ export default function Stocks() {
                     />
                   </motion.div>
 
+                  {portfolioMetrics && portfolioMetrics.total_investment > 0 && (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="card p-6 mb-6">
+                      <h2 className="text-lg font-display font-semibold text-white mb-6">Portfolio Investment vs Return</h2>
+                      <div className="h-80 w-full">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <BarChart data={investmentChartData} margin={{ top: 8, right: 20, left: 30, bottom: 8 }}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                            <XAxis dataKey="name" tick={{ fill: "#94a3b8", fontSize: 13, fontWeight: "bold" }} axisLine={{ stroke: 'rgba(255,255,255,0.1)' }} tickLine={false} />
+                            <YAxis tick={{ fill: "#94a3b8", fontSize: 12 }} axisLine={{ stroke: 'rgba(255,255,255,0.1)' }} tickLine={false} tickFormatter={(val) => `₹${val.toLocaleString()}`} />
+                            <Tooltip
+                              contentStyle={{ backgroundColor: "#0f111a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
+                              itemStyle={{ color: "#fff", fontWeight: "bold" }}
+                              cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                              formatter={(value) => formatMoney(value, "INR")}
+                            />
+                            <Bar dataKey="value" radius={[4, 4, 0, 0]} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </motion.div>
+                  )}
+
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="card p-6">
-                    <h2 className="text-lg font-display font-semibold text-white mb-6">PE Ratio Comparison</h2>
+                    <h2 className="text-lg font-display font-semibold text-white mb-6">PE Ratio vs Discount Level</h2>
                     <div className="h-80 w-full">
                       <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={peChartData} margin={{ top: 8, right: 20, left: 0, bottom: 8 }}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                          <XAxis dataKey="symbol" tick={{ fill: "#94a3b8", fontSize: 11 }} axisLine={{ stroke: 'rgba(255,255,255,0.1)' }} tickLine={false} />
-                          <YAxis tick={{ fill: "#94a3b8", fontSize: 12 }} axisLine={{ stroke: 'rgba(255,255,255,0.1)' }} tickLine={false} />
+                        <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                          <XAxis type="number" dataKey="pe_ratio" name="PE Ratio" tick={{ fill: "#94a3b8", fontSize: 11 }} axisLine={{ stroke: 'rgba(255,255,255,0.1)' }} tickLine={false} />
+                          <YAxis type="number" dataKey="discount_percentage" name="Discount %" tick={{ fill: "#94a3b8", fontSize: 11 }} axisLine={{ stroke: 'rgba(255,255,255,0.1)' }} tickLine={false} tickFormatter={(val) => `${val}%`} />
+                          <ZAxis type="category" dataKey="symbol" name="Symbol" />
                           <Tooltip
+                            cursor={{ strokeDasharray: '3 3' }}
                             contentStyle={{ backgroundColor: "#0f111a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
-                            itemStyle={{ color: "#818cf8" }}
-                            cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                            formatter={(value, name, props) => {
+                              if (name === "Discount %") return [`${value}%`, name];
+                              return [value, name];
+                            }}
+                            labelFormatter={(label, payload) => {
+                              if (payload && payload.length) {
+                                const data = payload[0].payload;
+                                return `${data.symbol} - ${data.company_name}`;
+                              }
+                              return label;
+                            }}
                           />
-                          <Bar dataKey="pe_ratio" fill="#6366f1" radius={[4, 4, 0, 0]} />
-                        </BarChart>
+                          <Scatter name="Stocks" data={scatterChartData} fill="#ec4899" shape="circle" />
+                        </ScatterChart>
                       </ResponsiveContainer>
                     </div>
                   </motion.div>

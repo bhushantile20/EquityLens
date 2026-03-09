@@ -26,6 +26,8 @@ class Stock(models.Model):
     company_name = models.CharField(max_length=255)
     sector = models.CharField(max_length=100)
     current_price = models.FloatField()
+    buy_price = models.FloatField(default=0.0)
+    quantity = models.IntegerField(default=10)
 
     def __str__(self) -> str:
         return f"{self.symbol} - {self.company_name}"

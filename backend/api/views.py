@@ -114,6 +114,7 @@ class PortfolioViewSet(
                 "company_name": live_payload["company_name"],
                 "sector": live_payload.get("sector") or portfolio.name,
                 "current_price": live_payload["current_price"],
+                "buy_price": live_payload.get("current_price", 0.0),
             },
         )
         generate_and_persist_stock_analytics(stock)
@@ -146,6 +147,28 @@ class StockViewSet(viewsets.ReadOnlyModelViewSet):
         if portfolio_id:
             queryset = queryset.filter(portfolio_id=portfolio_id)
         return queryset
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True)
+        data = serializer.data
+        
+        portfolio_id = request.query_params.get("portfolio")
+        if portfolio_id:
+            total_investment = sum(item.get("buy_price", 0) * item.get("quantity", 0) for item in data)
+            total_current_value = sum(item.get("current_price", 0) * item.get("quantity", 0) for item in data)
+            total_return = total_current_value - total_investment
+            
+            return Response({
+                "portfolio_metrics": {
+                    "total_investment": total_investment,
+                    "total_current_value": total_current_value,
+                    "total_return": total_return
+                },
+                "stocks": data
+            })
+            
+        return Response(data)
 
     @action(detail=False, methods=["get"], url_path="search")
     def search(self, request):
