@@ -84,6 +84,8 @@ class AuthViewSet(viewsets.GenericViewSet):
 class PortfolioViewSet(
     mixins.CreateModelMixin,
     mixins.ListModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
     viewsets.GenericViewSet,
 ):
     """List/create portfolios and add stocks."""
@@ -273,4 +275,45 @@ class LiveTickerView(APIView):
             return Response(data, status=status.HTTP_200_OK)
         except Exception as e:
             logger.error(f"Error fetching live ticker: {str(e)}")
-            return Response({"error": "Failed to fetch live ticker data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+class StockPredictionView(APIView):
+    """
+    Enhanced AI Analysis: Predicts stock price using various ML models and horizons.
+    GET /api/predict/?symbol=RELIANCE.NS&model=linear_regression&horizon=1_week
+    """
+    def get(self, request):
+        symbol = request.query_params.get("symbol")
+        model_type = request.query_params.get("model", "linear_regression")
+        horizon_str = request.query_params.get("horizon", "1_week")
+        
+        if not symbol:
+            return Response({"error": "Symbol parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
+            
+        try:
+            from analytics.services.stock_prediction import predict_stock_price
+            data = predict_stock_price(symbol, model_type=model_type, horizon=horizon_str)
+            data["horizon"] = horizon_str
+            return Response(data, status=status.HTTP_200_OK)
+        except Exception as e:
+            logger.error(f"Error in StockPredictionView: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            logger.error(f"Prediction API error: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class Nifty50PCAView(APIView):
+    """
+    Runs the NIFTY 50 PCA and Clustering pipeline.
+    GET /api/nifty50-pca/
+    """
+    permission_classes = [] # Public for demonstration, can be restricted later
+
+    def get(self, request):
+        try:
+            from ml_pipeline.nifty_pca_pipeline import run_nifty_pca_pipeline
+            result = run_nifty_pca_pipeline()
+            return Response(result, status=status.HTTP_200_OK)
+        except Exception as exc:
+            logger.error(f"NIFTY 50 Pipeline failed: {str(exc)}")
+            return Response(
+                {"detail": f"Pipeline failed: {str(exc)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )

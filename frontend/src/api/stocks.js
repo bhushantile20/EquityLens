@@ -10,6 +10,15 @@ export const createPortfolio = async (payload) => {
   return data;
 };
 
+export const updatePortfolio = async (id, payload) => {
+  const { data } = await api.patch(`portfolios/${id}/`, payload);
+  return data;
+};
+
+export const deletePortfolio = async (id) => {
+  await api.delete(`portfolios/${id}/`);
+};
+
 export const addStockToPortfolio = async (portfolioId, symbol) => {
   const { data } = await api.post(`portfolios/${portfolioId}/add-stock/`, { symbol });
   return data;
@@ -78,5 +87,10 @@ export const fetchPortfolioAnalysis = async (portfolioId) => {
 export const fetchAssetForecast = async (asset) => {
   const queryParams = new URLSearchParams({ asset });
   const { data } = await api.get(`forecast/?${queryParams.toString()}`);
+  return data;
+};
+
+export const fetchStockPrediction = async (symbol, model = "linear_regression", horizon = "1_week") => {
+  const { data } = await api.get(`predict/?symbol=${symbol}&model=${model}&horizon=${horizon}`);
   return data;
 };

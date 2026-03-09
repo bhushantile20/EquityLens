@@ -9,6 +9,7 @@ import {
     ChevronRight,
     Gem,
     Cpu,
+    TrendingUp,
 } from "lucide-react";
 import { cn } from "../utils/cn";
 
@@ -27,6 +28,7 @@ export default function Sidebar() {
         { name: "Portfolio", path: "/portfolio", icon: LayoutDashboard },
         { name: "Stocks", path: stocksPath, match: "/stocks", icon: LineChart },
         { name: "Crypto AI", path: "/stocks?portfolio=9", match: "/stocks?portfolio=9", icon: Cpu },
+        { name: "Nifty 50", path: "/nifty50", icon: TrendingUp },
         { name: "Compare", path: "/compare", icon: ArrowLeftRight },
         { name: "Gold vs Silver", path: "/gold-silver", icon: Gem },
     ];

@@ -10,6 +10,7 @@ import StockDetail from "./pages/StockDetail";
 import LiveStockDetail from "./pages/LiveStockDetail";
 import CompareStocks from "./pages/CompareStocks";
 import GoldSilverAnalysis from "./pages/GoldSilverAnalysis";
+import Nifty50Analysis from "./pages/Nifty50Analysis";
 import Landing from "./pages/Landing";
 
 function AnimatedRoutes() {
@@ -79,6 +80,18 @@ function AnimatedRoutes() {
               <Layout>
                 <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} className="h-full">
                   <GoldSilverAnalysis />
+                </motion.div>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/nifty50"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} className="h-full">
+                  <Nifty50Analysis />
                 </motion.div>
               </Layout>
             </ProtectedRoute>
