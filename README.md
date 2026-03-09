@@ -3,6 +3,7 @@
 **EquityLens** is a full-stack financial analytics platform built with **Django REST Framework** and **React + Vite**. It combines real-time market data, ML-driven predictions, and interactive visualizations to help investors analyze portfolios, forecast stock prices, and discover undervalued opportunities.
 
 ---
+demo : https://vimeo.com/1171900958?share=copy&fl=sv&fe=ci
 
 ## Table of Contents
 
