@@ -9,7 +9,7 @@ import Stocks from "./pages/Stocks";
 import StockDetail from "./pages/StockDetail";
 import LiveStockDetail from "./pages/LiveStockDetail";
 import CompareStocks from "./pages/CompareStocks";
-import GoldSilverAnalysis from "./pages/GoldSilverAnalysis";
+import GoldSilverAnalytics from "./pages/GoldSilverAnalytics";
 import Nifty50Analysis from "./pages/Nifty50Analysis";
 import Landing from "./pages/Landing";
 
@@ -79,7 +79,7 @@ function AnimatedRoutes() {
             <ProtectedRoute>
               <Layout>
                 <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} className="h-full">
-                  <GoldSilverAnalysis />
+                  <GoldSilverAnalytics />
                 </motion.div>
               </Layout>
             </ProtectedRoute>

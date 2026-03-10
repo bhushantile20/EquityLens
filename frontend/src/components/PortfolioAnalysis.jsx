@@ -334,29 +334,19 @@ export default function PortfolioAnalysis({ portfolioId }) {
                         )}
                     </div>
 
-                    <div className="overflow-x-auto">
-                        <table className="min-w-full divide-y divide-white/5">
-                            <thead className="bg-[#1a1d2e]">
-                                <tr>
-                                    <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-widest text-slate-100 border-b-2 border-indigo-500/40">Metric</th>
-                                    <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-widest text-slate-100 border-b-2 border-indigo-500/40">Value</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-white/5 bg-transparent">
-                                <tr className="hover:bg-white/5 transition-colors">
-                                    <td className="px-4 py-3 text-sm font-semibold text-white">Mean Absolute Error (MAE)</td>
-                                    <td className="px-4 py-3 text-right text-sm font-mono text-slate-300">{predictionData.metrics.mae}</td>
-                                </tr>
-                                <tr className="hover:bg-white/5 transition-colors">
-                                    <td className="px-4 py-3 text-sm font-semibold text-white">Root Mean Squared Error (RMSE)</td>
-                                    <td className="px-4 py-3 text-right text-sm font-mono text-slate-300">{predictionData.metrics.rmse}</td>
-                                </tr>
-                                <tr className="hover:bg-white/5 transition-colors">
-                                    <td className="px-4 py-3 text-sm font-semibold text-white">Mean Absolute Percentage Error (MAPE)</td>
-                                    <td className="px-4 py-3 text-right text-sm font-mono text-slate-300">{predictionData.metrics.mape}%</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-[#1a1d2e] p-4 rounded-xl border border-white/5 flex flex-col justify-between">
+                            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Mean Absolute Error (MAE)</h3>
+                            <div className="text-2xl font-mono text-white">{predictionData.metrics.mae}</div>
+                        </div>
+                        <div className="bg-[#1a1d2e] p-4 rounded-xl border border-white/5 flex flex-col justify-between">
+                            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Root Mean Squared Error (RMSE)</h3>
+                            <div className="text-2xl font-mono text-white">{predictionData.metrics.rmse}</div>
+                        </div>
+                        <div className="bg-[#1a1d2e] p-4 rounded-xl border border-white/5 flex flex-col justify-between">
+                            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Mean Absolute Percentage (MAPE)</h3>
+                            <div className="text-2xl font-mono text-white">{predictionData.metrics.mape}%</div>
+                        </div>
                     </div>
                 </motion.div>
             )}

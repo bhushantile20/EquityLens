@@ -11,6 +11,7 @@ def _candidate_symbols(symbol: str) -> list[str]:
     return candidates
 
 
+
 def _live_pe(symbol: str) -> float | None:
     for ticker_symbol in _candidate_symbols(symbol):
         try:
@@ -26,8 +27,6 @@ def _live_pe(symbol: str) -> float | None:
         except Exception:
             continue
     return None
-
-
 def indicators(df: list[dict], symbol: str) -> dict:
     """
     Compute PE ratio and discount level from actual market data.

@@ -353,8 +353,8 @@ export default function Stocks() {
                             <XAxis dataKey="name" tick={{ fill: "#94a3b8", fontSize: 13, fontWeight: "bold" }} axisLine={{ stroke: 'rgba(255,255,255,0.1)' }} tickLine={false} />
                             <YAxis tick={{ fill: "#94a3b8", fontSize: 12 }} axisLine={{ stroke: 'rgba(255,255,255,0.1)' }} tickLine={false} tickFormatter={(val) => `₹${val.toLocaleString()}`} />
                             <Tooltip
-                              contentStyle={{ backgroundColor: "#0f111a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
-                              itemStyle={{ color: "#fff", fontWeight: "bold" }}
+                              contentStyle={{ backgroundColor: "#ffffff", borderColor: "rgba(0,0,0,0.1)", borderRadius: "12px", color: "#000", boxShadow: "0 8px 32px rgba(0,0,0,0.1)" }}
+                              itemStyle={{ color: "#000", fontWeight: "bold" }}
                               cursor={{ fill: 'rgba(255,255,255,0.05)' }}
                               formatter={(value) => formatMoney(value, "INR")}
                             />
@@ -376,7 +376,8 @@ export default function Stocks() {
                           <ZAxis type="category" dataKey="symbol" name="Symbol" />
                           <Tooltip
                             cursor={{ strokeDasharray: '3 3' }}
-                            contentStyle={{ backgroundColor: "#0f111a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
+                            contentStyle={{ backgroundColor: "#ffffff", borderColor: "rgba(0,0,0,0.1)", borderRadius: "12px", color: "#000", boxShadow: "0 8px 32px rgba(0,0,0,0.1)" }}
+                            itemStyle={{ color: "#000", fontWeight: "bold" }}
                             formatter={(value, name, props) => {
                               if (name === "Discount %") return [`${value}%`, name];
                               return [value, name];
