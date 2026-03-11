@@ -107,14 +107,16 @@ class PortfolioViewSet(
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
+        # update_or_create on portfolio_id and symbol
         stock, _ = Stock.objects.update_or_create(
+            portfolio=portfolio,
             symbol=live_payload["symbol"],
             defaults={
-                "portfolio": portfolio,
                 "company_name": live_payload["company_name"],
                 "sector": live_payload.get("sector") or portfolio.name,
                 "current_price": live_payload["current_price"],
-                "buy_price": live_payload.get("current_price", 0.0),
+                "buy_price": serializer.validated_data.get("buy_price", live_payload["current_price"]),
+                "quantity": serializer.validated_data.get("quantity", 1),
             },
         )
         generate_and_persist_stock_analytics(stock)
@@ -129,6 +131,25 @@ class PortfolioViewSet(
         portfolio = self.get_object()
         data = run_portfolio_analysis(portfolio.id)
         return Response(data)
+
+    @action(detail=True, methods=["post"], url_path="kmeans-analysis")
+    def kmeans_analysis(self, request, pk=None):
+        portfolio = self.get_object()
+        k = request.data.get("k", 3)
+        try:
+            k = int(k)
+        except ValueError:
+            return Response({"error": "k must be an integer."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            from analytics.services.kmeans_analysis import run_kmeans_clustering
+            result = run_kmeans_clustering(portfolio.id, k)
+            return Response(result)
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error in KMeans clustering: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class StockViewSet(viewsets.ReadOnlyModelViewSet):
@@ -249,23 +270,76 @@ class StockViewSet(viewsets.ReadOnlyModelViewSet):
 from rest_framework.views import APIView  # noqa: E402
 
 
-class GoldSilverCorrelationView(APIView):
-    """
-    Runs the Gold vs Silver ML pipeline and returns structured JSON for Recharts/UI.
-    GET /api/gold-silver/
-    """
+class GoldPredictionView(APIView):
     permission_classes = []
     
     def get(self, request):
         try:
-            from gold_silver_module.pipeline import run_analysis
-            result = run_analysis()
-            return Response(result, status=status.HTTP_200_OK)
+            from gold_silver_analysis.services.prediction_service import get_full_analysis
+            data = get_full_analysis()
+            return Response({
+                "historical": data["historical"],
+                "future": data["future"]
+            }, status=status.HTTP_200_OK)
         except Exception as exc:
-            return Response(
-                {"detail": f"Pipeline failed: {str(exc)}"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            )
+            return Response({"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class SilverPredictionView(APIView):
+    permission_classes = []
+    
+    def get(self, request):
+        try:
+            from gold_silver_analysis.services.prediction_service import get_full_analysis
+            data = get_full_analysis()
+            return Response({
+                "historical": data["historical"],
+                "future": data["future"]
+            }, status=status.HTTP_200_OK)
+        except Exception as exc:
+            return Response({"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GoldSilverCorrelationAnalysisView(APIView):
+    permission_classes = []
+    
+    def get(self, request):
+        try:
+            from gold_silver_analysis.services.prediction_service import get_full_analysis
+            data = get_full_analysis()
+            return Response({
+                "correlation": data["correlation"],
+                "rolling_correlation": data["rolling_correlation"],
+                "scatter": data["scatter"]
+            }, status=status.HTTP_200_OK)
+        except Exception as exc:
+            return Response({"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class ShapExplainView(APIView):
+    permission_classes = []
+    
+    def get(self, request):
+        try:
+            from gold_silver_analysis.services.prediction_service import get_full_analysis
+            data = get_full_analysis()
+            return Response({
+                "Gold": data["explainability"]["Gold"],
+                "Silver": data["explainability"]["Silver"]
+            }, status=status.HTTP_200_OK)
+        except Exception as exc:
+            return Response({"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class LimeExplainView(APIView):
+    permission_classes = []
+    
+    def get(self, request):
+        try:
+            from gold_silver_analysis.services.prediction_service import get_full_analysis
+            data = get_full_analysis()
+            return Response({
+                "Gold": data["explainability"]["Gold"],
+                "Silver": data["explainability"]["Silver"]
+            }, status=status.HTTP_200_OK)
+        except Exception as exc:
+            return Response({"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class AssetForecastView(APIView):
     """
@@ -336,3 +410,80 @@ class Nifty50PCAView(APIView):
                 {"detail": f"Pipeline failed: {str(exc)}"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
+
+class PortfolioPerformanceView(APIView):
+    """
+    Returns portfolio performance over 1 year using yfinance.
+    GET /api/portfolio/performance/
+    """
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        try:
+            import yfinance as yf
+            import pandas as pd
+            from portfolio.models import Stock
+
+            portfolio_id = request.query_params.get('portfolio')
+            if portfolio_id:
+                stocks = Stock.objects.filter(portfolio_id=portfolio_id)
+            else:
+                stocks = Stock.objects.all()
+                
+            if not stocks.exists():
+                return Response({
+                    "initial_investment": 0,
+                    "current_value": 0,
+                    "total_profit": 0,
+                    "performance": []
+                })
+
+            initial_investment = 0
+            hist_data = {}
+            
+            for stock in stocks:
+                inv = stock.buy_price * stock.quantity
+                initial_investment += inv
+                
+                # Fetch 1 yr historical price
+                ticker = yf.Ticker(stock.symbol)
+                hist = ticker.history(period="1y")
+                
+                if not hist.empty:
+                    # multiply exact price by quantity holding
+                    hist_data[stock.symbol] = hist['Close'] * stock.quantity
+
+            if not hist_data:
+                return Response({
+                    "initial_investment": float(initial_investment),
+                    "current_value": float(initial_investment),
+                    "total_profit": 0,
+                    "performance": []
+                })
+
+            df = pd.DataFrame(hist_data)
+            df = df.ffill().bfill().fillna(0) # Fill NaNs
+            df['portfolio_value'] = df.sum(axis=1)
+
+            performance = []
+            for date, row in df.iterrows():
+                performance.append({
+                    "date": date.strftime("%Y-%m-%d"),
+                    "portfolio_value": round(float(row['portfolio_value']), 2)
+                })
+
+            current_value = performance[-1]['portfolio_value'] if performance else 0
+            total_profit = current_value - float(initial_investment)
+
+            return Response({
+                "initial_investment": round(float(initial_investment), 2),
+                "current_value": round(float(current_value), 2),
+                "total_profit": round(float(total_profit), 2),
+                "performance": performance
+            })
+            
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error calculating portfolio performance: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

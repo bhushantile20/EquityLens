@@ -9,7 +9,12 @@ from api.views import (
     LiveTickerView,
     Nifty50PCAView,
     StockPredictionView,
-    GoldSilverCorrelationView,
+    GoldPredictionView,
+    SilverPredictionView,
+    GoldSilverCorrelationAnalysisView,
+    ShapExplainView,
+    LimeExplainView,
+    PortfolioPerformanceView,
 )
 
 router = DefaultRouter()
@@ -22,12 +27,17 @@ urlpatterns = [
     path("login/", AuthViewSet.as_view({"post": "login"}), name="login"),
     
     # Custom endpoints
-    path("gold-silver/", GoldSilverCorrelationView.as_view(), name="gold-silver-correlation"),
+    path("gold-prediction/", GoldPredictionView.as_view(), name="gold-prediction"),
+    path("silver-prediction/", SilverPredictionView.as_view(), name="silver-prediction"),
+    path("gold-silver-correlation/", GoldSilverCorrelationAnalysisView.as_view(), name="gold-silver-correlation"),
+    path("shap-explain/", ShapExplainView.as_view(), name="shap-explain"),
+    path("lime-explain/", LimeExplainView.as_view(), name="lime-explain"),
     path("forecast/", AssetForecastView.as_view(), name="asset-forecast"),
     path("ticker/", LiveTickerView.as_view(), name="live-ticker"),
     path("nifty50-pca/", Nifty50PCAView.as_view(), name="nifty50-pca"),
     path('predict/', StockPredictionView.as_view(), name='stock-prediction'),
     path('stock-prediction/', StockPredictionView.as_view(), name='stock-prediction-alias'),
+    path("portfolio/performance/", PortfolioPerformanceView.as_view(), name="portfolio-performance"),
 
     path("", include(router.urls)),
 ]

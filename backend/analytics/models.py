@@ -14,6 +14,8 @@ class StockAnalytics(models.Model):
     )
     pe_ratio = models.FloatField()
     discount_level = models.CharField(max_length=50)
+    discount_percent = models.FloatField(default=0.0)
+    one_year_high = models.FloatField(default=0.0)
     opportunity_score = models.FloatField()
     graph_data = models.JSONField(default=dict)
     last_updated = models.DateTimeField(default=timezone.now)

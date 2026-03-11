@@ -32,7 +32,12 @@ def indicators(df: list[dict], symbol: str) -> dict:
     Compute PE ratio and discount level from actual market data.
     """
     if not df:
-        return {"pe_ratio": 0.0, "discount_level": "UNKNOWN"}
+        return {
+            "pe_ratio": 0.0, 
+            "discount_level": "UNKNOWN", 
+            "discount_percent": 0.0, 
+            "one_year_high": 0.0
+        }
 
     current_price = float(df[-1]["close"])
     average_price = sum(float(row["close"]) for row in df) / len(df)
@@ -40,12 +45,25 @@ def indicators(df: list[dict], symbol: str) -> dict:
     if pe_ratio is None:
         pe_ratio = round(current_price / max(average_price, 1.0), 2)
 
-    ratio = current_price / max(average_price, 1.0)
-    if ratio <= 0.9:
+    one_year_high = max(float(row.get("high", row["close"])) for row in df)
+    discount_percent = 0.0
+    if one_year_high > 0:
+        discount_percent = ((one_year_high - current_price) / one_year_high) * 100
+    
+    discount_percent = round(discount_percent, 2)
+
+    if discount_percent > 30:
+        discount_level = "VERY HIGH"
+    elif discount_percent > 20:
         discount_level = "HIGH"
-    elif ratio <= 1.0:
+    elif discount_percent > 10:
         discount_level = "MEDIUM"
     else:
         discount_level = "LOW"
 
-    return {"pe_ratio": pe_ratio, "discount_level": discount_level}
+    return {
+        "pe_ratio": pe_ratio, 
+        "discount_level": discount_level,
+        "discount_percent": discount_percent,
+        "one_year_high": round(one_year_high, 2)
+    }

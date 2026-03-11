@@ -20,16 +20,15 @@ def fetch_data(symbol: str, days: int = 365) -> list[dict]:
             history = ticker.history(period="1y", interval="1d")
             if history.empty:
                 continue
-            closes = history["Close"].dropna()
-            if closes.empty:
-                continue
+            history = history.dropna(subset=['Close'])
 
             rows = [
                 {
                     "date": idx.strftime("%Y-%m-%d"),
-                    "close": round(float(close), 2),
+                    "close": round(float(row["Close"]), 2),
+                    "high": round(float(row["High"]), 2) if "High" in row else round(float(row["Close"]), 2),
                 }
-                for idx, close in closes.items()
+                for idx, row in history.iterrows()
             ]
             if rows:
                 return rows[-days:]

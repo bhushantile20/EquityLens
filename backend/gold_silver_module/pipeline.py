@@ -21,8 +21,8 @@ os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(MODELS_DIR, exist_ok=True)
 
 def fetch_and_prepare_data():
-    gold = yf.Ticker("GC=F").history(period="max")["Close"]
-    silver = yf.Ticker("SI=F").history(period="max")["Close"]
+    gold = yf.Ticker("GLD").history(period="max")["Close"]
+    silver = yf.Ticker("SLV").history(period="max")["Close"]
     
     df = pd.DataFrame({
         "Gold_Price": gold.squeeze(),
@@ -166,7 +166,7 @@ def generate_shap_lime(model, X_train, X_test, asset_name):
 CACHE_TTL_SECONDS = 3600  # 1 hour cache
 
 def _load_cached_result():
-    cache_path = os.path.join(DATA_DIR, "analysis_cache.json")
+    cache_path = os.path.join(DATA_DIR, "analysis_cache_v2.json")
     if os.path.exists(cache_path):
         mtime = os.path.getmtime(cache_path)
         if (pd.Timestamp.now().timestamp() - mtime) < CACHE_TTL_SECONDS:
@@ -175,7 +175,7 @@ def _load_cached_result():
     return None
 
 def _save_cached_result(result):
-    cache_path = os.path.join(DATA_DIR, "analysis_cache.json")
+    cache_path = os.path.join(DATA_DIR, "analysis_cache_v2.json")
     with open(cache_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
@@ -186,7 +186,12 @@ def run_analysis():
         return cached
 
     df = fetch_and_prepare_data()
-    df = df.tail(1500)
+    
+    # Ensure timezone naive for consistent resampling
+    if df.index.tz is not None:
+        df.index = df.index.tz_localize(None)
+        
+    df = df[df.index >= '2008-01-01']
     
     features = [
         "Gold_Price_lag_1", "Silver_Price_lag_1", "Gold_30_day_MA", 
@@ -210,7 +215,7 @@ def run_analysis():
     
     # 3650 days == 10 years step by roughly 1M to downsample
     for i, pred_ in enumerate(future_preds):
-        if i % 30 == 0:
+        if i % 365 == 0:
             future_output.append({
                 "Date": (last_date + pd.Timedelta(days=i)).strftime("%Y-%m-%d"),
                 "Predicted_Gold": round(pred_["Predicted_Gold"], 2),
@@ -218,7 +223,13 @@ def run_analysis():
             })
             
     historical = []
-    for i, row in df.iterrows():
+    try:
+        df_yearly = df.resample('YE').last()
+    except:
+        df_yearly = df.resample('Y').last()
+        
+    for i, row in df_yearly.iterrows():
+        if pd.isna(row["Gold_Price"]): continue
         historical.append({
             "Date": i.strftime("%Y-%m-%d"),
             "Gold_Price": round(row["Gold_Price"], 2),
@@ -240,8 +251,8 @@ def run_analysis():
     gold_explain = generate_shap_lime(gold_model, X_train_g, X_test_g, "Gold")
     silver_explain = generate_shap_lime(silver_model, X_train_s, X_test_s, "Silver")
 
-    return {
-        "historical": historical[::30][-120:], # Subsample roughly last 10 years of history for UI performance
+    result = {
+        "historical": historical,
         "future": future_output,
         "correlation": correlation,
         "rolling_correlation": rolling_corr_list[::30][-120:],
@@ -251,3 +262,5 @@ def run_analysis():
             "Silver": silver_explain
         }
     }
+    _save_cached_result(result)
+    return result

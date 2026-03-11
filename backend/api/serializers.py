@@ -30,6 +30,8 @@ class LoginSerializer(serializers.Serializer):
 
 class AddStockToPortfolioSerializer(serializers.Serializer):
     symbol = serializers.CharField(max_length=30)
+    quantity = serializers.IntegerField(default=1, min_value=1)
+    buy_price = serializers.FloatField(required=False)
 
 
 class StockAnalyticsSerializer(serializers.ModelSerializer):
@@ -50,9 +52,11 @@ class StockListSerializer(serializers.ModelSerializer):
         source="analytics.discount_level",
         read_only=True,
     )
+    discount_percent = serializers.FloatField(source="analytics.discount_percent", read_only=True)
+    one_year_high = serializers.FloatField(source="analytics.one_year_high", read_only=True)
     min_price = serializers.SerializerMethodField()
     max_price = serializers.SerializerMethodField()
-    closing_price = serializers.SerializerMethodField()
+    today_price = serializers.SerializerMethodField()
     currency = serializers.SerializerMethodField()
 
     class Meta:
@@ -64,12 +68,14 @@ class StockListSerializer(serializers.ModelSerializer):
             "current_price",
             "min_price",
             "max_price",
-            "closing_price",
+            "today_price",
             "currency",
             "pe_ratio",
+            "discount_percent",
             "discount_level",
             "buy_price",
             "quantity",
+            "one_year_high",
         )
 
     def _price_series(self, obj):
@@ -91,7 +97,7 @@ class StockListSerializer(serializers.ModelSerializer):
             return None
         return round(max(prices), 2)
 
-    def get_closing_price(self, obj):
+    def get_today_price(self, obj):
         prices = self._price_series(obj)
         if not prices:
             return None
@@ -108,6 +114,8 @@ class StockDetailSerializer(serializers.ModelSerializer):
     max_price = serializers.SerializerMethodField()
     today_price = serializers.SerializerMethodField()
     currency = serializers.SerializerMethodField()
+    discount_percent = serializers.FloatField(source="analytics.discount_percent", read_only=True)
+    one_year_high = serializers.FloatField(source="analytics.one_year_high", read_only=True)
 
     class Meta:
         model = Stock
@@ -126,6 +134,8 @@ class StockDetailSerializer(serializers.ModelSerializer):
             "buy_price",
             "quantity",
             "analytics",
+            "discount_percent",
+            "one_year_high",
         )
 
     def _price_series(self, obj):

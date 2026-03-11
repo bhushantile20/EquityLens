@@ -17,6 +17,7 @@ import {
 } from "recharts";
 import { fetchPortfolioAnalysis, fetchStockPrediction } from "../api/stocks";
 import Loader from "./Loader";
+import KMeansAnalysis from "./KMeansAnalysis";
 import { currencyCodeFromItem, formatMoney } from "../utils/currency";
 import { cn } from "../utils/cn";
 
@@ -421,6 +422,8 @@ export default function PortfolioAnalysis({ portfolioId }) {
                     </p>
                 </motion.div>
             </div>
+
+            <KMeansAnalysis portfolioId={portfolioId} />
         </div>
     );
 }

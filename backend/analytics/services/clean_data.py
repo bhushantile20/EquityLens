@@ -16,12 +16,14 @@ def clean_data(df: list[dict]) -> list[dict]:
         try:
             parsed_date = datetime.strptime(str(date_str), "%Y-%m-%d").date()
             parsed_close = float(close)
+            parsed_high = float(row.get("high", parsed_close))
         except (TypeError, ValueError):
             continue
         cleaned.append(
             {
                 "date": parsed_date,
                 "close": parsed_close,
+                "high": parsed_high,
             }
         )
     return sorted(cleaned, key=lambda value: value["date"])

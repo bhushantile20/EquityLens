@@ -27,7 +27,7 @@ export default function Sidebar() {
     const links = [
         { name: "Portfolio", path: "/portfolio", icon: LayoutDashboard },
         { name: "Stocks", path: stocksPath, match: "/stocks", icon: LineChart },
-        { name: "Crypto AI", path: "/stocks?portfolio=9", match: "/stocks?portfolio=9", icon: Cpu },
+        { name: "Crypto AI", path: "/crypto-ai", match: "/crypto-ai", icon: Cpu },
         { name: "Nifty 50", path: "/nifty50", icon: TrendingUp },
         { name: "Compare", path: "/compare", icon: ArrowLeftRight },
         { name: "Gold vs Silver", path: "/gold-silver", icon: Gem },

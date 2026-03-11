@@ -33,7 +33,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'auto_invest.urls'
+ROOT_URLCONF = 'equitylens.urls'
 
 TEMPLATES = [
     {
@@ -50,7 +50,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'auto_invest.wsgi.application'
+WSGI_APPLICATION = 'equitylens.wsgi.application'
 
 DATABASES = {
     'default': {

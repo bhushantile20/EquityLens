@@ -70,8 +70,10 @@ export default function StockTable({ stocks, onDeleteStock, deletingStockId }) {
               <Th columnKey="current_price" align="right">Current Price</Th>
               <Th columnKey="min_price" align="right">Min Price</Th>
               <Th columnKey="max_price" align="right">Max Price</Th>
-              <Th columnKey="closing_price" align="right">Today Price</Th>
+              <Th columnKey="one_year_high" align="right">1 Year High</Th>
+              <Th columnKey="today_price" align="right">Today Price</Th>
               <Th columnKey="pe_ratio" align="right">PE Ratio</Th>
+              <Th columnKey="discount_percent" align="right">Discount %</Th>
               <Th columnKey="discount_level" align="center">Discount Level</Th>
               <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-widest bg-[#1a1d2e] text-slate-100 border-b-2 border-indigo-500/40 sticky top-0 z-20 w-24">Action</th>
             </tr>
@@ -108,9 +110,15 @@ export default function StockTable({ stocks, onDeleteStock, deletingStockId }) {
                   {formatMoney(stock.max_price, currencyCodeFromItem(stock))}
                 </td>
                 <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">
-                  {formatMoney(stock.closing_price, currencyCodeFromItem(stock))}
+                  {formatMoney(stock.one_year_high, currencyCodeFromItem(stock))}
+                </td>
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">
+                  {formatMoney(stock.today_price, currencyCodeFromItem(stock))}
                 </td>
                 <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">{stock.pe_ratio ?? "-"}</td>
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">
+                  {stock.discount_percent !== undefined && stock.discount_percent !== null ? `${stock.discount_percent}%` : "-"}
+                </td>
                 <td className="px-4 py-4 text-center whitespace-nowrap">
                   <OpportunityBadge level={stock.discount_level} />
                 </td>

@@ -18,7 +18,8 @@ import Loader from "../components/Loader";
 import SearchBar from "../components/SearchBar";
 import StockTable from "../components/StockTable";
 import PortfolioAnalysis from "../components/PortfolioAnalysis";
-import CryptoForecasting from "../components/CryptoForecasting";
+import PortfolioReturnChart from "../components/PortfolioReturnChart";
+import StockInfoCard from "../components/StockInfoCard";
 import { currencyCodeFromItem, formatMoney } from "../utils/currency";
 import {
   addStockToPortfolio,
@@ -41,6 +42,7 @@ export default function Stocks() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("holdings");
   const [addingSymbol, setAddingSymbol] = useState("");
+  const [selectedStock, setSelectedStock] = useState(null);
   const [deletingStockId, setDeletingStockId] = useState(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
@@ -64,7 +66,7 @@ export default function Stocks() {
 
   const scatterChartData = useMemo(
     () =>
-      stocks.map((stock) => {
+      (stocks || []).map((stock) => {
         const currentPrice = Number(stock.current_price || 0);
         const maxPrice = Number(stock.max_price || 0);
         let calculatedDiscount = 0;
@@ -83,7 +85,7 @@ export default function Stocks() {
   );
 
   const portfolioSymbols = useMemo(
-    () => new Set(stocks.map((stock) => String(stock.symbol).toUpperCase())),
+    () => new Set((stocks || []).map((stock) => String(stock.symbol).toUpperCase())),
     [stocks]
   );
 
@@ -154,19 +156,22 @@ export default function Stocks() {
     }
   };
 
-  const handleAddStock = async (symbol) => {
-    if (!portfolioId || !symbol) {
+  const handleAddStock = async (stock, quantity) => {
+    if (!portfolioId || !stock.symbol) {
       return;
     }
 
-    setAddingSymbol(symbol);
+    setAddingSymbol(stock.symbol);
     setMessage("");
     setError("");
     try {
-      await addStockToPortfolio(portfolioId, String(symbol).trim().toUpperCase());
+      await addStockToPortfolio(portfolioId, String(stock.symbol).trim().toUpperCase(), quantity, stock.current_price);
       const refreshed = await fetchStocks(portfolioId);
-      setStocks(refreshed || []);
-      setMessage(`${symbol} added to portfolio.`);
+      const normalizedStocks = Array.isArray(refreshed?.stocks) ? refreshed.stocks : (Array.isArray(refreshed) ? refreshed : []);
+      setPortfolioMetrics(prev => refreshed?.portfolio_metrics || prev);
+      setStocks(normalizedStocks);
+      setMessage(`${stock.symbol} added to portfolio.`);
+      setSelectedStock(null);
     } catch (err) {
       const message =
         err.response?.data?.detail ||
@@ -188,7 +193,9 @@ export default function Stocks() {
     try {
       await removeStockFromPortfolio(stockId);
       const refreshed = await fetchStocks(portfolioId);
-      setStocks(refreshed || []);
+      const normalizedStocks = Array.isArray(refreshed?.stocks) ? refreshed.stocks : (Array.isArray(refreshed) ? refreshed : []);
+      setPortfolioMetrics(prev => refreshed?.portfolio_metrics || prev);
+      setStocks(normalizedStocks);
       setMessage(`${symbol} removed from portfolio.`);
     } catch (err) {
       const text =
@@ -243,10 +250,6 @@ export default function Stocks() {
         <div className="card p-6">
           <Loader />
         </div>
-      ) : selectedPortfolio?.type === "crypto_ai" ? (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ staggerChildren: 0.1 }} className="space-y-6">
-          <CryptoForecasting />
-        </motion.div>
       ) : (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ staggerChildren: 0.1 }} className="space-y-6">
           {searchResults.length > 0 && (
@@ -257,47 +260,55 @@ export default function Stocks() {
                   Search Results
                 </h2>
               </div>
-              <div className="overflow-x-auto max-h-[400px]">
-                <table className="min-w-full divide-y divide-white/5">
-                  <thead className="bg-surface/50 backdrop-blur-md sticky top-0 z-10">
-                    <tr>
-                      <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Symbol</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Company</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">Price</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5 bg-transparent">
-                    {searchResults.map((result) => {
-                      const symbol = String(result.symbol || "").toUpperCase();
-                      const alreadyAdded = portfolioSymbols.has(symbol);
-                      return (
-                        <tr key={symbol} className="transition-colors hover:bg-white/5">
-                          <td className="px-4 py-4 text-sm font-bold text-white whitespace-nowrap">{result.symbol}</td>
-                          <td className="px-4 py-4 text-sm font-medium text-slate-300 whitespace-nowrap">{result.company_name}</td>
-                          <td className="px-4 py-4 text-right text-sm font-mono text-slate-300 whitespace-nowrap">
-                            {formatMoney(result.current_price, currencyCodeFromItem(result))}
-                          </td>
-                          <td className="px-4 py-4 text-right whitespace-nowrap">
-                            <button
-                              type="button"
-                              onClick={() => handleAddStock(result.symbol)}
-                              className="btn-primary py-1.5 px-4 text-xs"
-                              disabled={alreadyAdded || addingSymbol === result.symbol}
-                            >
-                              {alreadyAdded
-                                ? "Added"
-                                : addingSymbol === result.symbol
-                                  ? "Adding..."
-                                  : "Add Stock"}
-                            </button>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+
+              {selectedStock ? (
+                <div className="p-4 sm:p-6 bg-[#0a0c16]">
+                  <StockInfoCard
+                    stock={selectedStock}
+                    isAdding={addingSymbol === selectedStock.symbol}
+                    onCancel={() => setSelectedStock(null)}
+                    onAdd={handleAddStock}
+                  />
+                </div>
+              ) : (
+                <div className="overflow-x-auto max-h-[400px]">
+                  <table className="min-w-full divide-y divide-white/5">
+                    <thead className="bg-surface/50 backdrop-blur-md sticky top-0 z-10">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Symbol</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Company</th>
+                        <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">Price</th>
+                        <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/5 bg-transparent">
+                      {searchResults.map((result) => {
+                        const symbol = String(result.symbol || "").toUpperCase();
+                        const alreadyAdded = portfolioSymbols.has(symbol);
+                        return (
+                          <tr key={symbol} className="transition-colors hover:bg-white/5">
+                            <td className="px-4 py-4 text-sm font-bold text-white whitespace-nowrap">{result.symbol}</td>
+                            <td className="px-4 py-4 text-sm font-medium text-slate-300 whitespace-nowrap">{result.company_name}</td>
+                            <td className="px-4 py-4 text-right text-sm font-mono text-slate-300 whitespace-nowrap">
+                              {formatMoney(result.current_price, currencyCodeFromItem(result))}
+                            </td>
+                            <td className="px-4 py-4 text-right whitespace-nowrap">
+                              <button
+                                type="button"
+                                onClick={() => setSelectedStock(result)}
+                                className="btn-primary py-1.5 px-4 text-xs"
+                                disabled={alreadyAdded}
+                              >
+                                {alreadyAdded ? "In Portfolio" : "Select"}
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </motion.div>
           )}
 
@@ -342,6 +353,8 @@ export default function Stocks() {
                       deletingStockId={deletingStockId}
                     />
                   </motion.div>
+
+                  <PortfolioReturnChart portfolioId={portfolioId} refreshTrigger={stocks} />
 
                   {portfolioMetrics && portfolioMetrics.total_investment > 0 && (
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="card p-6 mb-6">

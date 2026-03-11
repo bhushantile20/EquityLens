@@ -29,6 +29,8 @@ def generate_and_persist_stock_analytics(stock: Stock) -> StockAnalytics:
         defaults={
             "pe_ratio": indicator_data["pe_ratio"],
             "discount_level": indicator_data["discount_level"],
+            "discount_percent": indicator_data["discount_percent"],
+            "one_year_high": indicator_data["one_year_high"],
             "opportunity_score": score,
             "graph_data": graph_json,
             "last_updated": timezone.now(),

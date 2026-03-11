@@ -13,15 +13,23 @@ ALLOWED_PERIODS = {"1mo", "3mo", "6mo", "1y", "2y", "3y", "5y", "10y", "max"}
 ALLOWED_INTERVALS = {"1d", "1wk", "1mo"}
 
 
-def _discount_level(min_price: float, max_price: float, current_price: float) -> str:
-    if max_price <= min_price:
-        return "MEDIUM"
-    price_position = (current_price - min_price) / (max_price - min_price)
-    if price_position <= 0.33:
-        return "HIGH"
-    if price_position <= 0.66:
-        return "MEDIUM"
-    return "LOW"
+def _discount_info(one_year_high: float, current_price: float) -> tuple[str, float]:
+    discount_percent = 0.0
+    if one_year_high > 0:
+        discount_percent = ((one_year_high - current_price) / one_year_high) * 100
+        
+    discount_percent = round(discount_percent, 2)
+    
+    if discount_percent > 30:
+        discount_level = "VERY HIGH"
+    elif discount_percent > 20:
+        discount_level = "HIGH"
+    elif discount_percent > 10:
+        discount_level = "MEDIUM"
+    else:
+        discount_level = "LOW"
+        
+    return discount_level, discount_percent
 
 
 def _normalize_period(period: str | None) -> str:
@@ -91,6 +99,7 @@ def _fetch_ticker_payload(symbol: str, period: str, interval: str) -> dict[str, 
         raise ValueError(f"No data found for ticker: {symbol}")
 
     closes = _extract_prices(history)
+    highs = history.get("High", closes).dropna()
     if closes.empty:
         raise ValueError(f"No price data available for ticker: {symbol}")
 
@@ -99,6 +108,7 @@ def _fetch_ticker_payload(symbol: str, period: str, interval: str) -> dict[str, 
     current_price = prices[-1]
     min_price = min(prices)
     max_price = max(prices)
+    one_year_high = round(float(highs.max()), 2) if not highs.empty else max_price
     moving_avg = [
         round(float(closes.iloc[max(0, i - 4): i + 1].mean()), 4)
         for i in range(len(closes))
@@ -123,6 +133,7 @@ def _fetch_ticker_payload(symbol: str, period: str, interval: str) -> dict[str, 
         "min_price": round(min_price, 2),
         "max_price": round(max_price, 2),
         "today_price": round(current_price, 2),
+        "one_year_high": one_year_high,
         "dates": dates,
         "prices": prices,
         "moving_avg": moving_avg,
@@ -179,11 +190,13 @@ def search_live_stocks(query: str, limit: int = 10) -> list[dict[str, Any]]:
                 continue
 
             closes = history["Close"].dropna()
+            highs = history.get("High", closes).dropna()
             if closes.empty:
                 continue
 
             min_price = round(float(closes.min()), 2)
             max_price = round(float(closes.max()), 2)
+            one_year_high = round(float(highs.max()), 2) if not highs.empty else max_price
             closing_price = round(float(closes.iloc[-1]), 2)
 
             pe_ratio = None
@@ -204,14 +217,12 @@ def search_live_stocks(query: str, limit: int = 10) -> list[dict[str, Any]]:
                     "current_price": closing_price,
                     "min_price": min_price,
                     "max_price": max_price,
-                    "closing_price": closing_price,
+                    "today_price": closing_price,
                     "pe_ratio": pe_ratio_value,
                     "currency": "INR",
-                    "discount_level": _discount_level(
-                        min_price=min_price,
-                        max_price=max_price,
-                        current_price=closing_price,
-                    ),
+                    "one_year_high": one_year_high,
+                    "discount_percent": _discount_info(one_year_high, closing_price)[1],
+                    "discount_level": _discount_info(one_year_high, closing_price)[0],
                     "is_live": True,
                 }
             )
@@ -244,7 +255,8 @@ def fetch_live_stock_detail(
         current_price = payload["current_price"]
         min_price     = payload["min_price"]
         max_price     = payload["max_price"]
-        discount_level = _discount_level(min_price=min_price, max_price=max_price, current_price=current_price)
+        one_year_high = payload.get("one_year_high", max_price)
+        discount_level, discount_percent = _discount_info(one_year_high, current_price)
         pe_ratio       = payload["pe_ratio"]
         pe_value       = pe_ratio if pe_ratio is not None else 0.0
         opportunity_score = opportunity_engine(pe_ratio=pe_value, discount_level=discount_level)
@@ -261,10 +273,14 @@ def fetch_live_stock_detail(
             "min_price":      round(min_price, 2),
             "max_price":      round(max_price, 2),
             "today_price":    round(current_price, 2),
+            "one_year_high":  one_year_high,
+            "discount_percent": discount_percent,
             "is_live":        True,
             "analytics": {
                 "pe_ratio":         pe_ratio,
                 "discount_level":   discount_level,
+                "discount_percent": discount_percent,
+                "one_year_high":  one_year_high,
                 "opportunity_score": opportunity_score,
                 "graph_data": {
                     "dates":      payload["dates"],

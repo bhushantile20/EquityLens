@@ -22,7 +22,7 @@ class Stock(models.Model):
         null=True,
         blank=True,
     )
-    symbol = models.CharField(max_length=20, unique=True)
+    symbol = models.CharField(max_length=20)
     company_name = models.CharField(max_length=255)
     sector = models.CharField(max_length=100)
     current_price = models.FloatField()

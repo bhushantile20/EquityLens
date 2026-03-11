@@ -19,8 +19,10 @@ export const deletePortfolio = async (id) => {
   await api.delete(`portfolios/${id}/`);
 };
 
-export const addStockToPortfolio = async (portfolioId, symbol) => {
-  const { data } = await api.post(`portfolios/${portfolioId}/add-stock/`, { symbol });
+export const addStockToPortfolio = async (portfolioId, symbol, quantity = 1, buyPrice = null) => {
+  const payload = { symbol, quantity };
+  if (buyPrice !== null) payload.buy_price = buyPrice;
+  const { data } = await api.post(`portfolios/${portfolioId}/add-stock/`, payload);
   return data;
 };
 

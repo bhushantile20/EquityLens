@@ -11,6 +11,7 @@ import LiveStockDetail from "./pages/LiveStockDetail";
 import CompareStocks from "./pages/CompareStocks";
 import GoldSilverAnalytics from "./pages/GoldSilverAnalytics";
 import Nifty50Analysis from "./pages/Nifty50Analysis";
+import CryptoAI from "./pages/CryptoAI";
 import Landing from "./pages/Landing";
 
 function AnimatedRoutes() {
@@ -80,6 +81,18 @@ function AnimatedRoutes() {
               <Layout>
                 <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} className="h-full">
                   <GoldSilverAnalytics />
+                </motion.div>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/crypto-ai"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} className="h-full">
+                  <CryptoAI />
                 </motion.div>
               </Layout>
             </ProtectedRoute>
