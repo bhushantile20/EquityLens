@@ -1,3 +1,8 @@
+import os
+import logging
+
+logger = logging.getLogger(__name__)
+
 from django.apps import AppConfig
 
 
@@ -5,21 +10,48 @@ class ApiConfig(AppConfig):
     name = 'api'
 
     def ready(self):
-        import os
         import threading
-        
-        # Avoid running pre-warm twice per start (e.g. Django auto-reload)
-        if os.environ.get('RUN_MAIN', None) != 'true' and not os.environ.get('DJANGO_SETTINGS_MODULE', '').endswith('test'):
-            def _pre_warm():
-                try:
-                    from ml_pipeline import model_loader
-                    from analytics.services.stock_prediction import predict_stock_price
-                    print("Pre-warming ML models and popular predictions (TCS, RELIANCE, INFY, HDFCBANK)...")
-                    for ticker in ["TCS.NS", "RELIANCE.NS", "INFY.NS", "HDFCBANK.NS", "BTC-INR"]:
+
+        # ── Suppress TensorFlow CUDA noise (no GPU on Azure VM – expected) ──
+        os.environ.setdefault('TF_CPP_MIN_LOG_LEVEL', '3')
+        os.environ.setdefault('TF_ENABLE_ONEDNN_OPTS', '0')
+
+        # ── Gunicorn spawns multiple worker processes.  We only want to
+        #    pre-warm once across ALL of them, so we use a /tmp lock file.
+        #    Django dev-server uses RUN_MAIN; Gunicorn does not set it at all.
+        lock_file = '/tmp/equitylens_prewarm.lock'
+
+        # Skip if another worker already claimed the lock
+        if os.path.exists(lock_file):
+            return
+
+        # Try to create the lock file atomically
+        try:
+            fd = os.open(lock_file, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            os.close(fd)
+        except FileExistsError:
+            return  # Another process just created it
+
+        def _pre_warm():
+            try:
+                from analytics.services.stock_prediction import predict_stock_price
+                logger.info("Pre-warming ML models (TCS, RELIANCE, INFY, HDFCBANK)…")
+                # BTC-USD works on cloud IPs; stock_prediction.py handles INR conversion
+                for ticker in ["TCS.NS", "RELIANCE.NS", "INFY.NS", "HDFCBANK.NS", "BTC-USD"]:
+                    try:
                         predict_stock_price(ticker, model_type="random_forest", horizon="30d")
-                    print("Pre-warming complete!")
-                except Exception as e:
-                    print(f"Pre-warming disabled / failed: {e}")
-                    
-            t = threading.Thread(target=_pre_warm, daemon=True)
-            t.start()
+                        logger.info(f"  ✓ Pre-warmed {ticker}")
+                    except Exception as e:
+                        logger.warning(f"  ✗ Could not pre-warm {ticker}: {e}")
+                logger.info("Pre-warming complete!")
+            except Exception as e:
+                logger.warning(f"Pre-warming disabled / failed: {e}")
+            finally:
+                # Remove lock so it can run again after a full server restart
+                try:
+                    os.remove(lock_file)
+                except OSError:
+                    pass
+
+        t = threading.Thread(target=_pre_warm, daemon=True)
+        t.start()
