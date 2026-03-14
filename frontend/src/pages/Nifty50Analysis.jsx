@@ -114,123 +114,145 @@ export default function Nifty50Analysis() {
           {activeTab === "stocks" ? (
             // ===== STOCKS TABLE TAB =====
             <>
-              <div className="p-5 border-b border-white/5 bg-white/5">
-                <h2 className="text-lg font-display font-semibold text-white">
-                  Nifty 50 Stocks
-                </h2>
+              {/* Table Header */}
+              <div className="px-6 py-4 bg-white border-b border-slate-200 flex items-center justify-between">
+                <div>
+                  <h2 className="text-lg font-display font-bold text-slate-800">
+                    Nifty 50 Stocks
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Live market data · {stocksData.length} stocks
+                  </p>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 border border-indigo-100 px-2.5 py-1 rounded-full">
+                  NSE Listed
+                </span>
               </div>
-              <div className="overflow-x-auto max-h-[700px]">
-                <table className="min-w-full divide-y divide-white/5">
-                  <thead className="bg-[#0f111a] sticky top-0 z-10">
+
+              {/* Scrollable Table */}
+              <div className="overflow-x-auto max-h-[680px] overflow-y-auto bg-white">
+                <table className="min-w-full">
+                  {/* Sticky Header */}
+                  <thead className="sticky top-0 z-10 bg-slate-50 border-b-2 border-slate-200">
                     <tr>
-                      <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Symbol
-                      </th>
-                      <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Company Name
-                      </th>
-                      <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Sector
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Current Price
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                        52W Low
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                        52W High
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                        PE Min
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                        PE Max
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Current PE
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500 text-indigo-400">
-                        PE Avg
-                      </th>
-                      <th className="px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Recommendation
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Market Cap
-                      </th>
-                      <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Change
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5">
-                    {stocksData.map((stock) => (
-                      <tr
-                        key={stock.symbol}
-                        className="hover:bg-white/5 transition-colors"
-                      >
-                        <td className="px-4 py-3 whitespace-nowrap text-sm font-bold text-white">
-                          {stock.symbol}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-sm text-slate-300">
-                          {stock.company_name}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-sm text-slate-400">
-                          {stock.sector}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-300">
-                          {stock.current_price
-                            ? `₹${stock.current_price.toFixed(2)}`
-                            : "-"}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-400">
-                          {stock.low_52w ? `₹${stock.low_52w.toFixed(2)}` : "-"}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-400">
-                          {stock.high_52w
-                            ? `₹${stock.high_52w.toFixed(2)}`
-                            : "-"}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-400">
-                          {stock.pe_min ? stock.pe_min.toFixed(2) : "-"}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-400">
-                          {stock.pe_max ? stock.pe_max.toFixed(2) : "-"}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-400">
-                          {stock.current_pe ? stock.current_pe.toFixed(2) : "-"}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-indigo-400 font-semibold">
-                          {stock.pe_avg ? stock.pe_avg.toFixed(2) : "-"}
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-center text-sm">
-                          <span
-                            className={`px-2 py-1 rounded text-xs font-bold uppercase ${
-                              stock.recommendation === "buy"
-                                ? "bg-emerald-500/20 text-emerald-400"
-                                : stock.recommendation === "sell"
-                                  ? "bg-rose-500/20 text-rose-400"
-                                  : stock.recommendation === "hold"
-                                    ? "bg-yellow-500/20 text-yellow-400"
-                                    : "bg-slate-500/20 text-slate-400"
-                            }`}
-                          >
-                            {stock.recommendation || "-"}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-400">
-                          {stock.market_cap_formatted}
-                        </td>
-                        <td
-                          className={`px-4 py-3 whitespace-nowrap text-right text-sm font-mono font-semibold ${
-                            stock.change >= 0
-                              ? "text-emerald-400"
-                              : "text-rose-400"
+                      {[
+                        { label: "Symbol",         align: "left"   },
+                        { label: "Company Name",   align: "left"   },
+                        { label: "Sector",         align: "left"   },
+                        { label: "Current Price",  align: "right"  },
+                        { label: "52W Low",        align: "right"  },
+                        { label: "52W High",       align: "right"  },
+                        { label: "PE Min",         align: "right"  },
+                        { label: "PE Max",         align: "right"  },
+                        { label: "Current PE",     align: "right"  },
+                        { label: "PE Avg",         align: "right", accent: true },
+                        { label: "Signal",         align: "center" },
+                        { label: "Market Cap",     align: "right"  },
+                        { label: "Change",         align: "right"  },
+                      ].map(({ label, align, accent }) => (
+                        <th
+                          key={label}
+                          className={`px-4 py-3 text-${align} text-[11px] font-bold uppercase tracking-wider whitespace-nowrap ${
+                            accent ? "text-indigo-600" : "text-slate-500"
                           }`}
                         >
-                          {stock.change_str} (
-                          {stock.change_percent > 0 ? "+" : ""}
+                          {label}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+
+                  <tbody className="divide-y divide-slate-100 bg-white">
+                    {stocksData.map((stock, idx) => (
+                      <tr
+                        key={stock.symbol}
+                        className={`group transition-colors hover:bg-indigo-50/40 ${
+                          idx % 2 === 0 ? "bg-white" : "bg-slate-50/50"
+                        }`}
+                      >
+                        {/* Symbol */}
+                        <td className="px-4 py-3 whitespace-nowrap">
+                          <span className="inline-block bg-indigo-50 text-indigo-700 border border-indigo-100 text-xs font-bold px-2 py-0.5 rounded font-mono">
+                            {stock.symbol}
+                          </span>
+                        </td>
+
+                        {/* Company Name */}
+                        <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-slate-800 max-w-[200px] truncate">
+                          {stock.company_name}
+                        </td>
+
+                        {/* Sector */}
+                        <td className="px-4 py-3 whitespace-nowrap">
+                          <span className="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-medium">
+                            {stock.sector}
+                          </span>
+                        </td>
+
+                        {/* Current Price */}
+                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono font-bold text-slate-900">
+                          {stock.current_price ? `₹${stock.current_price.toFixed(2)}` : "—"}
+                        </td>
+
+                        {/* 52W Low */}
+                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-rose-500">
+                          {stock.low_52w ? `₹${stock.low_52w.toFixed(2)}` : "—"}
+                        </td>
+
+                        {/* 52W High */}
+                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-emerald-600">
+                          {stock.high_52w ? `₹${stock.high_52w.toFixed(2)}` : "—"}
+                        </td>
+
+                        {/* PE Min */}
+                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-500">
+                          {stock.pe_min ? stock.pe_min.toFixed(2) : "—"}
+                        </td>
+
+                        {/* PE Max */}
+                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-500">
+                          {stock.pe_max ? stock.pe_max.toFixed(2) : "—"}
+                        </td>
+
+                        {/* Current PE */}
+                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-600 font-semibold">
+                          {stock.current_pe ? stock.current_pe.toFixed(2) : "—"}
+                        </td>
+
+                        {/* PE Avg */}
+                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-indigo-600 font-bold">
+                          {stock.pe_avg ? stock.pe_avg.toFixed(2) : "—"}
+                        </td>
+
+                        {/* Recommendation Badge */}
+                        <td className="px-4 py-3 whitespace-nowrap text-center">
+                          <span
+                            className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wide ${
+                              stock.recommendation === "buy"
+                                ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
+                                : stock.recommendation === "sell"
+                                ? "bg-rose-100 text-rose-700 border border-rose-200"
+                                : stock.recommendation === "hold"
+                                ? "bg-amber-100 text-amber-700 border border-amber-200"
+                                : "bg-slate-100 text-slate-500 border border-slate-200"
+                            }`}
+                          >
+                            {stock.recommendation || "—"}
+                          </span>
+                        </td>
+
+                        {/* Market Cap */}
+                        <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-mono text-slate-500">
+                          {stock.market_cap_formatted}
+                        </td>
+
+                        {/* Change */}
+                        <td
+                          className={`px-4 py-3 whitespace-nowrap text-right text-sm font-mono font-semibold ${
+                            stock.change >= 0 ? "text-emerald-600" : "text-rose-600"
+                          }`}
+                        >
+                          {stock.change_str} ({stock.change_percent > 0 ? "+" : ""}
                           {stock.change_percent.toFixed(2)}%)
                         </td>
                       </tr>

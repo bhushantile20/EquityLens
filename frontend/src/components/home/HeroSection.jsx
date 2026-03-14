@@ -86,84 +86,41 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Decorative Intelligent Data Streams & Order Book */}
-      <div 
-        className="absolute bottom-0 left-0 right-0 h-56 pointer-events-none overflow-hidden" 
-        style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 50%)', maskImage: 'linear-gradient(to bottom, transparent, black 50%)' }}
-      >
-        {/* Layer 1: Animated Order Book Bars */}
-        <div className="absolute bottom-0 w-full h-[60%] flex items-end justify-between px-2 gap-[1px] md:gap-[2px] opacity-30 z-0">
-          {Array.from({ length: 120 }).map((_, i) => {
-            // Deterministic values so animations don't reset on re-renders
-            const h1 = 15 + Math.abs(Math.sin(i * 0.5)) * 20;
-            const h2 = 40 + Math.abs(Math.cos(i * 3)) * 60;
-            const duration = 1.5 + (i % 5) * 0.5;
-            const delay = (i % 7) * 0.2;
-            const isPink = i % 7 === 0 || i % 11 === 0;
-
-            return (
-              <motion.div
-                key={i}
-                className={`w-full rounded-t-sm ${isPink ? 'bg-pink-500' : 'bg-brand-500'}`}
-                animate={{ 
-                  height: [`${h1}%`, `${h2}%`, `${h1}%`] 
-                }}
-                transition={{ 
-                  duration: duration, 
-                  repeat: Infinity, 
-                  ease: "easeInOut",
-                  delay: delay
-                }}
-              />
-            );
-          })}
-        </div>
-
-        {/* Layer 2: Endless Scrolling Wave 1 */}
-        <motion.div
-          className="absolute bottom-0 w-[200%] h-full flex z-10 opacity-70"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 25, ease: "linear", repeat: Infinity }}
+      {/* Professional Bottom Decoration — Clean Grid Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none overflow-hidden">
+        {/* Subtle perspective grid */}
+        <svg
+          className="absolute inset-0 w-full h-full opacity-[0.07]"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
-          {[0, 1].map((i) => (
-            <svg key={`wave1-${i}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-1/2 h-full object-cover">
-              <path fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4,6" d="M0,160 C320,240 480,220 720,160 C960,100 1120,120 1440,160" />
-            </svg>
-          ))}
-        </motion.div>
-        
-        {/* Layer 3: Endless Scrolling Wave 2 (Reverse) */}
-        <motion.div
-          className="absolute bottom-0 w-[200%] h-full flex z-10 opacity-50"
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ duration: 18, ease: "linear", repeat: Infinity }}
-        >
-          {[0, 1].map((i) => (
-            <svg key={`wave2-${i}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-1/2 h-full object-cover">
-              <path fill="none" stroke="#ec4899" strokeWidth="1.5" d="M0,200 C320,100 480,300 720,200 C960,100 1120,300 1440,200" />
-            </svg>
-          ))}
-        </motion.div>
+          <defs>
+            <pattern id="heroGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#6366f1" strokeWidth="0.8" />
+            </pattern>
+            <linearGradient id="gridFade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="white" stopOpacity="0" />
+              <stop offset="60%" stopColor="white" stopOpacity="1" />
+              <stop offset="100%" stopColor="white" stopOpacity="1" />
+            </linearGradient>
+            <mask id="gridMask">
+              <rect width="100%" height="100%" fill="url(#gridFade)" />
+            </mask>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#heroGrid)" mask="url(#gridMask)" />
+        </svg>
 
-        {/* Layer 4: Solid Gradient Liquid Flow */}
-        <motion.div
-          className="absolute bottom-0 w-[200%] h-full flex z-10 opacity-60"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 20, ease: "linear", repeat: Infinity }}
-        >
-          {[0, 1].map((i) => (
-            <svg key={`wave3-${i}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-1/2 h-full object-cover">
-              <defs>
-                <linearGradient id={`gradFluid${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#020617" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path fill={`url(#gradFluid${i})`} d="M0,260 C320,320 480,160 720,260 C960,360 1120,160 1440,260 L1440,320 L0,320 Z" />
-              <path fill="none" stroke="#8b5cf6" strokeWidth="3" opacity="0.6" d="M0,260 C320,320 480,160 720,260 C960,360 1120,160 1440,260" />
-            </svg>
-          ))}
-        </motion.div>
+        {/* Soft indigo glow center */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-32 bg-indigo-600/10 blur-[80px] rounded-full" />
+
+        {/* Hard bottom fade to background */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent 0%, #020617 100%)",
+          }}
+        />
       </div>
     </div>
   );

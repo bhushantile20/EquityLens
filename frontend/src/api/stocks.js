@@ -92,7 +92,7 @@ export const fetchAssetForecast = async (asset) => {
   return data;
 };
 
-export const fetchStockPrediction = async (symbol, model = "linear_regression", horizon = "1_week") => {
-  const { data } = await api.get(`predict/?symbol=${symbol}&model=${model}&horizon=${horizon}`);
+export const fetchStockPrediction = async (asset, model = "random_forest", horizon = "30d") => {
+  const { data } = await api.get(`predict/?asset=${asset}&model=${model}&horizon=${horizon}`);
   return data;
 };
