@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-background text-slate-200 antialiased;
+    @apply antialiased;
     font-family: 'Inter', sans-serif;
-    background: radial-gradient(circle at top right, #1e1b4b 0%, #0f111a 40%),
-      radial-gradient(circle at bottom left, #052e16 0%, #0f111a 40%);
+    background: linear-gradient(180deg, #0f172a, #020617);
+    color: #e2e8f0;
     background-attachment: fixed;
     min-height: 100vh;
   }
@@ -23,8 +23,101 @@
 }
 
 @layer components {
-  .card {
-    @apply rounded-2xl bg-surface backdrop-blur-md border border-white/10 shadow-card transition-all duration-300;
+  /* Dashboard Card Styling */
+  .card, .dashboard-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 14px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    transition: all 0.25s ease;
+  }
+
+  .card:hover, .dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Metric Cards */
+  .metric-card {
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+  }
+
+  .metric-value {
+    font-size: 28px;
+    font-weight: 700;
+    @apply text-white;
+  }
+
+  .metric-label {
+    font-size: 12px;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+    @apply uppercase font-semibold;
+  }
+
+  /* Chart Containers */
+  .chart-container {
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    transition: border-color 0.25s ease;
+  }
+
+  .chart-container:hover {
+    border-color: #6366f1;
+  }
+
+  /* Section Titles */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #6366f1;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* Analytics Table */
+  .analytics-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .analytics-table thead {
+    background: rgba(30, 41, 59, 0.8);
+  }
+
+  .analytics-table th {
+    padding: 12px;
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .analytics-table td {
+    padding: 12px;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+  }
+
+  .analytics-table tr:hover {
+    background: rgba(99, 102, 241, 0.05);
   }
 
   .input {
@@ -44,9 +137,57 @@
   }
 }
 
+/* Global Recharts Styling */
+.recharts-cartesian-grid line {
+  stroke: rgba(148, 163, 184, 0.1);
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: #94a3b8;
+  font-size: 11px;
+}
+
+.recharts-legend-item text {
+  color: #cbd5f5 !important;
+  font-size: 12px;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+.recharts-default-tooltip {
+  background-color: #020617 !important;
+  border: 1px solid #1e293b !important;
+  border-radius: 8px !important;
+  padding: 10px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.recharts-tooltip-label {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  margin-bottom: 4px !important;
+}
+
+/* Scatter Chart Improvements */
+.recharts-scatter-symbol {
+  stroke: #020617;
+  stroke-width: 1px;
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.recharts-scatter-symbol:hover {
+  transform: scale(1.4);
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -54,12 +195,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: #6366f1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #4f46e5;
 }
 
 @keyframes marquee {
