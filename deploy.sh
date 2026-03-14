@@ -1,37 +1,68 @@
 #!/bin/bash
+# ==============================================================
+# EquityLens – Azure Deployment Script
+# Usage:  bash deploy.sh
+# Run this from: /home/azureuser/equity-lens/
+# ==============================================================
+set -e   # exit immediately if any command fails
 
-# Configuration
 PROJECT_DIR="/home/azureuser/equity-lens"
 APP_NAME="equitylens"
 
-echo "🚀 Starting deployment..."
+echo ""
+echo "╔══════════════════════════════════════════╗"
+echo "║   EquityLens  →  Deploying to Azure      ║"
+echo "╚══════════════════════════════════════════╝"
+echo ""
 
-cd $PROJECT_DIR
+cd "$PROJECT_DIR"
+
+# ── 1. Pull latest code ──────────────────────────────────────
+echo "📥  Pulling latest code from GitHub..."
 git pull origin main
 
-# Backend
-echo "🐍 Setting up backend..."
-cd backend
+# ── 2. Backend setup ─────────────────────────────────────────
+echo ""
+echo "🐍  Setting up Django backend..."
+cd "$PROJECT_DIR/backend"
+
+# Create venv only if it does not already exist
 if [ ! -d "venv" ]; then
+    echo "    Creating virtual environment..."
     python3 -m venv venv
 fi
+
 source venv/bin/activate
-pip install -r requirements.txt
-chmod +x run_gunicorn.sh
-python manage.py migrate
-python manage.py collectstatic --no-input
+
+echo "    Installing Python packages..."
+pip install -r requirements.txt --quiet
+
+echo "    Running database migrations..."
+python manage.py migrate --no-input
+
+echo "    Collecting static files..."
+python manage.py collectstatic --no-input --clear
+
 deactivate
 
-# Frontend
-echo "⚛️ Setting up frontend..."
-cd ../frontend
-npm install
-npm run build
+# ── 3. Frontend build ─────────────────────────────────────────
+echo ""
+echo "⚛️   Building React frontend..."
+cd "$PROJECT_DIR/frontend"
+npm install --silent
+npm run build        # .env.production is used automatically
 
-# Restart Services
-echo "🔄 Restarting services..."
-pm2 restart all || pm2 start ../backend/run_gunicorn.sh --name $APP_NAME
+# ── 4. Restart services ───────────────────────────────────────
+echo ""
+echo "🔄  Restarting services..."
 
-sudo systemctl restart nginx
+# Restart the Django gunicorn process via PM2
+pm2 restart "$APP_NAME" 2>/dev/null || pm2 start "$PROJECT_DIR/backend/run_gunicorn.sh" --name "$APP_NAME"
+pm2 save
 
-echo "✅ Deployment complete!"
+# Reload Nginx (gracefully, zero downtime)
+sudo systemctl reload nginx
+
+echo ""
+echo "✅  Deployment complete! → https://euitylens.duckdns.org"
+echo ""
