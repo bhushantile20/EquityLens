@@ -2,6 +2,7 @@ import os
 import json
 import pandas as pd
 import numpy as np
+from utils.cache_manager import load_cache, save_cache
 
 from .data_loader import fetch_gold_silver_data
 from .feature_engineering import apply_feature_engineering, get_features_list
@@ -11,16 +12,16 @@ from gold_silver_analysis.models.correlation_model import compute_pearson_correl
 from gold_silver_analysis.models.shap_explainer import generate_shap_values
 from gold_silver_analysis.models.lime_explainer import generate_lime_explanation
 
-CACHE_FILE = "gold_silver_cache_v5.json"
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CACHE_FILE = "gold_silver_analysis.json"
+CACHE_TTL = 21600  # 6 hours
 
-def get_full_analysis():
-    cache_path = os.path.join(BASE_DIR, CACHE_FILE)
-    if os.path.exists(cache_path):
-        mtime = os.path.getmtime(cache_path)
-        if (pd.Timestamp.now().timestamp() - mtime) < 3600:
-            with open(cache_path, "r", encoding="utf-8") as f:
-                return json.load(f)
+def get_full_analysis(force_refresh=False):
+    if not force_refresh:
+        cached_result = load_cache(CACHE_FILE, CACHE_TTL)
+        if cached_result:
+            return cached_result
+
+    print("Cache expired or force_refresh=True. Running full ML pipeline...")
 
     df_raw = fetch_gold_silver_data()
     df = apply_feature_engineering(df_raw)
@@ -102,7 +103,7 @@ def get_full_analysis():
         }
     }
     
-    with open(cache_path, "w", encoding="utf-8") as f:
-        json.dump(result, f, indent=2)
+    # Cache the result using generic manager
+    save_cache(CACHE_FILE, result)
         
     return result

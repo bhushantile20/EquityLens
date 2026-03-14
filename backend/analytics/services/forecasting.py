@@ -3,8 +3,14 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from datetime import timedelta
+from utils.cache_manager import load_cache, save_cache
 
 def generate_forecast(ticker: str, days_ahead: int = 30):
+    cache_filename = f"forecast_{ticker}.json"
+    cached_result = load_cache(cache_filename, 3600)  # 1 hour TTL
+    if cached_result:
+        return cached_result
+
     # Fetch 1 year of data
     tick = yf.Ticker(ticker)
     df = tick.history(period="1y")
@@ -72,8 +78,12 @@ def generate_forecast(ticker: str, days_ahead: int = 30):
         # Update window for next prediction (recursive)
         current_window.append(pred)
         
-    return {
+    result = {
         "asset": ticker,
         "historical": historical,
         "forecast": forecast
     }
+    
+    save_cache(cache_filename, result)
+    
+    return result

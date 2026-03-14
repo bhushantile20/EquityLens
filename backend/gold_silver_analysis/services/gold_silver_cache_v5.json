@@ -92,38 +92,38 @@
     },
     {
       "Date": "2026-12-31",
-      "Gold_Price": 476.24,
-      "Silver_Price": 77.9
+      "Gold_Price": 460.84,
+      "Silver_Price": 72.69
     }
   ],
   "future": [
     {
-      "Date": "2026-03-11",
-      "Predicted_Gold": 184.85,
-      "Predicted_Silver": 40.66
+      "Date": "2026-03-13",
+      "Predicted_Gold": 184.55,
+      "Predicted_Silver": 40.74
     },
     {
-      "Date": "2027-03-11",
-      "Predicted_Gold": 171.88,
-      "Predicted_Silver": 33.61
+      "Date": "2027-03-13",
+      "Predicted_Gold": 171.94,
+      "Predicted_Silver": 33.66
     },
     {
-      "Date": "2028-03-10",
-      "Predicted_Gold": 171.79,
-      "Predicted_Silver": 33.62
+      "Date": "2028-03-12",
+      "Predicted_Gold": 171.94,
+      "Predicted_Silver": 33.66
     },
     {
-      "Date": "2029-03-10",
-      "Predicted_Gold": 171.9,
-      "Predicted_Silver": 33.62
+      "Date": "2029-03-12",
+      "Predicted_Gold": 171.94,
+      "Predicted_Silver": 33.66
     },
     {
-      "Date": "2030-03-10",
-      "Predicted_Gold": 171.88,
-      "Predicted_Silver": 33.61
+      "Date": "2030-03-12",
+      "Predicted_Gold": 171.94,
+      "Predicted_Silver": 33.66
     }
   ],
-  "correlation": 0.8226097748398444,
+  "correlation": 0.8247128551374859,
   "rolling_correlation": [
     {
       "Date": "2011-12-06",
@@ -2445,49 +2445,49 @@
       "feature_importance": [
         {
           "name": "GLD_Lag_1",
-          "value": 50.42878855204915
-        },
-        {
-          "name": "SLV_Lag_2",
-          "value": 0.4690209880750279
+          "value": 50.6445008391162
         },
         {
           "name": "SLV_Lag_1",
-          "value": 0.38259608969242975
+          "value": 0.48897245679725215
+        },
+        {
+          "name": "SLV_Lag_2",
+          "value": 0.41432010143548775
         },
         {
           "name": "TimeIndex",
-          "value": 0.29320472310841666
+          "value": 0.3581847320449845
         },
         {
           "name": "Gold_Silver_Ratio",
-          "value": 0.24855922645865822
+          "value": 0.282414070497768
         },
         {
           "name": "GLD_Lag_2",
-          "value": 0.11940082524749294
+          "value": 0.12019193819983034
         }
       ],
       "lime_explanation": [
         {
-          "feature": "GLD_Lag_1 > 156.04",
-          "weight": 50.588220729494914
-        },
-        {
-          "feature": "GLD_Lag_2 > 156.03",
-          "weight": -1.4672434466388735
-        },
-        {
-          "feature": "TimeIndex > 2745.50",
-          "weight": -1.4276589091744736
-        },
-        {
-          "feature": "6.11 < Gold_Silver_Ratio <= 7.08",
-          "weight": 1.3650506686866133
+          "feature": "GLD_Lag_1 > 156.05",
+          "weight": 50.81649198336708
         },
         {
           "feature": "SLV_Lag_2 > 22.62",
-          "weight": 1.0231495282495957
+          "weight": 2.2679228241955247
+        },
+        {
+          "feature": "SLV_Lag_1 > 22.62",
+          "weight": 1.9211595912080637
+        },
+        {
+          "feature": "GLD_Lag_2 > 156.04",
+          "weight": -1.7643095475168276
+        },
+        {
+          "feature": "TimeIndex > 2746.25",
+          "weight": -1.6325639785388177
         }
       ]
     },
@@ -2495,49 +2495,49 @@
       "feature_importance": [
         {
           "name": "SLV_Lag_1",
-          "value": 6.290649892627137
+          "value": 8.012329173890738
         },
         {
           "name": "Gold_Silver_Ratio",
-          "value": 0.46371994256476606
+          "value": 0.588694238338287
         },
         {
           "name": "GLD_Lag_1",
-          "value": 0.15845293615559486
+          "value": 0.15300150324059053
         },
         {
           "name": "TimeIndex",
-          "value": 0.05849841305860408
-        },
-        {
-          "name": "SLV_Lag_2",
-          "value": 0.048566486748906366
+          "value": 0.06681674995620639
         },
         {
           "name": "GLD_Lag_2",
-          "value": 0.043814695326619656
+          "value": 0.04766690808901819
+        },
+        {
+          "name": "SLV_Lag_2",
+          "value": 0.046787642654019114
         }
       ],
       "lime_explanation": [
         {
           "feature": "SLV_Lag_1 > 22.62",
-          "weight": 11.878960931246244
+          "weight": 12.288434843391338
         },
         {
-          "feature": "TimeIndex > 2745.50",
-          "weight": 0.6154142020012638
+          "feature": "TimeIndex > 2746.25",
+          "weight": 0.7336190466330779
+        },
+        {
+          "feature": "GLD_Lag_2 > 156.04",
+          "weight": 0.6956491808228221
+        },
+        {
+          "feature": "SLV_Lag_2 > 22.62",
+          "weight": 0.5622248076837695
         },
         {
           "feature": "6.11 < Gold_Silver_Ratio <= 7.08",
-          "weight": 0.5014930760903412
-        },
-        {
-          "feature": "GLD_Lag_1 > 156.04",
-          "weight": 0.4317858660918882
-        },
-        {
-          "feature": "GLD_Lag_2 > 156.03",
-          "weight": 0.3599529695850055
+          "weight": 0.15818251774978487
         }
       ]
     }

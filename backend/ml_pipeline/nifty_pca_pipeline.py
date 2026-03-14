@@ -19,6 +19,7 @@ _NIFTY_CACHE = {
 }
 CACHE_EXPIRY = 7200  # 2 hours in seconds
 
+
 NIFTY_50_TICKERS = [
     "RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", "ICICIBANK.NS", "INFY.NS",
     "ITC.NS", "LT.NS", "SBIN.NS", "AXISBANK.NS", "KOTAKBANK.NS",
@@ -42,6 +43,7 @@ def run_nifty_pca_pipeline(bypass_cache=False):
     5. ML: StandardScaler, PCA, KMeans
     """
     global _NIFTY_CACHE
+    
     
     current_time = time.time()
     if not bypass_cache and _NIFTY_CACHE["data"] and (current_time - _NIFTY_CACHE["timestamp"] < CACHE_EXPIRY):

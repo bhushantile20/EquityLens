@@ -7,4 +7,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('analytics/', include('analytics.urls')),
+    path('api/', include('stock_predictions.urls')),
 ]

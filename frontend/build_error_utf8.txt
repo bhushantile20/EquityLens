@@ -1,0 +1,55 @@
+﻿
+> auto-invest-frontend@1.0.0 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 1409 modules transformed.
+node.exe : [31mx[39m Build 
+failed in 7.07s
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: ([31mx  
+  [39m Build failed in 7.0   
+ 7s:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+[31merror during build:
+[31mCould not resolve 
+"../services/axios" from "src
+/features/portfolio/Portfolio
+ReturnChart.jsx"[31m
+file: [36mE:/final/projects/
+Equity_lens_final/frontend/sr
+c/features/portfolio/Portfoli
+oReturnChart.jsx[31m
+    at getRollupError (file:/
+//E:/final/projects/Equity_le
+ns_final/frontend/node_module
+s/rollup/dist/es/shared/parse
+Ast.js:402:41)
+    at error (file:///E:/fina
+l/projects/Equity_lens_final/
+frontend/node_modules/rollup/
+dist/es/shared/parseAst.js:39
+8:42)
+    at ModuleLoader.handleInv
+alidResolvedId (file:///E:/fi
+nal/projects/Equity_lens_fina
+l/frontend/node_modules/rollu
+p/dist/es/shared/node-entry.j
+s:21710:24)
+    at file:///E:/final/proje
+cts/Equity_lens_final/fronten
+d/node_modules/rollup/dist/es
+/shared/node-entry.js:21670:2
+6[39m
