@@ -1,0 +1,4165 @@
+{
+  "timestamp": 1773485071.3787234,
+  "data": {
+    "prices": {
+      "gold": 5115.8,
+      "silver": 84.67
+    },
+    "historical": [
+      {
+        "Date": "2016-03-14",
+        "Gold_Price": 1244.4,
+        "Silver_Price": 15.52
+      },
+      {
+        "Date": "2016-03-24",
+        "Gold_Price": 1221.4,
+        "Silver_Price": 15.19
+      },
+      {
+        "Date": "2016-04-06",
+        "Gold_Price": 1222.5,
+        "Silver_Price": 15.05
+      },
+      {
+        "Date": "2016-04-18",
+        "Gold_Price": 1233.6,
+        "Silver_Price": 16.25
+      },
+      {
+        "Date": "2016-04-28",
+        "Gold_Price": 1265.5,
+        "Silver_Price": 17.55
+      },
+      {
+        "Date": "2016-05-10",
+        "Gold_Price": 1263.9,
+        "Silver_Price": 17.08
+      },
+      {
+        "Date": "2016-05-20",
+        "Gold_Price": 1252.4,
+        "Silver_Price": 16.52
+      },
+      {
+        "Date": "2016-06-02",
+        "Gold_Price": 1209.8,
+        "Silver_Price": 16.0
+      },
+      {
+        "Date": "2016-06-14",
+        "Gold_Price": 1285.6,
+        "Silver_Price": 17.41
+      },
+      {
+        "Date": "2016-06-24",
+        "Gold_Price": 1320.0,
+        "Silver_Price": 17.78
+      },
+      {
+        "Date": "2016-07-07",
+        "Gold_Price": 1360.1,
+        "Silver_Price": 19.8
+      },
+      {
+        "Date": "2016-07-19",
+        "Gold_Price": 1331.5,
+        "Silver_Price": 19.98
+      },
+      {
+        "Date": "2016-07-29",
+        "Gold_Price": 1349.0,
+        "Silver_Price": 20.31
+      },
+      {
+        "Date": "2016-08-10",
+        "Gold_Price": 1344.3,
+        "Silver_Price": 20.13
+      },
+      {
+        "Date": "2016-08-22",
+        "Gold_Price": 1337.7,
+        "Silver_Price": 18.84
+      },
+      {
+        "Date": "2016-09-01",
+        "Gold_Price": 1312.2,
+        "Silver_Price": 18.86
+      },
+      {
+        "Date": "2016-09-14",
+        "Gold_Price": 1321.5,
+        "Silver_Price": 18.98
+      },
+      {
+        "Date": "2016-09-26",
+        "Gold_Price": 1339.7,
+        "Silver_Price": 19.52
+      },
+      {
+        "Date": "2016-10-06",
+        "Gold_Price": 1249.8,
+        "Silver_Price": 17.29
+      },
+      {
+        "Date": "2016-10-19",
+        "Gold_Price": 1267.9,
+        "Silver_Price": 17.62
+      },
+      {
+        "Date": "2016-10-31",
+        "Gold_Price": 1271.5,
+        "Silver_Price": 17.76
+      },
+      {
+        "Date": "2016-11-10",
+        "Gold_Price": 1265.5,
+        "Silver_Price": 18.72
+      },
+      {
+        "Date": "2016-11-23",
+        "Gold_Price": 1189.1,
+        "Silver_Price": 16.38
+      },
+      {
+        "Date": "2016-12-06",
+        "Gold_Price": 1167.6,
+        "Silver_Price": 16.74
+      },
+      {
+        "Date": "2016-12-16",
+        "Gold_Price": 1135.3,
+        "Silver_Price": 16.15
+      },
+      {
+        "Date": "2016-12-29",
+        "Gold_Price": 1156.4,
+        "Silver_Price": 16.16
+      },
+      {
+        "Date": "2017-01-11",
+        "Gold_Price": 1195.6,
+        "Silver_Price": 16.78
+      },
+      {
+        "Date": "2017-01-24",
+        "Gold_Price": 1210.3,
+        "Silver_Price": 17.15
+      },
+      {
+        "Date": "2017-02-03",
+        "Gold_Price": 1218.5,
+        "Silver_Price": 17.45
+      },
+      {
+        "Date": "2017-02-15",
+        "Gold_Price": 1231.7,
+        "Silver_Price": 17.95
+      },
+      {
+        "Date": "2017-02-28",
+        "Gold_Price": 1252.6,
+        "Silver_Price": 18.42
+      },
+      {
+        "Date": "2017-03-10",
+        "Gold_Price": 1200.7,
+        "Silver_Price": 16.88
+      },
+      {
+        "Date": "2017-03-22",
+        "Gold_Price": 1249.3,
+        "Silver_Price": 17.55
+      },
+      {
+        "Date": "2017-04-03",
+        "Gold_Price": 1250.8,
+        "Silver_Price": 18.19
+      },
+      {
+        "Date": "2017-04-13",
+        "Gold_Price": 1285.9,
+        "Silver_Price": 18.49
+      },
+      {
+        "Date": "2017-04-26",
+        "Gold_Price": 1262.1,
+        "Silver_Price": 17.35
+      },
+      {
+        "Date": "2017-05-08",
+        "Gold_Price": 1225.3,
+        "Silver_Price": 16.2
+      },
+      {
+        "Date": "2017-05-18",
+        "Gold_Price": 1251.7,
+        "Silver_Price": 16.62
+      },
+      {
+        "Date": "2017-05-31",
+        "Gold_Price": 1272.0,
+        "Silver_Price": 17.37
+      },
+      {
+        "Date": "2017-06-12",
+        "Gold_Price": 1266.1,
+        "Silver_Price": 16.91
+      },
+      {
+        "Date": "2017-06-22",
+        "Gold_Price": 1247.6,
+        "Silver_Price": 16.49
+      },
+      {
+        "Date": "2017-07-05",
+        "Gold_Price": 1220.4,
+        "Silver_Price": 15.84
+      },
+      {
+        "Date": "2017-07-17",
+        "Gold_Price": 1232.8,
+        "Silver_Price": 16.05
+      },
+      {
+        "Date": "2017-07-27",
+        "Gold_Price": 1259.6,
+        "Silver_Price": 16.53
+      },
+      {
+        "Date": "2017-08-08",
+        "Gold_Price": 1256.4,
+        "Silver_Price": 16.36
+      },
+      {
+        "Date": "2017-08-18",
+        "Gold_Price": 1285.7,
+        "Silver_Price": 16.98
+      },
+      {
+        "Date": "2017-08-30",
+        "Gold_Price": 1308.1,
+        "Silver_Price": 17.4
+      },
+      {
+        "Date": "2017-09-12",
+        "Gold_Price": 1328.0,
+        "Silver_Price": 17.8
+      },
+      {
+        "Date": "2017-09-22",
+        "Gold_Price": 1293.3,
+        "Silver_Price": 16.9
+      },
+      {
+        "Date": "2017-10-04",
+        "Gold_Price": 1273.7,
+        "Silver_Price": 16.56
+      },
+      {
+        "Date": "2017-10-16",
+        "Gold_Price": 1299.9,
+        "Silver_Price": 17.32
+      },
+      {
+        "Date": "2017-10-26",
+        "Gold_Price": 1266.3,
+        "Silver_Price": 16.76
+      },
+      {
+        "Date": "2017-11-07",
+        "Gold_Price": 1273.7,
+        "Silver_Price": 16.91
+      },
+      {
+        "Date": "2017-11-17",
+        "Gold_Price": 1295.8,
+        "Silver_Price": 17.36
+      },
+      {
+        "Date": "2017-11-30",
+        "Gold_Price": 1273.2,
+        "Silver_Price": 16.38
+      },
+      {
+        "Date": "2017-12-12",
+        "Gold_Price": 1238.5,
+        "Silver_Price": 15.58
+      },
+      {
+        "Date": "2017-12-22",
+        "Gold_Price": 1275.4,
+        "Silver_Price": 16.36
+      },
+      {
+        "Date": "2018-01-05",
+        "Gold_Price": 1320.3,
+        "Silver_Price": 17.2
+      },
+      {
+        "Date": "2018-01-18",
+        "Gold_Price": 1326.0,
+        "Silver_Price": 16.89
+      },
+      {
+        "Date": "2018-01-31",
+        "Gold_Price": 1339.0,
+        "Silver_Price": 17.2
+      },
+      {
+        "Date": "2018-02-12",
+        "Gold_Price": 1324.2,
+        "Silver_Price": 16.55
+      },
+      {
+        "Date": "2018-02-23",
+        "Gold_Price": 1328.2,
+        "Silver_Price": 16.48
+      },
+      {
+        "Date": "2018-03-07",
+        "Gold_Price": 1326.0,
+        "Silver_Price": 16.43
+      },
+      {
+        "Date": "2018-03-19",
+        "Gold_Price": 1316.8,
+        "Silver_Price": 16.25
+      },
+      {
+        "Date": "2018-03-29",
+        "Gold_Price": 1322.8,
+        "Silver_Price": 16.22
+      },
+      {
+        "Date": "2018-04-11",
+        "Gold_Price": 1356.5,
+        "Silver_Price": 16.74
+      },
+      {
+        "Date": "2018-04-23",
+        "Gold_Price": 1322.5,
+        "Silver_Price": 16.57
+      },
+      {
+        "Date": "2018-05-03",
+        "Gold_Price": 1310.7,
+        "Silver_Price": 16.36
+      },
+      {
+        "Date": "2018-05-15",
+        "Gold_Price": 1288.9,
+        "Silver_Price": 16.19
+      },
+      {
+        "Date": "2018-05-25",
+        "Gold_Price": 1303.3,
+        "Silver_Price": 16.48
+      },
+      {
+        "Date": "2018-06-07",
+        "Gold_Price": 1298.7,
+        "Silver_Price": 16.77
+      },
+      {
+        "Date": "2018-06-19",
+        "Gold_Price": 1275.6,
+        "Silver_Price": 16.3
+      },
+      {
+        "Date": "2018-06-29",
+        "Gold_Price": 1251.3,
+        "Silver_Price": 16.1
+      },
+      {
+        "Date": "2018-07-12",
+        "Gold_Price": 1245.0,
+        "Silver_Price": 15.9
+      },
+      {
+        "Date": "2018-07-24",
+        "Gold_Price": 1223.9,
+        "Silver_Price": 15.46
+      },
+      {
+        "Date": "2018-08-03",
+        "Gold_Price": 1214.2,
+        "Silver_Price": 15.41
+      },
+      {
+        "Date": "2018-08-15",
+        "Gold_Price": 1177.5,
+        "Silver_Price": 14.42
+      },
+      {
+        "Date": "2018-08-27",
+        "Gold_Price": 1209.0,
+        "Silver_Price": 14.84
+      },
+      {
+        "Date": "2018-09-07",
+        "Gold_Price": 1193.6,
+        "Silver_Price": 14.07
+      },
+      {
+        "Date": "2018-09-19",
+        "Gold_Price": 1202.2,
+        "Silver_Price": 14.19
+      },
+      {
+        "Date": "2018-10-01",
+        "Gold_Price": 1187.1,
+        "Silver_Price": 14.42
+      },
+      {
+        "Date": "2018-10-11",
+        "Gold_Price": 1223.5,
+        "Silver_Price": 14.53
+      },
+      {
+        "Date": "2018-10-23",
+        "Gold_Price": 1233.4,
+        "Silver_Price": 14.73
+      },
+      {
+        "Date": "2018-11-02",
+        "Gold_Price": 1230.9,
+        "Silver_Price": 14.71
+      },
+      {
+        "Date": "2018-11-14",
+        "Gold_Price": 1207.9,
+        "Silver_Price": 14.06
+      },
+      {
+        "Date": "2018-11-27",
+        "Gold_Price": 1211.2,
+        "Silver_Price": 14.06
+      },
+      {
+        "Date": "2018-12-10",
+        "Gold_Price": 1243.7,
+        "Silver_Price": 14.48
+      },
+      {
+        "Date": "2018-12-20",
+        "Gold_Price": 1263.6,
+        "Silver_Price": 14.75
+      },
+      {
+        "Date": "2019-01-03",
+        "Gold_Price": 1291.8,
+        "Silver_Price": 15.71
+      },
+      {
+        "Date": "2019-01-15",
+        "Gold_Price": 1286.2,
+        "Silver_Price": 15.55
+      },
+      {
+        "Date": "2019-01-28",
+        "Gold_Price": 1302.4,
+        "Silver_Price": 15.71
+      },
+      {
+        "Date": "2019-02-07",
+        "Gold_Price": 1309.4,
+        "Silver_Price": 15.68
+      },
+      {
+        "Date": "2019-02-20",
+        "Gold_Price": 1343.3,
+        "Silver_Price": 16.16
+      },
+      {
+        "Date": "2019-03-04",
+        "Gold_Price": 1284.8,
+        "Silver_Price": 15.02
+      },
+      {
+        "Date": "2019-03-14",
+        "Gold_Price": 1293.4,
+        "Silver_Price": 15.1
+      },
+      {
+        "Date": "2019-03-26",
+        "Gold_Price": 1314.3,
+        "Silver_Price": 15.37
+      },
+      {
+        "Date": "2019-04-05",
+        "Gold_Price": 1290.4,
+        "Silver_Price": 15.04
+      },
+      {
+        "Date": "2019-04-17",
+        "Gold_Price": 1272.2,
+        "Silver_Price": 14.92
+      },
+      {
+        "Date": "2019-04-30",
+        "Gold_Price": 1282.8,
+        "Silver_Price": 14.9
+      },
+      {
+        "Date": "2019-05-10",
+        "Gold_Price": 1285.7,
+        "Silver_Price": 14.73
+      },
+      {
+        "Date": "2019-05-22",
+        "Gold_Price": 1273.6,
+        "Silver_Price": 14.41
+      },
+      {
+        "Date": "2019-06-04",
+        "Gold_Price": 1323.4,
+        "Silver_Price": 14.73
+      },
+      {
+        "Date": "2019-06-14",
+        "Gold_Price": 1340.1,
+        "Silver_Price": 14.78
+      },
+      {
+        "Date": "2019-06-26",
+        "Gold_Price": 1411.6,
+        "Silver_Price": 15.28
+      },
+      {
+        "Date": "2019-07-09",
+        "Gold_Price": 1397.5,
+        "Silver_Price": 15.07
+      },
+      {
+        "Date": "2019-07-19",
+        "Gold_Price": 1425.1,
+        "Silver_Price": 16.12
+      },
+      {
+        "Date": "2019-07-31",
+        "Gold_Price": 1426.1,
+        "Silver_Price": 16.35
+      },
+      {
+        "Date": "2019-08-12",
+        "Gold_Price": 1505.3,
+        "Silver_Price": 17.04
+      },
+      {
+        "Date": "2019-08-22",
+        "Gold_Price": 1497.3,
+        "Silver_Price": 17.01
+      },
+      {
+        "Date": "2019-09-04",
+        "Gold_Price": 1550.3,
+        "Silver_Price": 19.39
+      },
+      {
+        "Date": "2019-09-16",
+        "Gold_Price": 1503.1,
+        "Silver_Price": 17.9
+      },
+      {
+        "Date": "2019-09-26",
+        "Gold_Price": 1507.5,
+        "Silver_Price": 17.8
+      },
+      {
+        "Date": "2019-10-08",
+        "Gold_Price": 1497.2,
+        "Silver_Price": 17.62
+      },
+      {
+        "Date": "2019-10-18",
+        "Gold_Price": 1488.2,
+        "Silver_Price": 17.5
+      },
+      {
+        "Date": "2019-10-30",
+        "Gold_Price": 1493.2,
+        "Silver_Price": 17.82
+      },
+      {
+        "Date": "2019-11-11",
+        "Gold_Price": 1455.5,
+        "Silver_Price": 16.76
+      },
+      {
+        "Date": "2019-11-21",
+        "Gold_Price": 1463.1,
+        "Silver_Price": 17.05
+      },
+      {
+        "Date": "2019-12-04",
+        "Gold_Price": 1474.0,
+        "Silver_Price": 16.8
+      },
+      {
+        "Date": "2019-12-16",
+        "Gold_Price": 1475.0,
+        "Silver_Price": 17.02
+      },
+      {
+        "Date": "2019-12-27",
+        "Gold_Price": 1513.8,
+        "Silver_Price": 17.85
+      },
+      {
+        "Date": "2020-01-09",
+        "Gold_Price": 1551.7,
+        "Silver_Price": 17.86
+      },
+      {
+        "Date": "2020-01-22",
+        "Gold_Price": 1555.3,
+        "Silver_Price": 17.77
+      },
+      {
+        "Date": "2020-02-03",
+        "Gold_Price": 1577.2,
+        "Silver_Price": 17.64
+      },
+      {
+        "Date": "2020-02-13",
+        "Gold_Price": 1575.1,
+        "Silver_Price": 17.6
+      },
+      {
+        "Date": "2020-02-26",
+        "Gold_Price": 1640.0,
+        "Silver_Price": 17.83
+      },
+      {
+        "Date": "2020-03-09",
+        "Gold_Price": 1674.5,
+        "Silver_Price": 17.0
+      },
+      {
+        "Date": "2020-03-19",
+        "Gold_Price": 1478.6,
+        "Silver_Price": 12.1
+      },
+      {
+        "Date": "2020-03-31",
+        "Gold_Price": 1583.4,
+        "Silver_Price": 14.1
+      },
+      {
+        "Date": "2020-04-13",
+        "Gold_Price": 1744.8,
+        "Silver_Price": 15.48
+      },
+      {
+        "Date": "2020-04-23",
+        "Gold_Price": 1733.3,
+        "Silver_Price": 15.35
+      },
+      {
+        "Date": "2020-05-05",
+        "Gold_Price": 1704.4,
+        "Silver_Price": 15.06
+      },
+      {
+        "Date": "2020-05-15",
+        "Gold_Price": 1753.4,
+        "Silver_Price": 17.05
+      },
+      {
+        "Date": "2020-05-28",
+        "Gold_Price": 1713.3,
+        "Silver_Price": 17.9
+      },
+      {
+        "Date": "2020-06-09",
+        "Gold_Price": 1714.7,
+        "Silver_Price": 17.77
+      },
+      {
+        "Date": "2020-06-19",
+        "Gold_Price": 1745.9,
+        "Silver_Price": 17.83
+      },
+      {
+        "Date": "2020-07-01",
+        "Gold_Price": 1773.2,
+        "Silver_Price": 18.13
+      },
+      {
+        "Date": "2020-07-14",
+        "Gold_Price": 1810.6,
+        "Silver_Price": 19.45
+      },
+      {
+        "Date": "2020-07-24",
+        "Gold_Price": 1897.3,
+        "Silver_Price": 22.81
+      },
+      {
+        "Date": "2020-08-05",
+        "Gold_Price": 2031.1,
+        "Silver_Price": 26.88
+      },
+      {
+        "Date": "2020-08-17",
+        "Gold_Price": 1985.0,
+        "Silver_Price": 27.64
+      },
+      {
+        "Date": "2020-08-27",
+        "Gold_Price": 1921.6,
+        "Silver_Price": 27.01
+      },
+      {
+        "Date": "2020-09-09",
+        "Gold_Price": 1944.7,
+        "Silver_Price": 26.95
+      },
+      {
+        "Date": "2020-09-21",
+        "Gold_Price": 1901.2,
+        "Silver_Price": 24.3
+      },
+      {
+        "Date": "2020-10-01",
+        "Gold_Price": 1908.4,
+        "Silver_Price": 24.19
+      },
+      {
+        "Date": "2020-10-13",
+        "Gold_Price": 1888.5,
+        "Silver_Price": 24.09
+      },
+      {
+        "Date": "2020-10-23",
+        "Gold_Price": 1902.0,
+        "Silver_Price": 24.63
+      },
+      {
+        "Date": "2020-11-04",
+        "Gold_Price": 1894.6,
+        "Silver_Price": 23.86
+      },
+      {
+        "Date": "2020-11-16",
+        "Gold_Price": 1887.3,
+        "Silver_Price": 24.79
+      },
+      {
+        "Date": "2020-11-27",
+        "Gold_Price": 1781.9,
+        "Silver_Price": 22.55
+      },
+      {
+        "Date": "2020-12-09",
+        "Gold_Price": 1834.6,
+        "Silver_Price": 23.93
+      },
+      {
+        "Date": "2020-12-21",
+        "Gold_Price": 1879.2,
+        "Silver_Price": 26.28
+      },
+      {
+        "Date": "2021-01-04",
+        "Gold_Price": 1944.7,
+        "Silver_Price": 27.28
+      },
+      {
+        "Date": "2021-01-14",
+        "Gold_Price": 1850.3,
+        "Silver_Price": 25.75
+      },
+      {
+        "Date": "2021-01-27",
+        "Gold_Price": 1844.9,
+        "Silver_Price": 25.38
+      },
+      {
+        "Date": "2021-02-08",
+        "Gold_Price": 1831.9,
+        "Silver_Price": 27.57
+      },
+      {
+        "Date": "2021-02-19",
+        "Gold_Price": 1775.8,
+        "Silver_Price": 27.25
+      },
+      {
+        "Date": "2021-03-03",
+        "Gold_Price": 1715.3,
+        "Silver_Price": 26.36
+      },
+      {
+        "Date": "2021-03-15",
+        "Gold_Price": 1728.9,
+        "Silver_Price": 26.25
+      },
+      {
+        "Date": "2021-03-25",
+        "Gold_Price": 1724.9,
+        "Silver_Price": 25.02
+      },
+      {
+        "Date": "2021-04-07",
+        "Gold_Price": 1740.1,
+        "Silver_Price": 25.23
+      },
+      {
+        "Date": "2021-04-19",
+        "Gold_Price": 1769.4,
+        "Silver_Price": 25.83
+      },
+      {
+        "Date": "2021-04-29",
+        "Gold_Price": 1768.1,
+        "Silver_Price": 26.05
+      },
+      {
+        "Date": "2021-05-11",
+        "Gold_Price": 1835.9,
+        "Silver_Price": 27.66
+      },
+      {
+        "Date": "2021-05-21",
+        "Gold_Price": 1876.7,
+        "Silver_Price": 27.47
+      },
+      {
+        "Date": "2021-06-03",
+        "Gold_Price": 1871.2,
+        "Silver_Price": 27.46
+      },
+      {
+        "Date": "2021-06-15",
+        "Gold_Price": 1854.5,
+        "Silver_Price": 27.68
+      },
+      {
+        "Date": "2021-06-25",
+        "Gold_Price": 1776.6,
+        "Silver_Price": 26.08
+      },
+      {
+        "Date": "2021-07-08",
+        "Gold_Price": 1799.6,
+        "Silver_Price": 25.97
+      },
+      {
+        "Date": "2021-07-20",
+        "Gold_Price": 1810.9,
+        "Silver_Price": 24.98
+      },
+      {
+        "Date": "2021-07-30",
+        "Gold_Price": 1812.6,
+        "Silver_Price": 25.53
+      },
+      {
+        "Date": "2021-08-11",
+        "Gold_Price": 1750.4,
+        "Silver_Price": 23.47
+      },
+      {
+        "Date": "2021-08-23",
+        "Gold_Price": 1803.2,
+        "Silver_Price": 23.65
+      },
+      {
+        "Date": "2021-09-02",
+        "Gold_Price": 1808.7,
+        "Silver_Price": 23.88
+      },
+      {
+        "Date": "2021-09-15",
+        "Gold_Price": 1792.4,
+        "Silver_Price": 23.76
+      },
+      {
+        "Date": "2021-09-27",
+        "Gold_Price": 1750.0,
+        "Silver_Price": 22.66
+      },
+      {
+        "Date": "2021-10-07",
+        "Gold_Price": 1757.9,
+        "Silver_Price": 22.63
+      },
+      {
+        "Date": "2021-10-19",
+        "Gold_Price": 1769.7,
+        "Silver_Price": 23.86
+      },
+      {
+        "Date": "2021-10-29",
+        "Gold_Price": 1783.0,
+        "Silver_Price": 23.94
+      },
+      {
+        "Date": "2021-11-10",
+        "Gold_Price": 1847.6,
+        "Silver_Price": 24.77
+      },
+      {
+        "Date": "2021-11-22",
+        "Gold_Price": 1806.0,
+        "Silver_Price": 24.3
+      },
+      {
+        "Date": "2021-12-03",
+        "Gold_Price": 1782.0,
+        "Silver_Price": 22.44
+      },
+      {
+        "Date": "2021-12-15",
+        "Gold_Price": 1762.6,
+        "Silver_Price": 21.51
+      },
+      {
+        "Date": "2021-12-28",
+        "Gold_Price": 1810.2,
+        "Silver_Price": 23.11
+      },
+      {
+        "Date": "2022-01-07",
+        "Gold_Price": 1797.0,
+        "Silver_Price": 22.39
+      },
+      {
+        "Date": "2022-01-20",
+        "Gold_Price": 1842.5,
+        "Silver_Price": 24.71
+      },
+      {
+        "Date": "2022-02-01",
+        "Gold_Price": 1800.3,
+        "Silver_Price": 22.6
+      },
+      {
+        "Date": "2022-02-11",
+        "Gold_Price": 1840.8,
+        "Silver_Price": 23.37
+      },
+      {
+        "Date": "2022-02-24",
+        "Gold_Price": 1925.1,
+        "Silver_Price": 24.69
+      },
+      {
+        "Date": "2022-03-08",
+        "Gold_Price": 2040.1,
+        "Silver_Price": 26.89
+      },
+      {
+        "Date": "2022-03-18",
+        "Gold_Price": 1928.2,
+        "Silver_Price": 25.06
+      },
+      {
+        "Date": "2022-03-30",
+        "Gold_Price": 1933.5,
+        "Silver_Price": 25.1
+      },
+      {
+        "Date": "2022-04-11",
+        "Gold_Price": 1944.3,
+        "Silver_Price": 24.98
+      },
+      {
+        "Date": "2022-04-22",
+        "Gold_Price": 1931.0,
+        "Silver_Price": 24.26
+      },
+      {
+        "Date": "2022-05-04",
+        "Gold_Price": 1867.0,
+        "Silver_Price": 22.36
+      },
+      {
+        "Date": "2022-05-16",
+        "Gold_Price": 1813.5,
+        "Silver_Price": 21.53
+      },
+      {
+        "Date": "2022-05-26",
+        "Gold_Price": 1847.4,
+        "Silver_Price": 21.94
+      },
+      {
+        "Date": "2022-06-08",
+        "Gold_Price": 1851.9,
+        "Silver_Price": 22.07
+      },
+      {
+        "Date": "2022-06-21",
+        "Gold_Price": 1834.6,
+        "Silver_Price": 21.75
+      },
+      {
+        "Date": "2022-07-01",
+        "Gold_Price": 1798.9,
+        "Silver_Price": 19.6
+      },
+      {
+        "Date": "2022-07-14",
+        "Gold_Price": 1704.5,
+        "Silver_Price": 18.17
+      },
+      {
+        "Date": "2022-07-26",
+        "Gold_Price": 1717.7,
+        "Silver_Price": 18.49
+      },
+      {
+        "Date": "2022-08-05",
+        "Gold_Price": 1772.9,
+        "Silver_Price": 19.82
+      },
+      {
+        "Date": "2022-08-17",
+        "Gold_Price": 1760.3,
+        "Silver_Price": 19.71
+      },
+      {
+        "Date": "2022-08-29",
+        "Gold_Price": 1736.6,
+        "Silver_Price": 18.56
+      },
+      {
+        "Date": "2022-09-09",
+        "Gold_Price": 1716.2,
+        "Silver_Price": 18.66
+      },
+      {
+        "Date": "2022-09-21",
+        "Gold_Price": 1664.6,
+        "Silver_Price": 19.41
+      },
+      {
+        "Date": "2022-10-03",
+        "Gold_Price": 1692.9,
+        "Silver_Price": 20.52
+      },
+      {
+        "Date": "2022-10-13",
+        "Gold_Price": 1670.0,
+        "Silver_Price": 18.86
+      },
+      {
+        "Date": "2022-10-25",
+        "Gold_Price": 1652.8,
+        "Silver_Price": 19.34
+      },
+      {
+        "Date": "2022-11-04",
+        "Gold_Price": 1672.5,
+        "Silver_Price": 20.79
+      },
+      {
+        "Date": "2022-11-16",
+        "Gold_Price": 1773.0,
+        "Silver_Price": 21.5
+      },
+      {
+        "Date": "2022-11-29",
+        "Gold_Price": 1748.4,
+        "Silver_Price": 21.2
+      },
+      {
+        "Date": "2022-12-09",
+        "Gold_Price": 1798.1,
+        "Silver_Price": 23.53
+      },
+      {
+        "Date": "2022-12-21",
+        "Gold_Price": 1815.9,
+        "Silver_Price": 24.03
+      },
+      {
+        "Date": "2023-01-04",
+        "Gold_Price": 1852.8,
+        "Silver_Price": 23.79
+      },
+      {
+        "Date": "2023-01-17",
+        "Gold_Price": 1907.2,
+        "Silver_Price": 23.94
+      },
+      {
+        "Date": "2023-01-27",
+        "Gold_Price": 1928.6,
+        "Silver_Price": 23.53
+      },
+      {
+        "Date": "2023-02-08",
+        "Gold_Price": 1877.4,
+        "Silver_Price": 22.37
+      },
+      {
+        "Date": "2023-02-21",
+        "Gold_Price": 1833.0,
+        "Silver_Price": 21.87
+      },
+      {
+        "Date": "2023-03-03",
+        "Gold_Price": 1847.7,
+        "Silver_Price": 21.09
+      },
+      {
+        "Date": "2023-03-15",
+        "Gold_Price": 1926.6,
+        "Silver_Price": 21.77
+      },
+      {
+        "Date": "2023-03-27",
+        "Gold_Price": 1952.4,
+        "Silver_Price": 23.05
+      },
+      {
+        "Date": "2023-04-06",
+        "Gold_Price": 2011.9,
+        "Silver_Price": 25.02
+      },
+      {
+        "Date": "2023-04-19",
+        "Gold_Price": 1995.2,
+        "Silver_Price": 25.37
+      },
+      {
+        "Date": "2023-05-01",
+        "Gold_Price": 1983.4,
+        "Silver_Price": 25.01
+      },
+      {
+        "Date": "2023-05-11",
+        "Gold_Price": 2014.7,
+        "Silver_Price": 24.25
+      },
+      {
+        "Date": "2023-05-23",
+        "Gold_Price": 1972.4,
+        "Silver_Price": 23.47
+      },
+      {
+        "Date": "2023-06-05",
+        "Gold_Price": 1958.0,
+        "Silver_Price": 23.53
+      },
+      {
+        "Date": "2023-06-15",
+        "Gold_Price": 1957.8,
+        "Silver_Price": 23.89
+      },
+      {
+        "Date": "2023-06-28",
+        "Gold_Price": 1912.3,
+        "Silver_Price": 22.87
+      },
+      {
+        "Date": "2023-07-11",
+        "Gold_Price": 1931.3,
+        "Silver_Price": 23.09
+      },
+      {
+        "Date": "2023-07-21",
+        "Gold_Price": 1964.3,
+        "Silver_Price": 24.7
+      },
+      {
+        "Date": "2023-08-02",
+        "Gold_Price": 1937.4,
+        "Silver_Price": 23.75
+      },
+      {
+        "Date": "2023-08-14",
+        "Gold_Price": 1910.6,
+        "Silver_Price": 22.64
+      },
+      {
+        "Date": "2023-08-24",
+        "Gold_Price": 1918.2,
+        "Silver_Price": 24.21
+      },
+      {
+        "Date": "2023-09-06",
+        "Gold_Price": 1918.1,
+        "Silver_Price": 23.21
+      },
+      {
+        "Date": "2023-09-18",
+        "Gold_Price": 1931.5,
+        "Silver_Price": 23.23
+      },
+      {
+        "Date": "2023-09-28",
+        "Gold_Price": 1860.4,
+        "Silver_Price": 22.51
+      },
+      {
+        "Date": "2023-10-10",
+        "Gold_Price": 1861.0,
+        "Silver_Price": 21.78
+      },
+      {
+        "Date": "2023-10-20",
+        "Gold_Price": 1982.5,
+        "Silver_Price": 23.35
+      },
+      {
+        "Date": "2023-11-01",
+        "Gold_Price": 1978.8,
+        "Silver_Price": 22.68
+      },
+      {
+        "Date": "2023-11-13",
+        "Gold_Price": 1945.5,
+        "Silver_Price": 22.3
+      },
+      {
+        "Date": "2023-11-24",
+        "Gold_Price": 2002.2,
+        "Silver_Price": 24.33
+      },
+      {
+        "Date": "2023-12-06",
+        "Gold_Price": 2030.5,
+        "Silver_Price": 23.89
+      },
+      {
+        "Date": "2023-12-18",
+        "Gold_Price": 2026.3,
+        "Silver_Price": 23.83
+      },
+      {
+        "Date": "2023-12-29",
+        "Gold_Price": 2062.4,
+        "Silver_Price": 23.85
+      },
+      {
+        "Date": "2024-01-11",
+        "Gold_Price": 2014.3,
+        "Silver_Price": 22.54
+      },
+      {
+        "Date": "2024-01-24",
+        "Gold_Price": 2013.9,
+        "Silver_Price": 22.75
+      },
+      {
+        "Date": "2024-02-05",
+        "Gold_Price": 2025.7,
+        "Silver_Price": 22.33
+      },
+      {
+        "Date": "2024-02-15",
+        "Gold_Price": 2002.1,
+        "Silver_Price": 22.91
+      },
+      {
+        "Date": "2024-02-28",
+        "Gold_Price": 2033.0,
+        "Silver_Price": 22.41
+      },
+      {
+        "Date": "2024-03-11",
+        "Gold_Price": 2182.5,
+        "Silver_Price": 24.51
+      },
+      {
+        "Date": "2024-03-21",
+        "Gold_Price": 2182.4,
+        "Silver_Price": 24.85
+      },
+      {
+        "Date": "2024-04-03",
+        "Gold_Price": 2294.4,
+        "Silver_Price": 26.94
+      },
+      {
+        "Date": "2024-04-15",
+        "Gold_Price": 2365.8,
+        "Silver_Price": 28.65
+      },
+      {
+        "Date": "2024-04-25",
+        "Gold_Price": 2329.8,
+        "Silver_Price": 27.34
+      },
+      {
+        "Date": "2024-05-07",
+        "Gold_Price": 2315.2,
+        "Silver_Price": 27.3
+      },
+      {
+        "Date": "2024-05-17",
+        "Gold_Price": 2412.2,
+        "Silver_Price": 31.05
+      },
+      {
+        "Date": "2024-05-30",
+        "Gold_Price": 2342.9,
+        "Silver_Price": 31.39
+      },
+      {
+        "Date": "2024-06-11",
+        "Gold_Price": 2307.5,
+        "Silver_Price": 29.13
+      },
+      {
+        "Date": "2024-06-24",
+        "Gold_Price": 2330.0,
+        "Silver_Price": 29.49
+      },
+      {
+        "Date": "2024-07-05",
+        "Gold_Price": 2388.5,
+        "Silver_Price": 31.39
+      },
+      {
+        "Date": "2024-07-17",
+        "Gold_Price": 2454.8,
+        "Silver_Price": 30.14
+      },
+      {
+        "Date": "2024-07-29",
+        "Gold_Price": 2377.3,
+        "Silver_Price": 27.7
+      },
+      {
+        "Date": "2024-08-08",
+        "Gold_Price": 2422.2,
+        "Silver_Price": 27.5
+      },
+      {
+        "Date": "2024-08-20",
+        "Gold_Price": 2511.3,
+        "Silver_Price": 29.45
+      },
+      {
+        "Date": "2024-08-30",
+        "Gold_Price": 2493.8,
+        "Silver_Price": 28.73
+      },
+      {
+        "Date": "2024-09-12",
+        "Gold_Price": 2551.2,
+        "Silver_Price": 29.74
+      },
+      {
+        "Date": "2024-09-24",
+        "Gold_Price": 2651.2,
+        "Silver_Price": 32.11
+      },
+      {
+        "Date": "2024-10-04",
+        "Gold_Price": 2645.8,
+        "Silver_Price": 32.13
+      },
+      {
+        "Date": "2024-10-16",
+        "Gold_Price": 2674.0,
+        "Silver_Price": 31.76
+      },
+      {
+        "Date": "2024-10-28",
+        "Gold_Price": 2742.9,
+        "Silver_Price": 33.83
+      },
+      {
+        "Date": "2024-11-07",
+        "Gold_Price": 2698.4,
+        "Silver_Price": 31.76
+      },
+      {
+        "Date": "2024-11-19",
+        "Gold_Price": 2627.1,
+        "Silver_Price": 31.21
+      },
+      {
+        "Date": "2024-12-02",
+        "Gold_Price": 2634.9,
+        "Silver_Price": 30.45
+      },
+      {
+        "Date": "2024-12-12",
+        "Gold_Price": 2687.5,
+        "Silver_Price": 31.23
+      },
+      {
+        "Date": "2024-12-24",
+        "Gold_Price": 2620.0,
+        "Silver_Price": 29.97
+      },
+      {
+        "Date": "2025-01-07",
+        "Gold_Price": 2656.7,
+        "Silver_Price": 30.45
+      },
+      {
+        "Date": "2025-01-17",
+        "Gold_Price": 2744.3,
+        "Silver_Price": 30.95
+      },
+      {
+        "Date": "2025-01-30",
+        "Gold_Price": 2823.0,
+        "Silver_Price": 32.36
+      },
+      {
+        "Date": "2025-02-11",
+        "Gold_Price": 2912.5,
+        "Silver_Price": 32.23
+      },
+      {
+        "Date": "2025-02-24",
+        "Gold_Price": 2947.9,
+        "Silver_Price": 32.58
+      },
+      {
+        "Date": "2025-03-06",
+        "Gold_Price": 2916.6,
+        "Silver_Price": 33.06
+      },
+      {
+        "Date": "2025-03-18",
+        "Gold_Price": 3035.1,
+        "Silver_Price": 34.58
+      },
+      {
+        "Date": "2025-03-28",
+        "Gold_Price": 3086.5,
+        "Silver_Price": 34.64
+      },
+      {
+        "Date": "2025-04-09",
+        "Gold_Price": 3056.5,
+        "Silver_Price": 30.32
+      },
+      {
+        "Date": "2025-04-22",
+        "Gold_Price": 3400.8,
+        "Silver_Price": 32.88
+      },
+      {
+        "Date": "2025-05-02",
+        "Gold_Price": 3231.9,
+        "Silver_Price": 31.99
+      },
+      {
+        "Date": "2025-05-14",
+        "Gold_Price": 3181.4,
+        "Silver_Price": 32.23
+      },
+      {
+        "Date": "2025-05-27",
+        "Gold_Price": 3299.1,
+        "Silver_Price": 33.15
+      },
+      {
+        "Date": "2025-06-06",
+        "Gold_Price": 3322.7,
+        "Silver_Price": 36.03
+      },
+      {
+        "Date": "2025-06-18",
+        "Gold_Price": 3389.8,
+        "Silver_Price": 36.87
+      },
+      {
+        "Date": "2025-07-01",
+        "Gold_Price": 3336.7,
+        "Silver_Price": 36.08
+      },
+      {
+        "Date": "2025-07-11",
+        "Gold_Price": 3356.0,
+        "Silver_Price": 38.68
+      },
+      {
+        "Date": "2025-07-23",
+        "Gold_Price": 3394.1,
+        "Silver_Price": 39.28
+      },
+      {
+        "Date": "2025-08-04",
+        "Gold_Price": 3374.4,
+        "Silver_Price": 37.19
+      },
+      {
+        "Date": "2025-08-14",
+        "Gold_Price": 3335.2,
+        "Silver_Price": 37.98
+      },
+      {
+        "Date": "2025-08-26",
+        "Gold_Price": 3388.6,
+        "Silver_Price": 38.58
+      },
+      {
+        "Date": "2025-09-08",
+        "Gold_Price": 3638.1,
+        "Silver_Price": 41.43
+      },
+      {
+        "Date": "2025-09-18",
+        "Gold_Price": 3643.7,
+        "Silver_Price": 41.71
+      },
+      {
+        "Date": "2025-09-30",
+        "Gold_Price": 3840.8,
+        "Silver_Price": 46.25
+      },
+      {
+        "Date": "2025-10-10",
+        "Gold_Price": 3975.9,
+        "Silver_Price": 46.94
+      },
+      {
+        "Date": "2025-10-22",
+        "Gold_Price": 4044.4,
+        "Silver_Price": 47.46
+      },
+      {
+        "Date": "2025-11-03",
+        "Gold_Price": 4000.3,
+        "Silver_Price": 47.89
+      },
+      {
+        "Date": "2025-11-13",
+        "Gold_Price": 4186.9,
+        "Silver_Price": 53.07
+      },
+      {
+        "Date": "2025-11-25",
+        "Gold_Price": 4139.2,
+        "Silver_Price": 50.93
+      },
+      {
+        "Date": "2025-12-08",
+        "Gold_Price": 4187.2,
+        "Silver_Price": 57.78
+      },
+      {
+        "Date": "2025-12-18",
+        "Gold_Price": 4339.5,
+        "Silver_Price": 64.59
+      },
+      {
+        "Date": "2025-12-31",
+        "Gold_Price": 4325.6,
+        "Silver_Price": 70.13
+      },
+      {
+        "Date": "2026-01-13",
+        "Gold_Price": 4589.2,
+        "Silver_Price": 85.88
+      },
+      {
+        "Date": "2026-01-26",
+        "Gold_Price": 5079.7,
+        "Silver_Price": 115.08
+      },
+      {
+        "Date": "2026-02-05",
+        "Gold_Price": 4861.4,
+        "Silver_Price": 76.53
+      },
+      {
+        "Date": "2026-02-18",
+        "Gold_Price": 4986.5,
+        "Silver_Price": 77.51
+      },
+      {
+        "Date": "2026-03-02",
+        "Gold_Price": 5294.4,
+        "Silver_Price": 88.28
+      },
+      {
+        "Date": "2026-03-12",
+        "Gold_Price": 5115.8,
+        "Silver_Price": 84.67
+      }
+    ],
+    "future": [
+      {
+        "Date": "2026-03-14",
+        "Predicted_Gold": 5101.6,
+        "Predicted_Silver": 84.58
+      },
+      {
+        "Date": "2026-03-15",
+        "Predicted_Gold": 5101.6,
+        "Predicted_Silver": 84.58
+      },
+      {
+        "Date": "2026-03-16",
+        "Predicted_Gold": 5101.6,
+        "Predicted_Silver": 84.58
+      },
+      {
+        "Date": "2026-03-17",
+        "Predicted_Gold": 5101.6,
+        "Predicted_Silver": 84.58
+      },
+      {
+        "Date": "2026-03-18",
+        "Predicted_Gold": 5101.6,
+        "Predicted_Silver": 84.58
+      }
+    ],
+    "correlation": {
+      "coefficient": 0.9322,
+      "interpretation": "strong"
+    },
+    "rolling_correlation": [
+      {
+        "Date": "2016-07-20",
+        "Correlation": 0.9228
+      },
+      {
+        "Date": "2016-08-01",
+        "Correlation": 0.9355
+      },
+      {
+        "Date": "2016-08-11",
+        "Correlation": 0.9416
+      },
+      {
+        "Date": "2016-08-23",
+        "Correlation": 0.9429
+      },
+      {
+        "Date": "2016-09-02",
+        "Correlation": 0.9417
+      },
+      {
+        "Date": "2016-09-15",
+        "Correlation": 0.944
+      },
+      {
+        "Date": "2016-09-27",
+        "Correlation": 0.939
+      },
+      {
+        "Date": "2016-10-07",
+        "Correlation": 0.9144
+      },
+      {
+        "Date": "2016-10-20",
+        "Correlation": 0.8905
+      },
+      {
+        "Date": "2016-11-01",
+        "Correlation": 0.9018
+      },
+      {
+        "Date": "2016-11-14",
+        "Correlation": 0.933
+      },
+      {
+        "Date": "2016-11-25",
+        "Correlation": 0.9532
+      },
+      {
+        "Date": "2016-12-07",
+        "Correlation": 0.947
+      },
+      {
+        "Date": "2016-12-19",
+        "Correlation": 0.9365
+      },
+      {
+        "Date": "2016-12-30",
+        "Correlation": 0.9471
+      },
+      {
+        "Date": "2017-01-12",
+        "Correlation": 0.9503
+      },
+      {
+        "Date": "2017-01-25",
+        "Correlation": 0.9415
+      },
+      {
+        "Date": "2017-02-06",
+        "Correlation": 0.9264
+      },
+      {
+        "Date": "2017-02-16",
+        "Correlation": 0.8884
+      },
+      {
+        "Date": "2017-03-01",
+        "Correlation": 0.8918
+      },
+      {
+        "Date": "2017-03-13",
+        "Correlation": 0.9102
+      },
+      {
+        "Date": "2017-03-23",
+        "Correlation": 0.8883
+      },
+      {
+        "Date": "2017-04-04",
+        "Correlation": 0.9322
+      },
+      {
+        "Date": "2017-04-17",
+        "Correlation": 0.943
+      },
+      {
+        "Date": "2017-04-27",
+        "Correlation": 0.927
+      },
+      {
+        "Date": "2017-05-09",
+        "Correlation": 0.7428
+      },
+      {
+        "Date": "2017-05-19",
+        "Correlation": 0.5736
+      },
+      {
+        "Date": "2017-06-01",
+        "Correlation": 0.478
+      },
+      {
+        "Date": "2017-06-13",
+        "Correlation": 0.401
+      },
+      {
+        "Date": "2017-06-23",
+        "Correlation": 0.4125
+      },
+      {
+        "Date": "2017-07-06",
+        "Correlation": 0.5037
+      },
+      {
+        "Date": "2017-07-18",
+        "Correlation": 0.6707
+      },
+      {
+        "Date": "2017-07-28",
+        "Correlation": 0.7351
+      },
+      {
+        "Date": "2017-08-09",
+        "Correlation": 0.7606
+      },
+      {
+        "Date": "2017-08-21",
+        "Correlation": 0.8409
+      },
+      {
+        "Date": "2017-08-31",
+        "Correlation": 0.8513
+      },
+      {
+        "Date": "2017-09-13",
+        "Correlation": 0.9047
+      },
+      {
+        "Date": "2017-09-25",
+        "Correlation": 0.9001
+      },
+      {
+        "Date": "2017-10-05",
+        "Correlation": 0.9212
+      },
+      {
+        "Date": "2017-10-17",
+        "Correlation": 0.9609
+      },
+      {
+        "Date": "2017-10-27",
+        "Correlation": 0.9648
+      },
+      {
+        "Date": "2017-11-08",
+        "Correlation": 0.9684
+      },
+      {
+        "Date": "2017-11-20",
+        "Correlation": 0.9436
+      },
+      {
+        "Date": "2017-12-01",
+        "Correlation": 0.9007
+      },
+      {
+        "Date": "2017-12-13",
+        "Correlation": 0.8984
+      },
+      {
+        "Date": "2017-12-26",
+        "Correlation": 0.9037
+      },
+      {
+        "Date": "2018-01-08",
+        "Correlation": 0.8843
+      },
+      {
+        "Date": "2018-01-19",
+        "Correlation": 0.7604
+      },
+      {
+        "Date": "2018-02-01",
+        "Correlation": 0.7105
+      },
+      {
+        "Date": "2018-02-13",
+        "Correlation": 0.5817
+      },
+      {
+        "Date": "2018-02-26",
+        "Correlation": 0.5153
+      },
+      {
+        "Date": "2018-03-08",
+        "Correlation": 0.5148
+      },
+      {
+        "Date": "2018-03-20",
+        "Correlation": 0.5557
+      },
+      {
+        "Date": "2018-04-02",
+        "Correlation": 0.6221
+      },
+      {
+        "Date": "2018-04-12",
+        "Correlation": 0.6947
+      },
+      {
+        "Date": "2018-04-24",
+        "Correlation": 0.6215
+      },
+      {
+        "Date": "2018-05-04",
+        "Correlation": 0.4358
+      },
+      {
+        "Date": "2018-05-16",
+        "Correlation": 0.6187
+      },
+      {
+        "Date": "2018-05-29",
+        "Correlation": 0.66
+      },
+      {
+        "Date": "2018-06-08",
+        "Correlation": 0.5326
+      },
+      {
+        "Date": "2018-06-20",
+        "Correlation": 0.3527
+      },
+      {
+        "Date": "2018-07-02",
+        "Correlation": 0.4798
+      },
+      {
+        "Date": "2018-07-13",
+        "Correlation": 0.6374
+      },
+      {
+        "Date": "2018-07-25",
+        "Correlation": 0.778
+      },
+      {
+        "Date": "2018-08-06",
+        "Correlation": 0.8615
+      },
+      {
+        "Date": "2018-08-16",
+        "Correlation": 0.9241
+      },
+      {
+        "Date": "2018-08-28",
+        "Correlation": 0.9374
+      },
+      {
+        "Date": "2018-09-10",
+        "Correlation": 0.9331
+      },
+      {
+        "Date": "2018-09-20",
+        "Correlation": 0.9298
+      },
+      {
+        "Date": "2018-10-02",
+        "Correlation": 0.9313
+      },
+      {
+        "Date": "2018-10-12",
+        "Correlation": 0.9341
+      },
+      {
+        "Date": "2018-10-24",
+        "Correlation": 0.858
+      },
+      {
+        "Date": "2018-11-05",
+        "Correlation": 0.7247
+      },
+      {
+        "Date": "2018-11-15",
+        "Correlation": 0.54
+      },
+      {
+        "Date": "2018-11-28",
+        "Correlation": 0.3269
+      },
+      {
+        "Date": "2018-12-11",
+        "Correlation": 0.1509
+      },
+      {
+        "Date": "2018-12-21",
+        "Correlation": 0.386
+      },
+      {
+        "Date": "2019-01-04",
+        "Correlation": 0.7937
+      },
+      {
+        "Date": "2019-01-16",
+        "Correlation": 0.8891
+      },
+      {
+        "Date": "2019-01-29",
+        "Correlation": 0.9054
+      },
+      {
+        "Date": "2019-02-08",
+        "Correlation": 0.9367
+      },
+      {
+        "Date": "2019-02-21",
+        "Correlation": 0.9674
+      },
+      {
+        "Date": "2019-03-05",
+        "Correlation": 0.9666
+      },
+      {
+        "Date": "2019-03-15",
+        "Correlation": 0.9579
+      },
+      {
+        "Date": "2019-03-27",
+        "Correlation": 0.938
+      },
+      {
+        "Date": "2019-04-08",
+        "Correlation": 0.9007
+      },
+      {
+        "Date": "2019-04-18",
+        "Correlation": 0.8222
+      },
+      {
+        "Date": "2019-05-01",
+        "Correlation": 0.7583
+      },
+      {
+        "Date": "2019-05-13",
+        "Correlation": 0.7521
+      },
+      {
+        "Date": "2019-05-23",
+        "Correlation": 0.8381
+      },
+      {
+        "Date": "2019-06-05",
+        "Correlation": 0.7669
+      },
+      {
+        "Date": "2019-06-17",
+        "Correlation": 0.5189
+      },
+      {
+        "Date": "2019-06-27",
+        "Correlation": 0.4395
+      },
+      {
+        "Date": "2019-07-10",
+        "Correlation": 0.4513
+      },
+      {
+        "Date": "2019-07-22",
+        "Correlation": 0.6472
+      },
+      {
+        "Date": "2019-08-01",
+        "Correlation": 0.7626
+      },
+      {
+        "Date": "2019-08-13",
+        "Correlation": 0.8647
+      },
+      {
+        "Date": "2019-08-23",
+        "Correlation": 0.9126
+      },
+      {
+        "Date": "2019-09-05",
+        "Correlation": 0.9189
+      },
+      {
+        "Date": "2019-09-17",
+        "Correlation": 0.9269
+      },
+      {
+        "Date": "2019-09-27",
+        "Correlation": 0.9313
+      },
+      {
+        "Date": "2019-10-09",
+        "Correlation": 0.9348
+      },
+      {
+        "Date": "2019-10-21",
+        "Correlation": 0.929
+      },
+      {
+        "Date": "2019-10-31",
+        "Correlation": 0.9191
+      },
+      {
+        "Date": "2019-11-12",
+        "Correlation": 0.8901
+      },
+      {
+        "Date": "2019-11-22",
+        "Correlation": 0.8327
+      },
+      {
+        "Date": "2019-12-05",
+        "Correlation": 0.7971
+      },
+      {
+        "Date": "2019-12-17",
+        "Correlation": 0.8071
+      },
+      {
+        "Date": "2019-12-30",
+        "Correlation": 0.898
+      },
+      {
+        "Date": "2020-01-10",
+        "Correlation": 0.8499
+      },
+      {
+        "Date": "2020-01-23",
+        "Correlation": 0.8316
+      },
+      {
+        "Date": "2020-02-04",
+        "Correlation": 0.7964
+      },
+      {
+        "Date": "2020-02-14",
+        "Correlation": 0.762
+      },
+      {
+        "Date": "2020-02-27",
+        "Correlation": 0.8006
+      },
+      {
+        "Date": "2020-03-10",
+        "Correlation": 0.5468
+      },
+      {
+        "Date": "2020-03-20",
+        "Correlation": 0.3669
+      },
+      {
+        "Date": "2020-04-01",
+        "Correlation": 0.1445
+      },
+      {
+        "Date": "2020-04-14",
+        "Correlation": 0.012
+      },
+      {
+        "Date": "2020-04-24",
+        "Correlation": -0.1067
+      },
+      {
+        "Date": "2020-05-06",
+        "Correlation": -0.148
+      },
+      {
+        "Date": "2020-05-18",
+        "Correlation": -0.0558
+      },
+      {
+        "Date": "2020-05-29",
+        "Correlation": 0.1561
+      },
+      {
+        "Date": "2020-06-10",
+        "Correlation": 0.3309
+      },
+      {
+        "Date": "2020-06-22",
+        "Correlation": 0.528
+      },
+      {
+        "Date": "2020-07-02",
+        "Correlation": 0.7245
+      },
+      {
+        "Date": "2020-07-15",
+        "Correlation": 0.8403
+      },
+      {
+        "Date": "2020-07-27",
+        "Correlation": 0.8921
+      },
+      {
+        "Date": "2020-08-06",
+        "Correlation": 0.9479
+      },
+      {
+        "Date": "2020-08-18",
+        "Correlation": 0.9612
+      },
+      {
+        "Date": "2020-08-28",
+        "Correlation": 0.9609
+      },
+      {
+        "Date": "2020-09-10",
+        "Correlation": 0.9603
+      },
+      {
+        "Date": "2020-09-22",
+        "Correlation": 0.9582
+      },
+      {
+        "Date": "2020-10-02",
+        "Correlation": 0.954
+      },
+      {
+        "Date": "2020-10-14",
+        "Correlation": 0.9546
+      },
+      {
+        "Date": "2020-10-26",
+        "Correlation": 0.9463
+      },
+      {
+        "Date": "2020-11-05",
+        "Correlation": 0.921
+      },
+      {
+        "Date": "2020-11-17",
+        "Correlation": 0.8637
+      },
+      {
+        "Date": "2020-11-30",
+        "Correlation": 0.7965
+      },
+      {
+        "Date": "2020-12-10",
+        "Correlation": 0.8646
+      },
+      {
+        "Date": "2020-12-22",
+        "Correlation": 0.8225
+      },
+      {
+        "Date": "2021-01-05",
+        "Correlation": 0.7659
+      },
+      {
+        "Date": "2021-01-15",
+        "Correlation": 0.6564
+      },
+      {
+        "Date": "2021-01-28",
+        "Correlation": 0.426
+      },
+      {
+        "Date": "2021-02-09",
+        "Correlation": 0.1738
+      },
+      {
+        "Date": "2021-02-22",
+        "Correlation": -0.0361
+      },
+      {
+        "Date": "2021-03-04",
+        "Correlation": -0.141
+      },
+      {
+        "Date": "2021-03-16",
+        "Correlation": -0.0768
+      },
+      {
+        "Date": "2021-03-26",
+        "Correlation": 0.0042
+      },
+      {
+        "Date": "2021-04-08",
+        "Correlation": 0.1641
+      },
+      {
+        "Date": "2021-04-20",
+        "Correlation": 0.2481
+      },
+      {
+        "Date": "2021-04-30",
+        "Correlation": 0.3755
+      },
+      {
+        "Date": "2021-05-12",
+        "Correlation": 0.4444
+      },
+      {
+        "Date": "2021-05-24",
+        "Correlation": 0.5926
+      },
+      {
+        "Date": "2021-06-04",
+        "Correlation": 0.8151
+      },
+      {
+        "Date": "2021-06-16",
+        "Correlation": 0.8765
+      },
+      {
+        "Date": "2021-06-28",
+        "Correlation": 0.8804
+      },
+      {
+        "Date": "2021-07-09",
+        "Correlation": 0.9232
+      },
+      {
+        "Date": "2021-07-21",
+        "Correlation": 0.9023
+      },
+      {
+        "Date": "2021-08-02",
+        "Correlation": 0.8727
+      },
+      {
+        "Date": "2021-08-12",
+        "Correlation": 0.8305
+      },
+      {
+        "Date": "2021-08-24",
+        "Correlation": 0.7754
+      },
+      {
+        "Date": "2021-09-03",
+        "Correlation": 0.7559
+      },
+      {
+        "Date": "2021-09-16",
+        "Correlation": 0.7984
+      },
+      {
+        "Date": "2021-09-28",
+        "Correlation": 0.8125
+      },
+      {
+        "Date": "2021-10-08",
+        "Correlation": 0.7808
+      },
+      {
+        "Date": "2021-10-20",
+        "Correlation": 0.6556
+      },
+      {
+        "Date": "2021-11-01",
+        "Correlation": 0.6647
+      },
+      {
+        "Date": "2021-11-11",
+        "Correlation": 0.7785
+      },
+      {
+        "Date": "2021-11-23",
+        "Correlation": 0.7974
+      },
+      {
+        "Date": "2021-12-06",
+        "Correlation": 0.8016
+      },
+      {
+        "Date": "2021-12-16",
+        "Correlation": 0.8251
+      },
+      {
+        "Date": "2021-12-29",
+        "Correlation": 0.7959
+      },
+      {
+        "Date": "2022-01-10",
+        "Correlation": 0.7478
+      },
+      {
+        "Date": "2022-01-21",
+        "Correlation": 0.746
+      },
+      {
+        "Date": "2022-02-02",
+        "Correlation": 0.7255
+      },
+      {
+        "Date": "2022-02-14",
+        "Correlation": 0.6596
+      },
+      {
+        "Date": "2022-02-25",
+        "Correlation": 0.6347
+      },
+      {
+        "Date": "2022-03-09",
+        "Correlation": 0.8412
+      },
+      {
+        "Date": "2022-03-21",
+        "Correlation": 0.9086
+      },
+      {
+        "Date": "2022-03-31",
+        "Correlation": 0.9532
+      },
+      {
+        "Date": "2022-04-12",
+        "Correlation": 0.9697
+      },
+      {
+        "Date": "2022-04-25",
+        "Correlation": 0.9635
+      },
+      {
+        "Date": "2022-05-05",
+        "Correlation": 0.9121
+      },
+      {
+        "Date": "2022-05-17",
+        "Correlation": 0.869
+      },
+      {
+        "Date": "2022-05-27",
+        "Correlation": 0.8724
+      },
+      {
+        "Date": "2022-06-09",
+        "Correlation": 0.9172
+      },
+      {
+        "Date": "2022-06-22",
+        "Correlation": 0.9574
+      },
+      {
+        "Date": "2022-07-05",
+        "Correlation": 0.9742
+      },
+      {
+        "Date": "2022-07-15",
+        "Correlation": 0.9814
+      },
+      {
+        "Date": "2022-07-27",
+        "Correlation": 0.9834
+      },
+      {
+        "Date": "2022-08-08",
+        "Correlation": 0.9845
+      },
+      {
+        "Date": "2022-08-18",
+        "Correlation": 0.984
+      },
+      {
+        "Date": "2022-08-30",
+        "Correlation": 0.9769
+      },
+      {
+        "Date": "2022-09-12",
+        "Correlation": 0.9721
+      },
+      {
+        "Date": "2022-09-22",
+        "Correlation": 0.9054
+      },
+      {
+        "Date": "2022-10-04",
+        "Correlation": 0.8517
+      },
+      {
+        "Date": "2022-10-14",
+        "Correlation": 0.7722
+      },
+      {
+        "Date": "2022-10-26",
+        "Correlation": 0.662
+      },
+      {
+        "Date": "2022-11-07",
+        "Correlation": 0.3761
+      },
+      {
+        "Date": "2022-11-17",
+        "Correlation": 0.4726
+      },
+      {
+        "Date": "2022-11-30",
+        "Correlation": 0.5314
+      },
+      {
+        "Date": "2022-12-12",
+        "Correlation": 0.6517
+      },
+      {
+        "Date": "2022-12-22",
+        "Correlation": 0.7694
+      },
+      {
+        "Date": "2023-01-05",
+        "Correlation": 0.8781
+      },
+      {
+        "Date": "2023-01-18",
+        "Correlation": 0.9353
+      },
+      {
+        "Date": "2023-01-30",
+        "Correlation": 0.92
+      },
+      {
+        "Date": "2023-02-09",
+        "Correlation": 0.8897
+      },
+      {
+        "Date": "2023-02-22",
+        "Correlation": 0.8564
+      },
+      {
+        "Date": "2023-03-06",
+        "Correlation": 0.7435
+      },
+      {
+        "Date": "2023-03-16",
+        "Correlation": 0.4562
+      },
+      {
+        "Date": "2023-03-28",
+        "Correlation": 0.3678
+      },
+      {
+        "Date": "2023-04-10",
+        "Correlation": 0.4094
+      },
+      {
+        "Date": "2023-04-20",
+        "Correlation": 0.5476
+      },
+      {
+        "Date": "2023-05-02",
+        "Correlation": 0.6952
+      },
+      {
+        "Date": "2023-05-12",
+        "Correlation": 0.8658
+      },
+      {
+        "Date": "2023-05-24",
+        "Correlation": 0.9085
+      },
+      {
+        "Date": "2023-06-06",
+        "Correlation": 0.9178
+      },
+      {
+        "Date": "2023-06-16",
+        "Correlation": 0.9217
+      },
+      {
+        "Date": "2023-06-29",
+        "Correlation": 0.9222
+      },
+      {
+        "Date": "2023-07-12",
+        "Correlation": 0.9151
+      },
+      {
+        "Date": "2023-07-24",
+        "Correlation": 0.8063
+      },
+      {
+        "Date": "2023-08-03",
+        "Correlation": 0.8313
+      },
+      {
+        "Date": "2023-08-15",
+        "Correlation": 0.8685
+      },
+      {
+        "Date": "2023-08-25",
+        "Correlation": 0.8144
+      },
+      {
+        "Date": "2023-09-07",
+        "Correlation": 0.762
+      },
+      {
+        "Date": "2023-09-19",
+        "Correlation": 0.6329
+      },
+      {
+        "Date": "2023-09-29",
+        "Correlation": 0.7158
+      },
+      {
+        "Date": "2023-10-11",
+        "Correlation": 0.8752
+      },
+      {
+        "Date": "2023-10-23",
+        "Correlation": 0.8219
+      },
+      {
+        "Date": "2023-11-02",
+        "Correlation": 0.6792
+      },
+      {
+        "Date": "2023-11-14",
+        "Correlation": 0.615
+      },
+      {
+        "Date": "2023-11-27",
+        "Correlation": 0.626
+      },
+      {
+        "Date": "2023-12-07",
+        "Correlation": 0.7239
+      },
+      {
+        "Date": "2023-12-19",
+        "Correlation": 0.708
+      },
+      {
+        "Date": "2024-01-02",
+        "Correlation": 0.7417
+      },
+      {
+        "Date": "2024-01-12",
+        "Correlation": 0.7894
+      },
+      {
+        "Date": "2024-01-25",
+        "Correlation": 0.735
+      },
+      {
+        "Date": "2024-02-06",
+        "Correlation": 0.7268
+      },
+      {
+        "Date": "2024-02-16",
+        "Correlation": 0.537
+      },
+      {
+        "Date": "2024-02-29",
+        "Correlation": 0.3947
+      },
+      {
+        "Date": "2024-03-12",
+        "Correlation": 0.4741
+      },
+      {
+        "Date": "2024-03-22",
+        "Correlation": 0.6047
+      },
+      {
+        "Date": "2024-04-04",
+        "Correlation": 0.7672
+      },
+      {
+        "Date": "2024-04-16",
+        "Correlation": 0.9458
+      },
+      {
+        "Date": "2024-04-26",
+        "Correlation": 0.9686
+      },
+      {
+        "Date": "2024-05-08",
+        "Correlation": 0.9836
+      },
+      {
+        "Date": "2024-05-20",
+        "Correlation": 0.9729
+      },
+      {
+        "Date": "2024-05-31",
+        "Correlation": 0.9332
+      },
+      {
+        "Date": "2024-06-12",
+        "Correlation": 0.9219
+      },
+      {
+        "Date": "2024-06-25",
+        "Correlation": 0.9018
+      },
+      {
+        "Date": "2024-07-08",
+        "Correlation": 0.8826
+      },
+      {
+        "Date": "2024-07-18",
+        "Correlation": 0.8401
+      },
+      {
+        "Date": "2024-07-30",
+        "Correlation": 0.7394
+      },
+      {
+        "Date": "2024-08-09",
+        "Correlation": 0.3383
+      },
+      {
+        "Date": "2024-08-21",
+        "Correlation": 0.1634
+      },
+      {
+        "Date": "2024-09-03",
+        "Correlation": 0.1301
+      },
+      {
+        "Date": "2024-09-13",
+        "Correlation": -0.0891
+      },
+      {
+        "Date": "2024-09-25",
+        "Correlation": 0.1054
+      },
+      {
+        "Date": "2024-10-07",
+        "Correlation": 0.4226
+      },
+      {
+        "Date": "2024-10-17",
+        "Correlation": 0.5788
+      },
+      {
+        "Date": "2024-10-29",
+        "Correlation": 0.7554
+      },
+      {
+        "Date": "2024-11-08",
+        "Correlation": 0.8186
+      },
+      {
+        "Date": "2024-11-20",
+        "Correlation": 0.934
+      },
+      {
+        "Date": "2024-12-03",
+        "Correlation": 0.9483
+      },
+      {
+        "Date": "2024-12-13",
+        "Correlation": 0.941
+      },
+      {
+        "Date": "2024-12-26",
+        "Correlation": 0.9003
+      },
+      {
+        "Date": "2025-01-08",
+        "Correlation": 0.8726
+      },
+      {
+        "Date": "2025-01-21",
+        "Correlation": 0.7257
+      },
+      {
+        "Date": "2025-01-31",
+        "Correlation": 0.6088
+      },
+      {
+        "Date": "2025-02-12",
+        "Correlation": 0.6313
+      },
+      {
+        "Date": "2025-02-25",
+        "Correlation": 0.6702
+      },
+      {
+        "Date": "2025-03-07",
+        "Correlation": 0.7575
+      },
+      {
+        "Date": "2025-03-19",
+        "Correlation": 0.8829
+      },
+      {
+        "Date": "2025-03-31",
+        "Correlation": 0.9189
+      },
+      {
+        "Date": "2025-04-10",
+        "Correlation": 0.725
+      },
+      {
+        "Date": "2025-04-23",
+        "Correlation": 0.653
+      },
+      {
+        "Date": "2025-05-05",
+        "Correlation": 0.58
+      },
+      {
+        "Date": "2025-05-15",
+        "Correlation": 0.4283
+      },
+      {
+        "Date": "2025-05-28",
+        "Correlation": 0.3104
+      },
+      {
+        "Date": "2025-06-09",
+        "Correlation": 0.2809
+      },
+      {
+        "Date": "2025-06-20",
+        "Correlation": 0.4259
+      },
+      {
+        "Date": "2025-07-02",
+        "Correlation": 0.4874
+      },
+      {
+        "Date": "2025-07-14",
+        "Correlation": 0.4655
+      },
+      {
+        "Date": "2025-07-24",
+        "Correlation": 0.5541
+      },
+      {
+        "Date": "2025-08-05",
+        "Correlation": 0.6426
+      },
+      {
+        "Date": "2025-08-15",
+        "Correlation": 0.6327
+      },
+      {
+        "Date": "2025-08-27",
+        "Correlation": 0.5987
+      },
+      {
+        "Date": "2025-09-09",
+        "Correlation": 0.7314
+      },
+      {
+        "Date": "2025-09-19",
+        "Correlation": 0.8412
+      },
+      {
+        "Date": "2025-10-01",
+        "Correlation": 0.9167
+      },
+      {
+        "Date": "2025-10-13",
+        "Correlation": 0.9712
+      },
+      {
+        "Date": "2025-10-23",
+        "Correlation": 0.9817
+      },
+      {
+        "Date": "2025-11-04",
+        "Correlation": 0.9857
+      },
+      {
+        "Date": "2025-11-14",
+        "Correlation": 0.9855
+      },
+      {
+        "Date": "2025-11-26",
+        "Correlation": 0.9838
+      },
+      {
+        "Date": "2025-12-09",
+        "Correlation": 0.9463
+      },
+      {
+        "Date": "2025-12-19",
+        "Correlation": 0.9095
+      },
+      {
+        "Date": "2026-01-02",
+        "Correlation": 0.8857
+      },
+      {
+        "Date": "2026-01-14",
+        "Correlation": 0.9017
+      },
+      {
+        "Date": "2026-01-27",
+        "Correlation": 0.9479
+      },
+      {
+        "Date": "2026-02-06",
+        "Correlation": 0.9498
+      },
+      {
+        "Date": "2026-02-19",
+        "Correlation": 0.9081
+      },
+      {
+        "Date": "2026-03-03",
+        "Correlation": 0.8973
+      },
+      {
+        "Date": "2026-03-13",
+        "Correlation": 0.8741
+      }
+    ],
+    "scatter": [
+      {
+        "Gold_Price": 2645.0,
+        "Silver_Price": 29.805999755859375
+      },
+      {
+        "Gold_Price": 2638.39990234375,
+        "Silver_Price": 30.341999053955078
+      },
+      {
+        "Gold_Price": 2656.699951171875,
+        "Silver_Price": 30.44700050354004
+      },
+      {
+        "Gold_Price": 2664.5,
+        "Silver_Price": 30.45199966430664
+      },
+      {
+        "Gold_Price": 2683.800048828125,
+        "Silver_Price": 30.791000366210938
+      },
+      {
+        "Gold_Price": 2708.5,
+        "Silver_Price": 31.090999603271484
+      },
+      {
+        "Gold_Price": 2673.5,
+        "Silver_Price": 30.090999603271484
+      },
+      {
+        "Gold_Price": 2677.5,
+        "Silver_Price": 30.131999969482422
+      },
+      {
+        "Gold_Price": 2712.5,
+        "Silver_Price": 31.319000244140625
+      },
+      {
+        "Gold_Price": 2746.39990234375,
+        "Silver_Price": 31.523000717163086
+      },
+      {
+        "Gold_Price": 2744.300048828125,
+        "Silver_Price": 30.951000213623047
+      },
+      {
+        "Gold_Price": 2755.0,
+        "Silver_Price": 31.31100082397461
+      },
+      {
+        "Gold_Price": 2767.60009765625,
+        "Silver_Price": 31.23900032043457
+      },
+      {
+        "Gold_Price": 2763.10009765625,
+        "Silver_Price": 30.67300033569336
+      },
+      {
+        "Gold_Price": 2777.300048828125,
+        "Silver_Price": 31.023000717163086
+      },
+      {
+        "Gold_Price": 2737.5,
+        "Silver_Price": 30.253999710083008
+      },
+      {
+        "Gold_Price": 2766.800048828125,
+        "Silver_Price": 30.726999282836914
+      },
+      {
+        "Gold_Price": 2769.10009765625,
+        "Silver_Price": 31.238000869750977
+      },
+      {
+        "Gold_Price": 2823.0,
+        "Silver_Price": 32.36399841308594
+      },
+      {
+        "Gold_Price": 2812.5,
+        "Silver_Price": 32.12799835205078
+      },
+      {
+        "Gold_Price": 2833.89990234375,
+        "Silver_Price": 32.391998291015625
+      },
+      {
+        "Gold_Price": 2853.300048828125,
+        "Silver_Price": 32.88800048828125
+      },
+      {
+        "Gold_Price": 2871.60009765625,
+        "Silver_Price": 32.856998443603516
+      },
+      {
+        "Gold_Price": 2856.0,
+        "Silver_Price": 32.518001556396484
+      },
+      {
+        "Gold_Price": 2867.300048828125,
+        "Silver_Price": 32.334999084472656
+      },
+      {
+        "Gold_Price": 2914.300048828125,
+        "Silver_Price": 32.391998291015625
+      },
+      {
+        "Gold_Price": 2912.5,
+        "Silver_Price": 32.23099899291992
+      },
+      {
+        "Gold_Price": 2909.0,
+        "Silver_Price": 32.69499969482422
+      },
+      {
+        "Gold_Price": 2925.89990234375,
+        "Silver_Price": 32.650001525878906
+      },
+      {
+        "Gold_Price": 2883.60009765625,
+        "Silver_Price": 32.80099868774414
+      },
+      {
+        "Gold_Price": 2931.60009765625,
+        "Silver_Price": 33.31700134277344
+      },
+      {
+        "Gold_Price": 2919.39990234375,
+        "Silver_Price": 32.99300003051758
+      },
+      {
+        "Gold_Price": 2940.0,
+        "Silver_Price": 33.444000244140625
+      },
+      {
+        "Gold_Price": 2937.60009765625,
+        "Silver_Price": 32.97600173950195
+      },
+      {
+        "Gold_Price": 2947.89990234375,
+        "Silver_Price": 32.57500076293945
+      },
+      {
+        "Gold_Price": 2904.5,
+        "Silver_Price": 31.801000595092773
+      },
+      {
+        "Gold_Price": 2916.800048828125,
+        "Silver_Price": 32.25299835205078
+      },
+      {
+        "Gold_Price": 2883.199951171875,
+        "Silver_Price": 31.801000595092773
+      },
+      {
+        "Gold_Price": 2836.800048828125,
+        "Silver_Price": 31.2189998626709
+      },
+      {
+        "Gold_Price": 2890.199951171875,
+        "Silver_Price": 32.03200149536133
+      },
+      {
+        "Gold_Price": 2909.60009765625,
+        "Silver_Price": 32.108001708984375
+      },
+      {
+        "Gold_Price": 2915.300048828125,
+        "Silver_Price": 32.858001708984375
+      },
+      {
+        "Gold_Price": 2916.60009765625,
+        "Silver_Price": 33.0629997253418
+      },
+      {
+        "Gold_Price": 2904.699951171875,
+        "Silver_Price": 32.54800033569336
+      },
+      {
+        "Gold_Price": 2891.0,
+        "Silver_Price": 32.275001525878906
+      },
+      {
+        "Gold_Price": 2912.89990234375,
+        "Silver_Price": 32.88800048828125
+      },
+      {
+        "Gold_Price": 2939.10009765625,
+        "Silver_Price": 33.48400115966797
+      },
+      {
+        "Gold_Price": 2984.300048828125,
+        "Silver_Price": 34.05099868774414
+      },
+      {
+        "Gold_Price": 2994.5,
+        "Silver_Price": 34.1870002746582
+      },
+      {
+        "Gold_Price": 3000.0,
+        "Silver_Price": 34.07400131225586
+      },
+      {
+        "Gold_Price": 3035.10009765625,
+        "Silver_Price": 34.57899856567383
+      },
+      {
+        "Gold_Price": 3035.89990234375,
+        "Silver_Price": 33.974998474121094
+      },
+      {
+        "Gold_Price": 3040.0,
+        "Silver_Price": 33.7859992980957
+      },
+      {
+        "Gold_Price": 3018.199951171875,
+        "Silver_Price": 33.290000915527344
+      },
+      {
+        "Gold_Price": 3013.10009765625,
+        "Silver_Price": 33.26499938964844
+      },
+      {
+        "Gold_Price": 3023.699951171875,
+        "Silver_Price": 34.00199890136719
+      },
+      {
+        "Gold_Price": 3020.89990234375,
+        "Silver_Price": 34.03300094604492
+      },
+      {
+        "Gold_Price": 3060.199951171875,
+        "Silver_Price": 34.89699935913086
+      },
+      {
+        "Gold_Price": 3086.5,
+        "Silver_Price": 34.64400100708008
+      },
+      {
+        "Gold_Price": 3122.800048828125,
+        "Silver_Price": 34.457000732421875
+      },
+      {
+        "Gold_Price": 3118.89990234375,
+        "Silver_Price": 34.15800094604492
+      },
+      {
+        "Gold_Price": 3139.89990234375,
+        "Silver_Price": 34.499000549316406
+      },
+      {
+        "Gold_Price": 3097.0,
+        "Silver_Price": 31.8439998626709
+      },
+      {
+        "Gold_Price": 3012.0,
+        "Silver_Price": 29.115999221801758
+      },
+      {
+        "Gold_Price": 2951.300048828125,
+        "Silver_Price": 29.510000228881836
+      },
+      {
+        "Gold_Price": 2968.39990234375,
+        "Silver_Price": 29.591999053955078
+      },
+      {
+        "Gold_Price": 3056.5,
+        "Silver_Price": 30.322999954223633
+      },
+      {
+        "Gold_Price": 3155.199951171875,
+        "Silver_Price": 30.67099952697754
+      },
+      {
+        "Gold_Price": 3222.199951171875,
+        "Silver_Price": 31.823999404907227
+      },
+      {
+        "Gold_Price": 3204.800048828125,
+        "Silver_Price": 32.09199905395508
+      },
+      {
+        "Gold_Price": 3218.699951171875,
+        "Silver_Price": 32.22700119018555
+      },
+      {
+        "Gold_Price": 3326.60009765625,
+        "Silver_Price": 32.92599868774414
+      },
+      {
+        "Gold_Price": 3308.699951171875,
+        "Silver_Price": 32.41999816894531
+      },
+      {
+        "Gold_Price": 3406.199951171875,
+        "Silver_Price": 32.49599838256836
+      },
+      {
+        "Gold_Price": 3400.800048828125,
+        "Silver_Price": 32.880001068115234
+      },
+      {
+        "Gold_Price": 3276.300048828125,
+        "Silver_Price": 33.518001556396484
+      },
+      {
+        "Gold_Price": 3332.0,
+        "Silver_Price": 33.481998443603516
+      },
+      {
+        "Gold_Price": 3282.39990234375,
+        "Silver_Price": 32.98899841308594
+      },
+      {
+        "Gold_Price": 3332.5,
+        "Silver_Price": 32.9900016784668
+      },
+      {
+        "Gold_Price": 3318.800048828125,
+        "Silver_Price": 33.275001525878906
+      },
+      {
+        "Gold_Price": 3305.0,
+        "Silver_Price": 32.53099822998047
+      },
+      {
+        "Gold_Price": 3210.0,
+        "Silver_Price": 32.18899917602539
+      },
+      {
+        "Gold_Price": 3231.89990234375,
+        "Silver_Price": 31.98900032043457
+      },
+      {
+        "Gold_Price": 3311.300048828125,
+        "Silver_Price": 32.20500183105469
+      },
+      {
+        "Gold_Price": 3411.39990234375,
+        "Silver_Price": 33.112998962402344
+      },
+      {
+        "Gold_Price": 3381.39990234375,
+        "Silver_Price": 32.53099822998047
+      },
+      {
+        "Gold_Price": 3296.60009765625,
+        "Silver_Price": 32.37799835205078
+      },
+      {
+        "Gold_Price": 3335.39990234375,
+        "Silver_Price": 32.67599868774414
+      },
+      {
+        "Gold_Price": 3220.0,
+        "Silver_Price": 32.38800048828125
+      },
+      {
+        "Gold_Price": 3240.300048828125,
+        "Silver_Price": 32.86800003051758
+      },
+      {
+        "Gold_Price": 3181.39990234375,
+        "Silver_Price": 32.22600173950195
+      },
+      {
+        "Gold_Price": 3220.699951171875,
+        "Silver_Price": 32.48099899291992
+      },
+      {
+        "Gold_Price": 3182.0,
+        "Silver_Price": 32.15800094604492
+      },
+      {
+        "Gold_Price": 3228.89990234375,
+        "Silver_Price": 32.3129997253418
+      },
+      {
+        "Gold_Price": 3280.300048828125,
+        "Silver_Price": 32.97999954223633
+      },
+      {
+        "Gold_Price": 3309.300048828125,
+        "Silver_Price": 33.4630012512207
+      },
+      {
+        "Gold_Price": 3292.300048828125,
+        "Silver_Price": 33.047000885009766
+      },
+      {
+        "Gold_Price": 3363.60009765625,
+        "Silver_Price": 33.44200134277344
+      },
+      {
+        "Gold_Price": 3299.10009765625,
+        "Silver_Price": 33.145999908447266
+      },
+      {
+        "Gold_Price": 3293.60009765625,
+        "Silver_Price": 33.0
+      },
+      {
+        "Gold_Price": 3317.10009765625,
+        "Silver_Price": 33.28300094604492
+      },
+      {
+        "Gold_Price": 3288.89990234375,
+        "Silver_Price": 32.891998291015625
+      },
+      {
+        "Gold_Price": 3370.60009765625,
+        "Silver_Price": 34.5629997253418
+      },
+      {
+        "Gold_Price": 3350.199951171875,
+        "Silver_Price": 34.50299835205078
+      },
+      {
+        "Gold_Price": 3373.5,
+        "Silver_Price": 34.51900100708008
+      },
+      {
+        "Gold_Price": 3350.699951171875,
+        "Silver_Price": 35.68899917602539
+      },
+      {
+        "Gold_Price": 3322.699951171875,
+        "Silver_Price": 36.025001525878906
+      },
+      {
+        "Gold_Price": 3332.10009765625,
+        "Silver_Price": 36.6879997253418
+      },
+      {
+        "Gold_Price": 3320.89990234375,
+        "Silver_Price": 36.54199981689453
+      },
+      {
+        "Gold_Price": 3321.300048828125,
+        "Silver_Price": 36.16600036621094
+      },
+      {
+        "Gold_Price": 3380.89990234375,
+        "Silver_Price": 36.2130012512207
+      },
+      {
+        "Gold_Price": 3431.199951171875,
+        "Silver_Price": 36.28099822998047
+      },
+      {
+        "Gold_Price": 3396.39990234375,
+        "Silver_Price": 36.37900161743164
+      },
+      {
+        "Gold_Price": 3386.60009765625,
+        "Silver_Price": 37.09000015258789
+      },
+      {
+        "Gold_Price": 3389.800048828125,
+        "Silver_Price": 36.86600112915039
+      },
+      {
+        "Gold_Price": 3368.10009765625,
+        "Silver_Price": 35.97600173950195
+      },
+      {
+        "Gold_Price": 3377.699951171875,
+        "Silver_Price": 36.15299987792969
+      },
+      {
+        "Gold_Price": 3317.39990234375,
+        "Silver_Price": 35.70100021362305
+      },
+      {
+        "Gold_Price": 3327.10009765625,
+        "Silver_Price": 36.084999084472656
+      },
+      {
+        "Gold_Price": 3333.5,
+        "Silver_Price": 36.58599853515625
+      },
+      {
+        "Gold_Price": 3273.699951171875,
+        "Silver_Price": 36.0369987487793
+      },
+      {
+        "Gold_Price": 3294.39990234375,
+        "Silver_Price": 35.85200119018555
+      },
+      {
+        "Gold_Price": 3336.699951171875,
+        "Silver_Price": 36.082000732421875
+      },
+      {
+        "Gold_Price": 3348.0,
+        "Silver_Price": 36.42599868774414
+      },
+      {
+        "Gold_Price": 3331.60009765625,
+        "Silver_Price": 36.784000396728516
+      },
+      {
+        "Gold_Price": 3332.5,
+        "Silver_Price": 36.775001525878906
+      },
+      {
+        "Gold_Price": 3332.199951171875,
+        "Silver_Price": 36.6150016784668
+      },
+      {
+        "Gold_Price": 3307.0,
+        "Silver_Price": 36.47200012207031
+      },
+      {
+        "Gold_Price": 3311.60009765625,
+        "Silver_Price": 36.35100173950195
+      },
+      {
+        "Gold_Price": 3317.39990234375,
+        "Silver_Price": 37.03799819946289
+      },
+      {
+        "Gold_Price": 3356.0,
+        "Silver_Price": 38.67599868774414
+      },
+      {
+        "Gold_Price": 3351.5,
+        "Silver_Price": 38.46200180053711
+      },
+      {
+        "Gold_Price": 3329.800048828125,
+        "Silver_Price": 37.83399963378906
+      },
+      {
+        "Gold_Price": 3352.5,
+        "Silver_Price": 37.85300064086914
+      },
+      {
+        "Gold_Price": 3340.10009765625,
+        "Silver_Price": 38.055999755859375
+      },
+      {
+        "Gold_Price": 3353.0,
+        "Silver_Price": 38.222999572753906
+      },
+      {
+        "Gold_Price": 3401.89990234375,
+        "Silver_Price": 39.10100173950195
+      },
+      {
+        "Gold_Price": 3439.199951171875,
+        "Silver_Price": 39.31999969482422
+      },
+      {
+        "Gold_Price": 3394.10009765625,
+        "Silver_Price": 39.27799987792969
+      },
+      {
+        "Gold_Price": 3371.0,
+        "Silver_Price": 39.020999908447266
+      },
+      {
+        "Gold_Price": 3334.0,
+        "Silver_Price": 38.16699981689453
+      },
+      {
+        "Gold_Price": 3309.10009765625,
+        "Silver_Price": 38.0260009765625
+      },
+      {
+        "Gold_Price": 3323.39990234375,
+        "Silver_Price": 38.08399963378906
+      },
+      {
+        "Gold_Price": 3295.800048828125,
+        "Silver_Price": 37.566001892089844
+      },
+      {
+        "Gold_Price": 3293.199951171875,
+        "Silver_Price": 36.551998138427734
+      },
+      {
+        "Gold_Price": 3347.699951171875,
+        "Silver_Price": 36.7869987487793
+      },
+      {
+        "Gold_Price": 3374.39990234375,
+        "Silver_Price": 37.19200134277344
+      },
+      {
+        "Gold_Price": 3381.89990234375,
+        "Silver_Price": 37.6870002746582
+      },
+      {
+        "Gold_Price": 3380.0,
+        "Silver_Price": 37.76599884033203
+      },
+      {
+        "Gold_Price": 3400.300048828125,
+        "Silver_Price": 38.15800094604492
+      },
+      {
+        "Gold_Price": 3439.10009765625,
+        "Silver_Price": 38.41699981689453
+      },
+      {
+        "Gold_Price": 3353.10009765625,
+        "Silver_Price": 37.6619987487793
+      },
+      {
+        "Gold_Price": 3348.89990234375,
+        "Silver_Price": 37.89899826049805
+      },
+      {
+        "Gold_Price": 3358.699951171875,
+        "Silver_Price": 38.499000549316406
+      },
+      {
+        "Gold_Price": 3335.199951171875,
+        "Silver_Price": 37.981998443603516
+      },
+      {
+        "Gold_Price": 3336.0,
+        "Silver_Price": 37.89400100708008
+      },
+      {
+        "Gold_Price": 3331.699951171875,
+        "Silver_Price": 37.95100021362305
+      },
+      {
+        "Gold_Price": 3313.39990234375,
+        "Silver_Price": 37.26100158691406
+      },
+      {
+        "Gold_Price": 3343.39990234375,
+        "Silver_Price": 37.70500183105469
+      },
+      {
+        "Gold_Price": 3336.89990234375,
+        "Silver_Price": 38.027000427246094
+      },
+      {
+        "Gold_Price": 3374.39990234375,
+        "Silver_Price": 39.00299835205078
+      },
+      {
+        "Gold_Price": 3373.800048828125,
+        "Silver_Price": 38.676998138427734
+      },
+      {
+        "Gold_Price": 3388.60009765625,
+        "Silver_Price": 38.582000732421875
+      },
+      {
+        "Gold_Price": 3404.60009765625,
+        "Silver_Price": 38.68899917602539
+      },
+      {
+        "Gold_Price": 3431.800048828125,
+        "Silver_Price": 39.189998626708984
+      },
+      {
+        "Gold_Price": 3473.699951171875,
+        "Silver_Price": 40.20000076293945
+      },
+      {
+        "Gold_Price": 3549.39990234375,
+        "Silver_Price": 41.07099914550781
+      },
+      {
+        "Gold_Price": 3593.199951171875,
+        "Silver_Price": 41.54199981689453
+      },
+      {
+        "Gold_Price": 3565.800048828125,
+        "Silver_Price": 40.9109992980957
+      },
+      {
+        "Gold_Price": 3613.199951171875,
+        "Silver_Price": 41.07400131225586
+      },
+      {
+        "Gold_Price": 3638.10009765625,
+        "Silver_Price": 41.42599868774414
+      },
+      {
+        "Gold_Price": 3643.300048828125,
+        "Silver_Price": 40.87799835205078
+      },
+      {
+        "Gold_Price": 3643.60009765625,
+        "Silver_Price": 41.132999420166016
+      },
+      {
+        "Gold_Price": 3636.89990234375,
+        "Silver_Price": 41.696998596191406
+      },
+      {
+        "Gold_Price": 3649.39990234375,
+        "Silver_Price": 42.387001037597656
+      },
+      {
+        "Gold_Price": 3682.199951171875,
+        "Silver_Price": 42.516998291015625
+      },
+      {
+        "Gold_Price": 3688.89990234375,
+        "Silver_Price": 42.47100067138672
+      },
+      {
+        "Gold_Price": 3681.800048828125,
+        "Silver_Price": 41.72200012207031
+      },
+      {
+        "Gold_Price": 3643.699951171875,
+        "Silver_Price": 41.707000732421875
+      },
+      {
+        "Gold_Price": 3671.5,
+        "Silver_Price": 42.5359992980957
+      },
+      {
+        "Gold_Price": 3740.699951171875,
+        "Silver_Price": 43.79899978637695
+      },
+      {
+        "Gold_Price": 3780.60009765625,
+        "Silver_Price": 44.19200134277344
+      },
+      {
+        "Gold_Price": 3732.10009765625,
+        "Silver_Price": 43.777000427246094
+      },
+      {
+        "Gold_Price": 3736.89990234375,
+        "Silver_Price": 44.696998596191406
+      },
+      {
+        "Gold_Price": 3775.300048828125,
+        "Silver_Price": 46.22100067138672
+      },
+      {
+        "Gold_Price": 3820.89990234375,
+        "Silver_Price": 46.61199951171875
+      },
+      {
+        "Gold_Price": 3840.800048828125,
+        "Silver_Price": 46.25299835205078
+      },
+      {
+        "Gold_Price": 3867.5,
+        "Silver_Price": 47.290000915527344
+      },
+      {
+        "Gold_Price": 3839.699951171875,
+        "Silver_Price": 46.0
+      },
+      {
+        "Gold_Price": 3880.800048828125,
+        "Silver_Price": 47.59700012207031
+      },
+      {
+        "Gold_Price": 3948.5,
+        "Silver_Price": 48.082000732421875
+      },
+      {
+        "Gold_Price": 3976.60009765625,
+        "Silver_Price": 47.17900085449219
+      },
+      {
+        "Gold_Price": 4043.300048828125,
+        "Silver_Price": 48.65599822998047
+      },
+      {
+        "Gold_Price": 3946.300048828125,
+        "Silver_Price": 46.849998474121094
+      },
+      {
+        "Gold_Price": 3975.89990234375,
+        "Silver_Price": 46.9379997253418
+      },
+      {
+        "Gold_Price": 4108.60009765625,
+        "Silver_Price": 50.130001068115234
+      },
+      {
+        "Gold_Price": 4138.7001953125,
+        "Silver_Price": 50.31399917602539
+      },
+      {
+        "Gold_Price": 4176.89990234375,
+        "Silver_Price": 51.073001861572266
+      },
+      {
+        "Gold_Price": 4280.2001953125,
+        "Silver_Price": 53.02299880981445
+      },
+      {
+        "Gold_Price": 4189.89990234375,
+        "Silver_Price": 49.86399841308594
+      },
+      {
+        "Gold_Price": 4336.39990234375,
+        "Silver_Price": 51.11899948120117
+      },
+      {
+        "Gold_Price": 4087.699951171875,
+        "Silver_Price": 47.45000076293945
+      },
+      {
+        "Gold_Price": 4044.39990234375,
+        "Silver_Price": 47.46099853515625
+      },
+      {
+        "Gold_Price": 4125.5,
+        "Silver_Price": 48.481998443603516
+      },
+      {
+        "Gold_Price": 4118.39990234375,
+        "Silver_Price": 48.37699890136719
+      },
+      {
+        "Gold_Price": 4001.89990234375,
+        "Silver_Price": 46.5620002746582
+      },
+      {
+        "Gold_Price": 3966.199951171875,
+        "Silver_Price": 47.125
+      },
+      {
+        "Gold_Price": 3983.699951171875,
+        "Silver_Price": 47.72100067138672
+      },
+      {
+        "Gold_Price": 4001.300048828125,
+        "Silver_Price": 48.428001403808594
+      },
+      {
+        "Gold_Price": 3982.199951171875,
+        "Silver_Price": 47.99399948120117
+      },
+      {
+        "Gold_Price": 4000.300048828125,
+        "Silver_Price": 47.88800048828125
+      },
+      {
+        "Gold_Price": 3947.699951171875,
+        "Silver_Price": 47.130001068115234
+      },
+      {
+        "Gold_Price": 3980.300048828125,
+        "Silver_Price": 47.862998962402344
+      },
+      {
+        "Gold_Price": 3979.89990234375,
+        "Silver_Price": 47.79399871826172
+      },
+      {
+        "Gold_Price": 3999.39990234375,
+        "Silver_Price": 48.016998291015625
+      },
+      {
+        "Gold_Price": 4111.7998046875,
+        "Silver_Price": 50.176998138427734
+      },
+      {
+        "Gold_Price": 4106.7998046875,
+        "Silver_Price": 50.61800003051758
+      },
+      {
+        "Gold_Price": 4204.39990234375,
+        "Silver_Price": 53.332000732421875
+      },
+      {
+        "Gold_Price": 4186.89990234375,
+        "Silver_Price": 53.07400131225586
+      },
+      {
+        "Gold_Price": 4087.60009765625,
+        "Silver_Price": 50.59000015258789
+      },
+      {
+        "Gold_Price": 4068.300048828125,
+        "Silver_Price": 50.625
+      },
+      {
+        "Gold_Price": 4061.300048828125,
+        "Silver_Price": 50.45000076293945
+      },
+      {
+        "Gold_Price": 4077.699951171875,
+        "Silver_Price": 50.790000915527344
+      },
+      {
+        "Gold_Price": 4056.5,
+        "Silver_Price": 50.24700164794922
+      },
+      {
+        "Gold_Price": 4076.699951171875,
+        "Silver_Price": 49.87300109863281
+      },
+      {
+        "Gold_Price": 4091.89990234375,
+        "Silver_Price": 50.29499816894531
+      },
+      {
+        "Gold_Price": 4139.2001953125,
+        "Silver_Price": 50.933998107910156
+      },
+      {
+        "Gold_Price": 4165.2001953125,
+        "Silver_Price": 52.91600036621094
+      },
+      {
+        "Gold_Price": 4218.2998046875,
+        "Silver_Price": 56.44599914550781
+      },
+      {
+        "Gold_Price": 4239.2998046875,
+        "Silver_Price": 58.417999267578125
+      },
+      {
+        "Gold_Price": 4186.60009765625,
+        "Silver_Price": 57.983001708984375
+      },
+      {
+        "Gold_Price": 4199.2998046875,
+        "Silver_Price": 57.92100143432617
+      },
+      {
+        "Gold_Price": 4211.7998046875,
+        "Silver_Price": 56.84700012207031
+      },
+      {
+        "Gold_Price": 4212.89990234375,
+        "Silver_Price": 58.422000885009766
+      },
+      {
+        "Gold_Price": 4187.2001953125,
+        "Silver_Price": 57.77899932861328
+      },
+      {
+        "Gold_Price": 4206.7001953125,
+        "Silver_Price": 60.16899871826172
+      },
+      {
+        "Gold_Price": 4196.39990234375,
+        "Silver_Price": 60.37900161743164
+      },
+      {
+        "Gold_Price": 4285.5,
+        "Silver_Price": 63.92900085449219
+      },
+      {
+        "Gold_Price": 4300.10009765625,
+        "Silver_Price": 61.36199951171875
+      },
+      {
+        "Gold_Price": 4306.7001953125,
+        "Silver_Price": 62.939998626708984
+      },
+      {
+        "Gold_Price": 4304.5,
+        "Silver_Price": 62.70000076293945
+      },
+      {
+        "Gold_Price": 4347.5,
+        "Silver_Price": 66.23699951171875
+      },
+      {
+        "Gold_Price": 4339.5,
+        "Silver_Price": 64.59200286865234
+      },
+      {
+        "Gold_Price": 4361.39990234375,
+        "Silver_Price": 66.84500122070312
+      },
+      {
+        "Gold_Price": 4444.60009765625,
+        "Silver_Price": 67.90599822998047
+      },
+      {
+        "Gold_Price": 4482.7998046875,
+        "Silver_Price": 70.48500061035156
+      },
+      {
+        "Gold_Price": 4480.60009765625,
+        "Silver_Price": 71.03099822998047
+      },
+      {
+        "Gold_Price": 4529.10009765625,
+        "Silver_Price": 76.48600006103516
+      },
+      {
+        "Gold_Price": 4325.10009765625,
+        "Silver_Price": 69.85600280761719
+      },
+      {
+        "Gold_Price": 4370.10009765625,
+        "Silver_Price": 77.3740005493164
+      },
+      {
+        "Gold_Price": 4325.60009765625,
+        "Silver_Price": 70.13400268554688
+      },
+      {
+        "Gold_Price": 4314.39990234375,
+        "Silver_Price": 70.55599975585938
+      },
+      {
+        "Gold_Price": 4436.89990234375,
+        "Silver_Price": 76.16400146484375
+      },
+      {
+        "Gold_Price": 4482.2001953125,
+        "Silver_Price": 80.52999877929688
+      },
+      {
+        "Gold_Price": 4449.2998046875,
+        "Silver_Price": 77.13500213623047
+      },
+      {
+        "Gold_Price": 4449.7001953125,
+        "Silver_Price": 74.71600341796875
+      },
+      {
+        "Gold_Price": 4490.2998046875,
+        "Silver_Price": 78.88400268554688
+      },
+      {
+        "Gold_Price": 4604.2998046875,
+        "Silver_Price": 84.61000061035156
+      },
+      {
+        "Gold_Price": 4589.2001953125,
+        "Silver_Price": 85.87699890136719
+      },
+      {
+        "Gold_Price": 4626.2998046875,
+        "Silver_Price": 90.86900329589844
+      },
+      {
+        "Gold_Price": 4616.2998046875,
+        "Silver_Price": 91.8759994506836
+      },
+      {
+        "Gold_Price": 4588.39990234375,
+        "Silver_Price": 88.09100341796875
+      },
+      {
+        "Gold_Price": 4759.60009765625,
+        "Silver_Price": 94.20600128173828
+      },
+      {
+        "Gold_Price": 4831.7998046875,
+        "Silver_Price": 92.20999908447266
+      },
+      {
+        "Gold_Price": 4908.7998046875,
+        "Silver_Price": 95.97599792480469
+      },
+      {
+        "Gold_Price": 4976.2001953125,
+        "Silver_Price": 100.92500305175781
+      },
+      {
+        "Gold_Price": 5079.7001953125,
+        "Silver_Price": 115.08000183105469
+      },
+      {
+        "Gold_Price": 5079.89990234375,
+        "Silver_Price": 105.52300262451172
+      },
+      {
+        "Gold_Price": 5301.60009765625,
+        "Silver_Price": 113.11100006103516
+      },
+      {
+        "Gold_Price": 5318.39990234375,
+        "Silver_Price": 114.03700256347656
+      },
+      {
+        "Gold_Price": 4713.89990234375,
+        "Silver_Price": 78.29000091552734
+      },
+      {
+        "Gold_Price": 4622.5,
+        "Silver_Price": 76.77799987792969
+      },
+      {
+        "Gold_Price": 4903.7001953125,
+        "Silver_Price": 83.04199981689453
+      },
+      {
+        "Gold_Price": 4920.39990234375,
+        "Silver_Price": 84.16500091552734
+      },
+      {
+        "Gold_Price": 4861.39990234375,
+        "Silver_Price": 76.52899932861328
+      },
+      {
+        "Gold_Price": 4951.2001953125,
+        "Silver_Price": 76.73500061035156
+      },
+      {
+        "Gold_Price": 5050.89990234375,
+        "Silver_Price": 82.06500244140625
+      },
+      {
+        "Gold_Price": 5003.7998046875,
+        "Silver_Price": 80.21800231933594
+      },
+      {
+        "Gold_Price": 5071.60009765625,
+        "Silver_Price": 83.75399780273438
+      },
+      {
+        "Gold_Price": 4923.7001953125,
+        "Silver_Price": 75.5459976196289
+      },
+      {
+        "Gold_Price": 5022.0,
+        "Silver_Price": 77.85099792480469
+      },
+      {
+        "Gold_Price": 4882.89990234375,
+        "Silver_Price": 73.4469985961914
+      },
+      {
+        "Gold_Price": 4986.5,
+        "Silver_Price": 77.50900268554688
+      },
+      {
+        "Gold_Price": 4975.89990234375,
+        "Silver_Price": 77.56500244140625
+      },
+      {
+        "Gold_Price": 5059.2998046875,
+        "Silver_Price": 82.28299713134766
+      },
+      {
+        "Gold_Price": 5204.7001953125,
+        "Silver_Price": 86.52300262451172
+      },
+      {
+        "Gold_Price": 5155.7998046875,
+        "Silver_Price": 87.45700073242188
+      },
+      {
+        "Gold_Price": 5206.39990234375,
+        "Silver_Price": 90.93900299072266
+      },
+      {
+        "Gold_Price": 5176.5,
+        "Silver_Price": 86.99800109863281
+      },
+      {
+        "Gold_Price": 5230.5,
+        "Silver_Price": 92.68199920654297
+      },
+      {
+        "Gold_Price": 5294.39990234375,
+        "Silver_Price": 88.28399658203125
+      },
+      {
+        "Gold_Price": 5107.39990234375,
+        "Silver_Price": 82.9229965209961
+      },
+      {
+        "Gold_Price": 5120.2001953125,
+        "Silver_Price": 82.63300323486328
+      },
+      {
+        "Gold_Price": 5065.2998046875,
+        "Silver_Price": 81.68699645996094
+      },
+      {
+        "Gold_Price": 5146.10009765625,
+        "Silver_Price": 83.81600189208984
+      },
+      {
+        "Gold_Price": 5091.5,
+        "Silver_Price": 84.03199768066406
+      },
+      {
+        "Gold_Price": 5229.7001953125,
+        "Silver_Price": 89.08300018310547
+      },
+      {
+        "Gold_Price": 5167.39990234375,
+        "Silver_Price": 85.06500244140625
+      },
+      {
+        "Gold_Price": 5115.7998046875,
+        "Silver_Price": 84.66999816894531
+      },
+      {
+        "Gold_Price": 5061.7001953125,
+        "Silver_Price": 81.34300231933594
+      }
+    ],
+    "explainability": {
+      "Gold": {
+        "feature_importance": [
+          {
+            "name": "lag_5",
+            "value": 1557.1566586807319
+          },
+          {
+            "name": "momentum_5",
+            "value": 67.46352214589916
+          },
+          {
+            "name": "lag_1",
+            "value": 31.377238547059974
+          },
+          {
+            "name": "lag_10",
+            "value": 30.589062510526173
+          },
+          {
+            "name": "time_index",
+            "value": 3.4558362502970787
+          },
+          {
+            "name": "volatility_10",
+            "value": 1.4528136493587862
+          },
+          {
+            "name": "ratio",
+            "value": 0.8330131774806929
+          }
+        ],
+        "mean_abs_shap": {
+          "lag_1": 31.377238547059974,
+          "lag_5": 1557.1566586807319,
+          "lag_10": 30.589062510526173,
+          "momentum_5": 67.46352214589916,
+          "volatility_10": 1.4528136493587862,
+          "ratio": 0.8330131774806929,
+          "time_index": 3.4558362502970787
+        },
+        "lime_explanation": {
+          "weights": {
+            "lag_5 > 1841.95": 606.3096312789943,
+            "momentum_5 > 20.40": 395.71834087617697,
+            "lag_10 > 1840.55": 358.1380066548321,
+            "lag_1 > 1842.85": 317.50762890717135,
+            "time_index > 1510.75": 311.55936923710624,
+            "ratio <= 74.85": 311.3057894867406,
+            "volatility_10 > 20.43": 309.56147785942443
+          },
+          "prediction": 5101.600878480318,
+          "intercept": 711.6123499273215,
+          "feature_names": [
+            "lag_1",
+            "lag_5",
+            "lag_10",
+            "momentum_5",
+            "volatility_10",
+            "ratio",
+            "time_index"
+          ]
+        }
+      },
+      "Silver": {
+        "feature_importance": [
+          {
+            "name": "lag_5",
+            "value": 18.60473842082347
+          },
+          {
+            "name": "momentum_5",
+            "value": 2.1431120119244893
+          },
+          {
+            "name": "lag_1",
+            "value": 1.6673651625037014
+          },
+          {
+            "name": "lag_10",
+            "value": 0.1791850545297768
+          },
+          {
+            "name": "volatility_10",
+            "value": 0.025181174995684775
+          },
+          {
+            "name": "ratio",
+            "value": 0.02042986236486304
+          },
+          {
+            "name": "time_index",
+            "value": 0.005836938829914826
+          }
+        ],
+        "mean_abs_shap": {
+          "lag_1": 1.6673651625037014,
+          "lag_5": 18.60473842082347,
+          "lag_10": 0.1791850545297768,
+          "momentum_5": 2.1431120119244893,
+          "volatility_10": 0.025181174995684775,
+          "ratio": 0.02042986236486304,
+          "time_index": 0.005836938829914826
+        },
+        "lime_explanation": {
+          "weights": {
+            "lag_5 > 23.43": 11.792247766188005,
+            "lag_10 > 23.38": 7.122221729480497,
+            "ratio <= 74.85": 6.484435529444851,
+            "momentum_5 > 0.42": 6.2748337594905035,
+            "time_index > 1510.75": 5.504476778948479,
+            "lag_1 > 23.45": 4.13155848991606,
+            "volatility_10 > 0.54": 4.109469691882766
+          },
+          "prediction": 84.57885823227667,
+          "intercept": 4.780054830827062,
+          "feature_names": [
+            "lag_1",
+            "lag_5",
+            "lag_10",
+            "momentum_5",
+            "volatility_10",
+            "ratio",
+            "time_index"
+          ]
+        }
+      }
+    }
+  }
+}

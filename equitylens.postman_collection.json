@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "AUTO INVEST API",
+    "name": "Equity Lens API",
     "_postman_id": "2f20d94f-8fc2-4b1f-beb7-1b5639a8a201",
-    "description": "Collection for AUTO INVEST DRF backend.",
+    "description": "Collection for Equity Lens DRF backend.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [

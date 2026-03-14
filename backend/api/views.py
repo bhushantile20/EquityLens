@@ -356,12 +356,9 @@ class GoldPredictionView(APIView):
             from gold_silver_analysis.services.prediction_service import (
                 get_full_analysis,
             )
-
-            data = get_full_analysis()
-            return Response(
-                {"historical": data["historical"], "future": data["future"]},
-                status=status.HTTP_200_OK,
-            )
+            period = request.query_params.get("period", "5y")
+            data = get_full_analysis(period=period)
+            return Response(data, status=status.HTTP_200_OK)
         except Exception as exc:
             return Response(
                 {"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
