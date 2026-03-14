@@ -161,11 +161,27 @@ export default function Portfolio() {
             className="input"
             placeholder="Description (Optional)"
           />
-          <button type="submit" className="btn-primary flex justify-center items-center gap-2" disabled={creating}>
+          <button type="submit" className="flex items-center justify-center gap-2 btn-primary" disabled={creating}>
             {creating ? "Creating..." : <><Plus size={18} /> Create Portfolio</>}
           </button>
         </form>
-        {message && <p className="mt-3 text-sm text-emerald-400">{message}</p>}
+
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <span className="text-xs font-medium text-slate-400">Suggestions:</span>
+          {["NIFTY 50", "Bank Nifty", "IT Index", "Top Dividend Yielders"].map((suggestion) => (
+            <button
+              key={suggestion}
+              type="button"
+              onClick={() => setForm({ name: suggestion, description: `Tracking the ${suggestion} components` })}
+              className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 transition-colors hover:bg-brand-500/20 hover:text-brand-400 border border-white/5"
+            >
+              + {suggestion}
+            </button>
+          ))}
+        </div>
+
+        {message && <p className="mt-4 text-sm text-emerald-400">{message}</p>}
+
       </motion.div>
 
       <div className="space-y-4">

@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { LogOut, User, Menu, X } from "lucide-react";
+import { LogOut, User, Menu, X, Home } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../utils/cn";
@@ -51,6 +51,13 @@ export default function Navbar() {
               </button>
 
               <div className="hidden md:flex items-center gap-4">
+                <Link
+                  to="/"
+                  className="flex items-center gap-2 rounded-xl bg-white/5 hover:bg-brand-500/20 hover:text-brand-400 text-slate-300 px-3 py-2 text-sm font-medium transition-colors border border-transparent hover:border-brand-500/30"
+                >
+                  <Home size={16} />
+                  <span>Home</span>
+                </Link>
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-slate-300">
                   <User size={16} className="text-brand-400" />
                   <span>{user?.username}</span>
@@ -110,6 +117,14 @@ export default function Navbar() {
                 )
               })}
               <div className="h-px bg-white/10 my-2" />
+              <Link
+                to="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium text-slate-400 hover:bg-white/5 hover:text-white transition-all duration-300 text-left"
+              >
+                <Home size={16} />
+                <span>Home</span>
+              </Link>
               <div className="flex items-center gap-2 px-4 py-2 text-sm text-slate-400">
                 <User size={16} />
                 <span>{user?.username}</span>

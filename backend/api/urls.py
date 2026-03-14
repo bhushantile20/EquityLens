@@ -1,5 +1,9 @@
 from django.urls import include, path
+from django.http import JsonResponse
 from rest_framework.routers import DefaultRouter
+
+def health_check(request):
+    return JsonResponse({"status": "ok"})
 
 from api.views import (
     AssetForecastView,
@@ -25,6 +29,7 @@ router.register(r"portfolios", PortfolioViewSet, basename="portfolio")
 router.register(r"stocks", StockViewSet, basename="stock")
 
 urlpatterns = [
+    path("health/", health_check, name="health_check"),
     # Auth endpoints
     path("register/", RegisterView.as_view(), name="register"),
     path("login/", LoginView.as_view(), name="login"),

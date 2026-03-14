@@ -318,15 +318,15 @@ export default function Stocks() {
               animate={{ opacity: 1, scale: 1 }}
               className="card overflow-hidden"
             >
-              <div className="p-5 border-b border-white/5 bg-white/5">
-                <h2 className="text-lg font-display font-semibold text-white flex items-center gap-2">
-                  <SearchIcon size={18} className="text-brand-400" />
+              <div className="p-5 border-b border-slate-200 bg-white">
+                <h2 className="text-lg font-display font-semibold text-slate-800 flex items-center gap-2">
+                  <SearchIcon size={18} className="text-indigo-500" />
                   Search Results
                 </h2>
               </div>
 
               {selectedStock ? (
-                <div className="p-4 sm:p-6 bg-[#0a0c16]">
+                <div className="p-4 sm:p-6 bg-slate-50">
                   <StockInfoCard
                     stock={selectedStock}
                     isAdding={addingSymbol === selectedStock.symbol}
@@ -336,24 +336,24 @@ export default function Stocks() {
                 </div>
               ) : (
                 <div className="overflow-x-auto max-h-[400px]">
-                  <table className="min-w-full divide-y divide-white/5">
-                    <thead className="bg-surface/50 backdrop-blur-md sticky top-0 z-10">
+                  <table className="min-w-full divide-y divide-slate-200">
+                    <thead className="bg-slate-50 backdrop-blur-md sticky top-0 z-10 border-b border-slate-200">
                       <tr>
-                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                           Symbol
                         </th>
-                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                           Company
                         </th>
-                        <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                           Price
                         </th>
-                        <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                           Action
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5 bg-transparent">
+                    <tbody className="divide-y divide-slate-100 bg-white">
                       {searchResults.map((result) => {
                         const symbol = String(
                           result.symbol || "",
@@ -362,15 +362,15 @@ export default function Stocks() {
                         return (
                           <tr
                             key={symbol}
-                            className="transition-colors hover:bg-white/5"
+                            className="transition-colors hover:bg-slate-50"
                           >
-                            <td className="px-4 py-4 text-sm font-bold text-white whitespace-nowrap">
+                            <td className="px-4 py-4 text-sm font-bold text-slate-800 whitespace-nowrap">
                               {result.symbol}
                             </td>
-                            <td className="px-4 py-4 text-sm font-medium text-slate-300 whitespace-nowrap">
+                            <td className="px-4 py-4 text-sm font-medium text-slate-600 whitespace-nowrap">
                               {result.company_name}
                             </td>
-                            <td className="px-4 py-4 text-right text-sm font-mono text-slate-300 whitespace-nowrap">
+                            <td className="px-4 py-4 text-right text-sm font-mono text-slate-600 whitespace-nowrap">
                               {formatMoney(
                                 result.current_price,
                                 currencyCodeFromItem(result),
@@ -429,7 +429,7 @@ export default function Stocks() {
                       : "text-slate-200 hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  ✦ AI Analysis
+                  ✦ ML Prediction
                 </button>
               </div>
 

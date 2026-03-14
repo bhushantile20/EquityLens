@@ -1,0 +1,1002 @@
+{
+  "timestamp": 1773515157.2215836,
+  "data": {
+    "initial_investment": 1186003.74,
+    "current_value": 1210207.91,
+    "total_profit": 24204.17,
+    "performance": [
+      {
+        "date": "2025-03-13",
+        "portfolio_value": 1088516.92
+      },
+      {
+        "date": "2025-03-17",
+        "portfolio_value": 1094894.24
+      },
+      {
+        "date": "2025-03-18",
+        "portfolio_value": 1094961.81
+      },
+      {
+        "date": "2025-03-19",
+        "portfolio_value": 1117992.79
+      },
+      {
+        "date": "2025-03-20",
+        "portfolio_value": 1132487.74
+      },
+      {
+        "date": "2025-03-21",
+        "portfolio_value": 1139049.42
+      },
+      {
+        "date": "2025-03-24",
+        "portfolio_value": 1148201.91
+      },
+      {
+        "date": "2025-03-25",
+        "portfolio_value": 1149793.45
+      },
+      {
+        "date": "2025-03-26",
+        "portfolio_value": 1143678.74
+      },
+      {
+        "date": "2025-03-27",
+        "portfolio_value": 1150876.4
+      },
+      {
+        "date": "2025-03-28",
+        "portfolio_value": 1144699.46
+      },
+      {
+        "date": "2025-04-01",
+        "portfolio_value": 1134591.48
+      },
+      {
+        "date": "2025-04-02",
+        "portfolio_value": 1144584.17
+      },
+      {
+        "date": "2025-04-03",
+        "portfolio_value": 1145434.78
+      },
+      {
+        "date": "2025-04-04",
+        "portfolio_value": 1125313.68
+      },
+      {
+        "date": "2025-04-07",
+        "portfolio_value": 1095393.22
+      },
+      {
+        "date": "2025-04-08",
+        "portfolio_value": 1117027.17
+      },
+      {
+        "date": "2025-04-09",
+        "portfolio_value": 1119058.54
+      },
+      {
+        "date": "2025-04-11",
+        "portfolio_value": 1135346.94
+      },
+      {
+        "date": "2025-04-15",
+        "portfolio_value": 1160077.49
+      },
+      {
+        "date": "2025-04-16",
+        "portfolio_value": 1162262.02
+      },
+      {
+        "date": "2025-04-17",
+        "portfolio_value": 1173914.58
+      },
+      {
+        "date": "2025-04-21",
+        "portfolio_value": 1188924.89
+      },
+      {
+        "date": "2025-04-22",
+        "portfolio_value": 1187225.58
+      },
+      {
+        "date": "2025-04-23",
+        "portfolio_value": 1198762.41
+      },
+      {
+        "date": "2025-04-24",
+        "portfolio_value": 1200780.5
+      },
+      {
+        "date": "2025-04-25",
+        "portfolio_value": 1185794.17
+      },
+      {
+        "date": "2025-04-28",
+        "portfolio_value": 1194343.36
+      },
+      {
+        "date": "2025-04-29",
+        "portfolio_value": 1190297.16
+      },
+      {
+        "date": "2025-04-30",
+        "portfolio_value": 1189943.91
+      },
+      {
+        "date": "2025-05-02",
+        "portfolio_value": 1183738.5
+      },
+      {
+        "date": "2025-05-05",
+        "portfolio_value": 1195695.23
+      },
+      {
+        "date": "2025-05-06",
+        "portfolio_value": 1194973.44
+      },
+      {
+        "date": "2025-05-07",
+        "portfolio_value": 1192221.95
+      },
+      {
+        "date": "2025-05-08",
+        "portfolio_value": 1178627.47
+      },
+      {
+        "date": "2025-05-09",
+        "portfolio_value": 1171119.4
+      },
+      {
+        "date": "2025-05-12",
+        "portfolio_value": 1210941.78
+      },
+      {
+        "date": "2025-05-13",
+        "portfolio_value": 1203697.71
+      },
+      {
+        "date": "2025-05-14",
+        "portfolio_value": 1209693.63
+      },
+      {
+        "date": "2025-05-15",
+        "portfolio_value": 1231276.71
+      },
+      {
+        "date": "2025-05-16",
+        "portfolio_value": 1233275.9
+      },
+      {
+        "date": "2025-05-19",
+        "portfolio_value": 1237547.96
+      },
+      {
+        "date": "2025-05-20",
+        "portfolio_value": 1216304.8
+      },
+      {
+        "date": "2025-05-21",
+        "portfolio_value": 1223117.94
+      },
+      {
+        "date": "2025-05-22",
+        "portfolio_value": 1215796.01
+      },
+      {
+        "date": "2025-05-23",
+        "portfolio_value": 1223778.15
+      },
+      {
+        "date": "2025-05-26",
+        "portfolio_value": 1232419.26
+      },
+      {
+        "date": "2025-05-27",
+        "portfolio_value": 1224040.15
+      },
+      {
+        "date": "2025-05-28",
+        "portfolio_value": 1216437.69
+      },
+      {
+        "date": "2025-05-29",
+        "portfolio_value": 1219925.57
+      },
+      {
+        "date": "2025-05-30",
+        "portfolio_value": 1211213.8
+      },
+      {
+        "date": "2025-06-02",
+        "portfolio_value": 1209944.54
+      },
+      {
+        "date": "2025-06-03",
+        "portfolio_value": 1202543.55
+      },
+      {
+        "date": "2025-06-04",
+        "portfolio_value": 1204388.79
+      },
+      {
+        "date": "2025-06-05",
+        "portfolio_value": 1207928.49
+      },
+      {
+        "date": "2025-06-06",
+        "portfolio_value": 1220012.9
+      },
+      {
+        "date": "2025-06-09",
+        "portfolio_value": 1229271.09
+      },
+      {
+        "date": "2025-06-10",
+        "portfolio_value": 1230386.98
+      },
+      {
+        "date": "2025-06-11",
+        "portfolio_value": 1233526.26
+      },
+      {
+        "date": "2025-06-12",
+        "portfolio_value": 1221074.55
+      },
+      {
+        "date": "2025-06-13",
+        "portfolio_value": 1213148.18
+      },
+      {
+        "date": "2025-06-16",
+        "portfolio_value": 1226512.92
+      },
+      {
+        "date": "2025-06-17",
+        "portfolio_value": 1219566.89
+      },
+      {
+        "date": "2025-06-18",
+        "portfolio_value": 1219223.19
+      },
+      {
+        "date": "2025-06-19",
+        "portfolio_value": 1220643.43
+      },
+      {
+        "date": "2025-06-20",
+        "portfolio_value": 1230815.03
+      },
+      {
+        "date": "2025-06-23",
+        "portfolio_value": 1226277.09
+      },
+      {
+        "date": "2025-06-24",
+        "portfolio_value": 1232526.99
+      },
+      {
+        "date": "2025-06-25",
+        "portfolio_value": 1242991.27
+      },
+      {
+        "date": "2025-06-26",
+        "portfolio_value": 1253366.07
+      },
+      {
+        "date": "2025-06-27",
+        "portfolio_value": 1261400.79
+      },
+      {
+        "date": "2025-06-30",
+        "portfolio_value": 1257941.83
+      },
+      {
+        "date": "2025-07-01",
+        "portfolio_value": 1261938.58
+      },
+      {
+        "date": "2025-07-02",
+        "portfolio_value": 1264216.04
+      },
+      {
+        "date": "2025-07-03",
+        "portfolio_value": 1263219.0
+      },
+      {
+        "date": "2025-07-04",
+        "portfolio_value": 1264813.58
+      },
+      {
+        "date": "2025-07-07",
+        "portfolio_value": 1264112.48
+      },
+      {
+        "date": "2025-07-08",
+        "portfolio_value": 1262011.41
+      },
+      {
+        "date": "2025-07-09",
+        "portfolio_value": 1263260.12
+      },
+      {
+        "date": "2025-07-10",
+        "portfolio_value": 1257726.53
+      },
+      {
+        "date": "2025-07-11",
+        "portfolio_value": 1246903.55
+      },
+      {
+        "date": "2025-07-14",
+        "portfolio_value": 1245296.79
+      },
+      {
+        "date": "2025-07-15",
+        "portfolio_value": 1253732.41
+      },
+      {
+        "date": "2025-07-16",
+        "portfolio_value": 1255223.27
+      },
+      {
+        "date": "2025-07-17",
+        "portfolio_value": 1251757.41
+      },
+      {
+        "date": "2025-07-18",
+        "portfolio_value": 1246849.26
+      },
+      {
+        "date": "2025-07-21",
+        "portfolio_value": 1248052.03
+      },
+      {
+        "date": "2025-07-22",
+        "portfolio_value": 1242691.77
+      },
+      {
+        "date": "2025-07-23",
+        "portfolio_value": 1247858.59
+      },
+      {
+        "date": "2025-07-24",
+        "portfolio_value": 1241239.78
+      },
+      {
+        "date": "2025-07-25",
+        "portfolio_value": 1232207.56
+      },
+      {
+        "date": "2025-07-28",
+        "portfolio_value": 1227037.45
+      },
+      {
+        "date": "2025-07-29",
+        "portfolio_value": 1234084.39
+      },
+      {
+        "date": "2025-07-30",
+        "portfolio_value": 1237295.97
+      },
+      {
+        "date": "2025-07-31",
+        "portfolio_value": 1235595.01
+      },
+      {
+        "date": "2025-08-01",
+        "portfolio_value": 1222975.75
+      },
+      {
+        "date": "2025-08-04",
+        "portfolio_value": 1237220.82
+      },
+      {
+        "date": "2025-08-05",
+        "portfolio_value": 1237608.47
+      },
+      {
+        "date": "2025-08-06",
+        "portfolio_value": 1228158.57
+      },
+      {
+        "date": "2025-08-07",
+        "portfolio_value": 1231998.96
+      },
+      {
+        "date": "2025-08-08",
+        "portfolio_value": 1220072.73
+      },
+      {
+        "date": "2025-08-11",
+        "portfolio_value": 1231651.34
+      },
+      {
+        "date": "2025-08-12",
+        "portfolio_value": 1233746.65
+      },
+      {
+        "date": "2025-08-13",
+        "portfolio_value": 1245783.62
+      },
+      {
+        "date": "2025-08-14",
+        "portfolio_value": 1245481.1
+      },
+      {
+        "date": "2025-08-18",
+        "portfolio_value": 1279243.05
+      },
+      {
+        "date": "2025-08-19",
+        "portfolio_value": 1286255.59
+      },
+      {
+        "date": "2025-08-20",
+        "portfolio_value": 1292934.37
+      },
+      {
+        "date": "2025-08-21",
+        "portfolio_value": 1292019.57
+      },
+      {
+        "date": "2025-08-22",
+        "portfolio_value": 1284124.42
+      },
+      {
+        "date": "2025-08-25",
+        "portfolio_value": 1290247.66
+      },
+      {
+        "date": "2025-08-26",
+        "portfolio_value": 1288219.96
+      },
+      {
+        "date": "2025-08-28",
+        "portfolio_value": 1279546.98
+      },
+      {
+        "date": "2025-08-29",
+        "portfolio_value": 1277518.8
+      },
+      {
+        "date": "2025-09-01",
+        "portfolio_value": 1292825.06
+      },
+      {
+        "date": "2025-09-02",
+        "portfolio_value": 1293074.91
+      },
+      {
+        "date": "2025-09-03",
+        "portfolio_value": 1300101.25
+      },
+      {
+        "date": "2025-09-04",
+        "portfolio_value": 1300793.79
+      },
+      {
+        "date": "2025-09-05",
+        "portfolio_value": 1301276.67
+      },
+      {
+        "date": "2025-09-08",
+        "portfolio_value": 1310976.53
+      },
+      {
+        "date": "2025-09-09",
+        "portfolio_value": 1315414.12
+      },
+      {
+        "date": "2025-09-10",
+        "portfolio_value": 1314280.08
+      },
+      {
+        "date": "2025-09-11",
+        "portfolio_value": 1312136.24
+      },
+      {
+        "date": "2025-09-12",
+        "portfolio_value": 1316122.06
+      },
+      {
+        "date": "2025-09-15",
+        "portfolio_value": 1312533.53
+      },
+      {
+        "date": "2025-09-16",
+        "portfolio_value": 1323795.34
+      },
+      {
+        "date": "2025-09-17",
+        "portfolio_value": 1328095.71
+      },
+      {
+        "date": "2025-09-18",
+        "portfolio_value": 1329502.33
+      },
+      {
+        "date": "2025-09-19",
+        "portfolio_value": 1328130.54
+      },
+      {
+        "date": "2025-09-22",
+        "portfolio_value": 1326424.39
+      },
+      {
+        "date": "2025-09-23",
+        "portfolio_value": 1322375.09
+      },
+      {
+        "date": "2025-09-24",
+        "portfolio_value": 1316770.15
+      },
+      {
+        "date": "2025-09-25",
+        "portfolio_value": 1309970.74
+      },
+      {
+        "date": "2025-09-26",
+        "portfolio_value": 1296235.48
+      },
+      {
+        "date": "2025-09-29",
+        "portfolio_value": 1293005.5
+      },
+      {
+        "date": "2025-09-30",
+        "portfolio_value": 1295804.58
+      },
+      {
+        "date": "2025-10-01",
+        "portfolio_value": 1298472.27
+      },
+      {
+        "date": "2025-10-03",
+        "portfolio_value": 1301306.76
+      },
+      {
+        "date": "2025-10-06",
+        "portfolio_value": 1309398.89
+      },
+      {
+        "date": "2025-10-07",
+        "portfolio_value": 1315031.71
+      },
+      {
+        "date": "2025-10-08",
+        "portfolio_value": 1307911.0
+      },
+      {
+        "date": "2025-10-09",
+        "portfolio_value": 1315396.01
+      },
+      {
+        "date": "2025-10-10",
+        "portfolio_value": 1326016.37
+      },
+      {
+        "date": "2025-10-13",
+        "portfolio_value": 1326835.15
+      },
+      {
+        "date": "2025-10-14",
+        "portfolio_value": 1322850.57
+      },
+      {
+        "date": "2025-10-15",
+        "portfolio_value": 1331352.34
+      },
+      {
+        "date": "2025-10-16",
+        "portfolio_value": 1343995.68
+      },
+      {
+        "date": "2025-10-17",
+        "portfolio_value": 1349845.43
+      },
+      {
+        "date": "2025-10-20",
+        "portfolio_value": 1355552.36
+      },
+      {
+        "date": "2025-10-21",
+        "portfolio_value": 1356097.89
+      },
+      {
+        "date": "2025-10-23",
+        "portfolio_value": 1351171.53
+      },
+      {
+        "date": "2025-10-24",
+        "portfolio_value": 1342391.79
+      },
+      {
+        "date": "2025-10-27",
+        "portfolio_value": 1348688.7
+      },
+      {
+        "date": "2025-10-28",
+        "portfolio_value": 1345888.29
+      },
+      {
+        "date": "2025-10-29",
+        "portfolio_value": 1347134.25
+      },
+      {
+        "date": "2025-10-30",
+        "portfolio_value": 1342722.39
+      },
+      {
+        "date": "2025-10-31",
+        "portfolio_value": 1337840.23
+      },
+      {
+        "date": "2025-11-03",
+        "portfolio_value": 1336089.36
+      },
+      {
+        "date": "2025-11-04",
+        "portfolio_value": 1324968.56
+      },
+      {
+        "date": "2025-11-06",
+        "portfolio_value": 1324098.55
+      },
+      {
+        "date": "2025-11-07",
+        "portfolio_value": 1322604.61
+      },
+      {
+        "date": "2025-11-10",
+        "portfolio_value": 1324153.53
+      },
+      {
+        "date": "2025-11-11",
+        "portfolio_value": 1328536.85
+      },
+      {
+        "date": "2025-11-12",
+        "portfolio_value": 1337002.05
+      },
+      {
+        "date": "2025-11-13",
+        "portfolio_value": 1339190.15
+      },
+      {
+        "date": "2025-11-14",
+        "portfolio_value": 1336068.58
+      },
+      {
+        "date": "2025-11-17",
+        "portfolio_value": 1344676.05
+      },
+      {
+        "date": "2025-11-18",
+        "portfolio_value": 1338490.24
+      },
+      {
+        "date": "2025-11-19",
+        "portfolio_value": 1342513.21
+      },
+      {
+        "date": "2025-11-20",
+        "portfolio_value": 1348726.19
+      },
+      {
+        "date": "2025-11-21",
+        "portfolio_value": 1346766.69
+      },
+      {
+        "date": "2025-11-24",
+        "portfolio_value": 1343082.67
+      },
+      {
+        "date": "2025-11-25",
+        "portfolio_value": 1342247.42
+      },
+      {
+        "date": "2025-11-26",
+        "portfolio_value": 1357827.5
+      },
+      {
+        "date": "2025-11-27",
+        "portfolio_value": 1349010.67
+      },
+      {
+        "date": "2025-11-28",
+        "portfolio_value": 1350561.55
+      },
+      {
+        "date": "2025-12-01",
+        "portfolio_value": 1351794.49
+      },
+      {
+        "date": "2025-12-02",
+        "portfolio_value": 1351004.66
+      },
+      {
+        "date": "2025-12-03",
+        "portfolio_value": 1341751.85
+      },
+      {
+        "date": "2025-12-04",
+        "portfolio_value": 1345536.52
+      },
+      {
+        "date": "2025-12-05",
+        "portfolio_value": 1353027.22
+      },
+      {
+        "date": "2025-12-08",
+        "portfolio_value": 1334296.45
+      },
+      {
+        "date": "2025-12-09",
+        "portfolio_value": 1326684.97
+      },
+      {
+        "date": "2025-12-10",
+        "portfolio_value": 1322501.88
+      },
+      {
+        "date": "2025-12-11",
+        "portfolio_value": 1332020.0
+      },
+      {
+        "date": "2025-12-12",
+        "portfolio_value": 1342305.73
+      },
+      {
+        "date": "2025-12-15",
+        "portfolio_value": 1340179.65
+      },
+      {
+        "date": "2025-12-16",
+        "portfolio_value": 1334506.34
+      },
+      {
+        "date": "2025-12-17",
+        "portfolio_value": 1331161.43
+      },
+      {
+        "date": "2025-12-18",
+        "portfolio_value": 1329749.35
+      },
+      {
+        "date": "2025-12-19",
+        "portfolio_value": 1339956.37
+      },
+      {
+        "date": "2025-12-22",
+        "portfolio_value": 1348619.46
+      },
+      {
+        "date": "2025-12-23",
+        "portfolio_value": 1348286.02
+      },
+      {
+        "date": "2025-12-24",
+        "portfolio_value": 1349013.99
+      },
+      {
+        "date": "2025-12-26",
+        "portfolio_value": 1344493.45
+      },
+      {
+        "date": "2025-12-29",
+        "portfolio_value": 1340128.08
+      },
+      {
+        "date": "2025-12-30",
+        "portfolio_value": 1341169.38
+      },
+      {
+        "date": "2025-12-31",
+        "portfolio_value": 1351090.12
+      },
+      {
+        "date": "2026-01-01",
+        "portfolio_value": 1358006.78
+      },
+      {
+        "date": "2026-01-02",
+        "portfolio_value": 1365000.85
+      },
+      {
+        "date": "2026-01-05",
+        "portfolio_value": 1370472.11
+      },
+      {
+        "date": "2026-01-06",
+        "portfolio_value": 1382854.72
+      },
+      {
+        "date": "2026-01-07",
+        "portfolio_value": 1380911.48
+      },
+      {
+        "date": "2026-01-08",
+        "portfolio_value": 1365015.97
+      },
+      {
+        "date": "2026-01-09",
+        "portfolio_value": 1353090.93
+      },
+      {
+        "date": "2026-01-12",
+        "portfolio_value": 1356474.02
+      },
+      {
+        "date": "2026-01-13",
+        "portfolio_value": 1351070.66
+      },
+      {
+        "date": "2026-01-14",
+        "portfolio_value": 1345455.31
+      },
+      {
+        "date": "2026-01-15",
+        "portfolio_value": 1345455.31
+      },
+      {
+        "date": "2026-01-16",
+        "portfolio_value": 1342040.11
+      },
+      {
+        "date": "2026-01-19",
+        "portfolio_value": 1344098.2
+      },
+      {
+        "date": "2026-01-20",
+        "portfolio_value": 1316505.05
+      },
+      {
+        "date": "2026-01-21",
+        "portfolio_value": 1314157.76
+      },
+      {
+        "date": "2026-01-22",
+        "portfolio_value": 1322760.62
+      },
+      {
+        "date": "2026-01-23",
+        "portfolio_value": 1307791.09
+      },
+      {
+        "date": "2026-01-27",
+        "portfolio_value": 1315194.24
+      },
+      {
+        "date": "2026-01-28",
+        "portfolio_value": 1315143.69
+      },
+      {
+        "date": "2026-01-29",
+        "portfolio_value": 1307682.71
+      },
+      {
+        "date": "2026-01-30",
+        "portfolio_value": 1312094.17
+      },
+      {
+        "date": "2026-02-02",
+        "portfolio_value": 1302218.9
+      },
+      {
+        "date": "2026-02-03",
+        "portfolio_value": 1333045.99
+      },
+      {
+        "date": "2026-02-04",
+        "portfolio_value": 1338436.61
+      },
+      {
+        "date": "2026-02-05",
+        "portfolio_value": 1334810.47
+      },
+      {
+        "date": "2026-02-06",
+        "portfolio_value": 1331986.23
+      },
+      {
+        "date": "2026-02-09",
+        "portfolio_value": 1343110.37
+      },
+      {
+        "date": "2026-02-10",
+        "portfolio_value": 1349556.24
+      },
+      {
+        "date": "2026-02-11",
+        "portfolio_value": 1363553.43
+      },
+      {
+        "date": "2026-02-12",
+        "portfolio_value": 1358737.33
+      },
+      {
+        "date": "2026-02-13",
+        "portfolio_value": 1346019.66
+      },
+      {
+        "date": "2026-02-16",
+        "portfolio_value": 1348158.72
+      },
+      {
+        "date": "2026-02-17",
+        "portfolio_value": 1355746.94
+      },
+      {
+        "date": "2026-02-18",
+        "portfolio_value": 1361655.73
+      },
+      {
+        "date": "2026-02-19",
+        "portfolio_value": 1338931.39
+      },
+      {
+        "date": "2026-02-20",
+        "portfolio_value": 1345750.13
+      },
+      {
+        "date": "2026-02-23",
+        "portfolio_value": 1355814.88
+      },
+      {
+        "date": "2026-02-24",
+        "portfolio_value": 1346773.35
+      },
+      {
+        "date": "2026-02-25",
+        "portfolio_value": 1361231.19
+      },
+      {
+        "date": "2026-02-26",
+        "portfolio_value": 1365095.05
+      },
+      {
+        "date": "2026-02-27",
+        "portfolio_value": 1344519.77
+      },
+      {
+        "date": "2026-03-02",
+        "portfolio_value": 1321618.85
+      },
+      {
+        "date": "2026-03-04",
+        "portfolio_value": 1295896.56
+      },
+      {
+        "date": "2026-03-05",
+        "portfolio_value": 1314541.5
+      },
+      {
+        "date": "2026-03-06",
+        "portfolio_value": 1299813.1
+      },
+      {
+        "date": "2026-03-09",
+        "portfolio_value": 1267014.11
+      },
+      {
+        "date": "2026-03-10",
+        "portfolio_value": 1289123.3
+      },
+      {
+        "date": "2026-03-11",
+        "portfolio_value": 1265681.7
+      },
+      {
+        "date": "2026-03-12",
+        "portfolio_value": 1241295.8
+      },
+      {
+        "date": "2026-03-13",
+        "portfolio_value": 1210207.91
+      }
+    ]
+  }
+}

@@ -52,7 +52,7 @@ const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-slate-900 border border-slate-700 rounded-lg p-3 shadow-2xl">
+      <div className="bg-slate-900 border border-slate-700 rounded-lg p-3 shadow-2xl pointer-events-none">
         <p className="font-bold text-white text-sm">
           {data.company_name || data.symbol}
         </p>
@@ -241,7 +241,10 @@ export default function PCAClusterChart({
               />
               <Tooltip
                 content={<CustomTooltip />}
-                cursor={{ fill: "rgba(100, 116, 139, 0.1)" }}
+                cursor={{ strokeDasharray: "3 3", strokeWidth: 1.5, stroke: "#94a3b8" }}
+                isAnimationActive={false}
+                wrapperStyle={{ pointerEvents: "none", zIndex: 100 }}
+                offset={25}
               />
               {/* Render scatter with LARGER points (radius increased) */}
               <Scatter
@@ -249,6 +252,7 @@ export default function PCAClusterChart({
                 data={chartData}
                 fill="#8884d8"
                 shape="circle"
+                isAnimationActive={false}
               >
                 {chartData.map((entry, index) => (
                   <Cell

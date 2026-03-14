@@ -4,8 +4,8 @@ import pandas as pd
 from .base import fetch_stock_data, format_prediction_response
 from .compute_metrics import calculate_model_metrics
 
-def predict(ticker, days_ahead=7):
-    df = fetch_stock_data(ticker)
+def predict(ticker, days_ahead=7, period="1y", interval="1d"):
+    df = fetch_stock_data(ticker, period=period, interval=interval)
     
     # Use ordinal dates for Linear Regression
     df['Ordinal'] = df['Date'].apply(lambda x: x.toordinal())
@@ -31,17 +31,24 @@ def predict(ticker, days_ahead=7):
     last_date = df['Date'].max()
     prediction = []
     
+    # Interval delta
+    if interval == "15m": delta = timedelta(minutes=15)
+    elif interval == "1h": delta = timedelta(hours=1)
+    elif interval == "1wk": delta = timedelta(weeks=1)
+    elif interval == "1mo": delta = timedelta(days=30)
+    else: delta = timedelta(days=1)
+    
     # Pivot point
     prediction.append({
-        "date": last_date.strftime("%Y-%m-%d"),
+        "date": last_date.strftime("%Y-%m-%d %H:%M:%S"),
         "price": round(float(df['Close'].iloc[-1]), 2)
     })
     
     for i in range(1, days_ahead + 1):
-        future_date = last_date + timedelta(days=i)
+        future_date = last_date + (delta * i)
         pred_price = model.predict([[future_date.toordinal()]])[0]
         prediction.append({
-            "date": future_date.strftime("%Y-%m-%d"),
+            "date": future_date.strftime("%Y-%m-%d %H:%M:%S"),
             "price": round(float(pred_price), 2)
         })
         

@@ -138,7 +138,7 @@ export default function GoldSilverAnalytics() {
             </h3>
             <div className="flex gap-6 text-sm">
               <div className="flex flex-col items-end">
-                <span className="text-slate-500 text-xs">Gold (INR/1g)</span>
+                <span className="text-slate-500 text-xs">Gold (INR/10g)</span>
                 <span className="font-bold text-slate-800">
                   ₹{data.prices.gold.current?.toLocaleString()}
                 </span>
@@ -151,7 +151,7 @@ export default function GoldSilverAnalytics() {
                 </span>
               </div>
               <div className="flex flex-col items-end">
-                <span className="text-slate-500 text-xs">Silver (INR/1g)</span>
+                <span className="text-slate-500 text-xs">Silver (INR/1kg)</span>
                 <span className="font-bold text-slate-800">
                   ₹{data.prices.silver.current?.toLocaleString()}
                 </span>
@@ -193,7 +193,7 @@ export default function GoldSilverAnalytics() {
                   tickLine={false}
                   domain={["auto", "auto"]}
                   label={{
-                    value: "Gold (INR/1g)",
+                    value: "Gold (INR/10g)",
                     angle: -90,
                     position: "insideLeft",
                     fontSize: 10,
@@ -209,7 +209,7 @@ export default function GoldSilverAnalytics() {
                   tickLine={false}
                   domain={["auto", "auto"]}
                   label={{
-                    value: "Silver (INR/1g)",
+                    value: "Silver (INR/1kg)",
                     angle: 90,
                     position: "insideRight",
                     fontSize: 10,

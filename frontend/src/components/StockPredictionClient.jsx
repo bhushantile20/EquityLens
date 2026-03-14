@@ -177,10 +177,10 @@ export default function StockPredictionClient() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-display font-bold tracking-tight text-white">
+          <h1 className="text-3xl font-display font-bold tracking-tight text-slate-800">
             Stock Predictions with ML
           </h1>
-          <p className="text-slate-400 mt-2">
+          <p className="text-slate-500 mt-2">
             Generate and evaluate price predictions using ARIMA, LSTM, and CNN
             models.
           </p>
@@ -188,15 +188,15 @@ export default function StockPredictionClient() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
-        <div className="lg:col-span-1 card p-6 shadow-sm flex flex-col justify-between">
+        <div className="lg:col-span-1 bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
           <div>
-            <h2 className="font-semibold text-lg flex items-center gap-2 mb-4 text-white">
-              <RefreshCw className="w-5 h-5 text-brand-400" />
+            <h2 className="font-semibold text-lg flex items-center gap-2 mb-4 text-slate-800">
+              <RefreshCw className="w-5 h-5 text-indigo-500" />
               New Prediction
             </h2>
             <form onSubmit={handlePredict} className="flex flex-col gap-4">
               <div className="relative" ref={suggestionsRef}>
-                <label className="block text-sm font-medium mb-1.5 text-slate-400">
+                <label className="block text-sm font-medium mb-1.5 text-slate-600">
                   Stock Symbol (NSE only)
                 </label>
                 <input
@@ -211,26 +211,26 @@ export default function StockPredictionClient() {
                   onFocus={() =>
                     symbol && suggestions.length > 0 && setShowSuggestions(true)
                   }
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-brand-400 uppercase"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 uppercase"
                   required
                 />
 
                 {/* Autocomplete Suggestions */}
                 {showSuggestions && suggestions.length > 0 && (
-                  <div className="absolute z-50 left-0 right-0 mt-1 bg-[#1a1d2b] border border-white/10 rounded-lg shadow-2xl max-h-60 overflow-y-auto">
+                  <div className="absolute z-50 left-0 right-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-xl max-h-60 overflow-y-auto">
                     {suggestions.map((s, idx) => (
                       <div
                         key={s.symbol}
                         onClick={() => handleSuggestionClick(s)}
                         onMouseEnter={() => setSuggestionIndex(idx)}
-                        className={`px-4 py-2 cursor-pointer border-b border-white/5 last:border-0 transition-colors ${
+                        className={`px-4 py-2 cursor-pointer border-b border-slate-100 last:border-0 transition-colors ${
                           suggestionIndex === idx
-                            ? "bg-brand-500/20 text-white"
-                            : "text-slate-300 hover:bg-white/5"
+                            ? "bg-indigo-50 text-indigo-600"
+                            : "text-slate-600 hover:bg-slate-50"
                         }`}
                       >
                         <div className="font-bold text-sm">{s.symbol}</div>
-                        <div className="text-[10px] text-slate-500 truncate">
+                        <div className="text-[10px] text-slate-400 truncate">
                           {s.name}
                         </div>
                       </div>
@@ -239,14 +239,14 @@ export default function StockPredictionClient() {
                 )}
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1.5 text-slate-400">
+                <label className="block text-sm font-medium mb-1.5 text-slate-600">
                   Target Time (Within 72h)
                 </label>
                 <input
                   type="datetime-local"
                   value={targetTime}
                   onChange={(e) => setTargetTime(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-brand-400"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   required
                 />
               </div>
@@ -261,7 +261,7 @@ export default function StockPredictionClient() {
               <button
                 type="submit"
                 disabled={submitting || !symbol || !targetTime}
-                className="w-full mt-2 bg-brand-500 text-white font-medium rounded-lg py-2.5 flex items-center justify-center gap-2 hover:bg-brand-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full mt-2 bg-indigo-600 text-white font-medium rounded-lg py-2.5 flex items-center justify-center gap-2 hover:bg-indigo-700 shadow-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitting ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -272,7 +272,7 @@ export default function StockPredictionClient() {
               </button>
             </form>
           </div>
-          <div className="mt-6 pt-4 border-t border-white/5 text-sm text-slate-400">
+          <div className="mt-6 pt-4 border-t border-slate-100 text-sm text-slate-500">
             <p>
               Will fetch last 1 year of data and use ARIMA, LSTM, and CNN to
               forecast the price at the chosen time.
@@ -280,20 +280,20 @@ export default function StockPredictionClient() {
           </div>
         </div>
 
-        <div className="lg:col-span-3 card overflow-hidden shadow-sm flex flex-col">
-          <div className="p-6 border-b border-white/5 flex items-center justify-between bg-white/5">
-            <h2 className="font-semibold text-lg text-white">
+        <div className="lg:col-span-3 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm flex flex-col">
+          <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-white">
+            <h2 className="font-semibold text-lg text-slate-800">
               Prediction Dashboard
             </h2>
             <button
               onClick={handleEvaluate}
               disabled={evaluating}
-              className="text-sm font-medium bg-white/5 text-white px-4 py-2 flex items-center gap-2 rounded-lg hover:bg-white/10 transition-colors disabled:opacity-50 border border-white/10"
+              className="text-sm font-medium bg-slate-50 text-slate-700 px-4 py-2 flex items-center gap-2 rounded-lg hover:bg-slate-100 transition-colors disabled:opacity-50 border border-slate-200 shadow-sm"
             >
               {evaluating ? (
-                <Loader2 className="w-4 h-4 animate-spin text-brand-400" />
+                <Loader2 className="w-4 h-4 animate-spin text-indigo-500" />
               ) : (
-                <CheckCircle2 className="w-4 h-4 text-brand-400" />
+                <CheckCircle2 className="w-4 h-4 text-indigo-500" />
               )}
               {evaluating ? "Evaluating..." : "Evaluate Past Predictions"}
             </button>
@@ -302,7 +302,7 @@ export default function StockPredictionClient() {
           <div className="overflow-x-auto flex-1 p-0">
             {loading ? (
               <div className="flex items-center justify-center py-20">
-                <Loader2 className="w-8 h-8 animate-spin text-brand-400" />
+                <Loader2 className="w-8 h-8 animate-spin text-indigo-500" />
               </div>
             ) : predictions.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-20 text-slate-500">
@@ -313,7 +313,7 @@ export default function StockPredictionClient() {
               </div>
             ) : (
               <table className="w-full text-sm text-left">
-                <thead className="bg-white/5 text-slate-400 border-b border-white/5 sticky top-0">
+                <thead className="bg-slate-50 text-slate-500 border-b border-slate-200 sticky top-0">
                   <tr>
                     <th className="px-4 py-3 font-medium whitespace-nowrap">
                       Symbol
@@ -353,69 +353,69 @@ export default function StockPredictionClient() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5">
+                <tbody className="divide-y divide-slate-100">
                   {predictions.map((p) => (
                     <tr
                       key={p.id}
-                      className="hover:bg-white/5 transition-colors"
+                      className="hover:bg-slate-50 transition-colors"
                     >
-                      <td className="px-4 py-3 font-bold text-white">
+                      <td className="px-4 py-3 font-bold text-slate-800">
                         {p.symbol}
                       </td>
-                      <td className="px-4 py-3 text-slate-300">
+                      <td className="px-4 py-3 text-slate-600">
                         ₹{parseFloat(p.current_price).toFixed(2)}
                       </td>
-                      <td className="px-4 py-3 text-slate-300">
+                      <td className="px-4 py-3 text-slate-600">
                         ₹{parseFloat(p.min_price_30d).toFixed(2)}
                       </td>
-                      <td className="px-4 py-3 text-slate-300">
+                      <td className="px-4 py-3 text-slate-600">
                         ₹{parseFloat(p.max_price_30d).toFixed(2)}
                       </td>
-                      <td className="px-4 py-3 font-medium text-blue-400">
+                      <td className="px-4 py-3 font-medium text-blue-600">
                         {p.arima_prediction
                           ? "₹" + parseFloat(p.arima_prediction).toFixed(2)
                           : "-"}
                       </td>
-                      <td className="px-4 py-3 font-medium text-purple-400">
+                      <td className="px-4 py-3 font-medium text-purple-600">
                         {p.lstm_prediction
                           ? "₹" + parseFloat(p.lstm_prediction).toFixed(2)
                           : "-"}
                       </td>
-                      <td className="px-4 py-3 font-medium text-amber-400">
+                      <td className="px-4 py-3 font-medium text-amber-600">
                         {p.cnn_prediction
                           ? "₹" + parseFloat(p.cnn_prediction).toFixed(2)
                           : "-"}
                       </td>
-                      <td className="px-4 py-3 text-xs whitespace-nowrap text-slate-500">
+                      <td className="px-4 py-3 text-xs whitespace-nowrap text-slate-400">
                         {new Date(p.target_time).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 font-medium">
                         {p.actual_price ? (
-                          <span className="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                          <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             ₹{parseFloat(p.actual_price).toFixed(2)}
                           </span>
                         ) : (
-                          <span className="text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 text-xs">
+                          <span className="text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 text-xs">
                             Pending
                           </span>
                         )}
                       </td>
                       <td
-                        className={`px-4 py-3 text-xs ${parseFloat(p.arima_error) === 0 ? "text-slate-500" : Math.abs(parseFloat(p.arima_error)) < 10 ? "text-emerald-400" : "text-rose-400"}`}
+                        className={`px-4 py-3 text-xs ${parseFloat(p.arima_error) === 0 ? "text-slate-400" : Math.abs(parseFloat(p.arima_error)) < 10 ? "text-emerald-600 font-medium" : "text-rose-600 font-medium"}`}
                       >
                         {p.arima_error
                           ? "₹" + parseFloat(p.arima_error).toFixed(2)
                           : "-"}
                       </td>
                       <td
-                        className={`px-4 py-3 text-xs ${parseFloat(p.lstm_error) === 0 ? "text-slate-500" : Math.abs(parseFloat(p.lstm_error)) < 10 ? "text-emerald-400" : "text-rose-400"}`}
+                        className={`px-4 py-3 text-xs ${parseFloat(p.lstm_error) === 0 ? "text-slate-400" : Math.abs(parseFloat(p.lstm_error)) < 10 ? "text-emerald-600 font-medium" : "text-rose-600 font-medium"}`}
                       >
                         {p.lstm_error
                           ? "₹" + parseFloat(p.lstm_error).toFixed(2)
                           : "-"}
                       </td>
                       <td
-                        className={`px-4 py-3 text-xs ${parseFloat(p.cnn_error) === 0 ? "text-slate-500" : Math.abs(parseFloat(p.cnn_error)) < 10 ? "text-emerald-400" : "text-rose-400"}`}
+                        className={`px-4 py-3 text-xs ${parseFloat(p.cnn_error) === 0 ? "text-slate-400" : Math.abs(parseFloat(p.cnn_error)) < 10 ? "text-emerald-600 font-medium" : "text-rose-600 font-medium"}`}
                       >
                         {p.cnn_error
                           ? "₹" + parseFloat(p.cnn_error).toFixed(2)

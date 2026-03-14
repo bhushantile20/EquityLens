@@ -13,7 +13,9 @@ import {
     LineChart,
     Line,
     Legend,
-    Area
+    Area,
+    AreaChart,
+    ReferenceLine
 } from "recharts";
 import { fetchPortfolioAnalysis, fetchStockPrediction } from "../api/stocks";
 import Loader from "./Loader";
@@ -50,18 +52,21 @@ export default function PortfolioAnalysis({ portfolioId }) {
 
     const modelOptions = [
         { id: "linear_regression", name: "Linear Regression" },
+        { id: "random_forest", name: "Random Forest" },
         { id: "arima", name: "ARIMA" },
         { id: "rnn", name: "RNN" },
-        { id: "cnn", name: "CNN" }
+        { id: "cnn", name: "CNN" },
+        { id: "lstm", name: "LSTM" }
     ];
 
     const horizonOptions = [
-        { id: "1_week", name: "1 Week" },
-        { id: "1_month", name: "1 Month" },
-        { id: "3_months", name: "3 Months" },
-        { id: "6_months", name: "6 Months" },
-        { id: "9_months", name: "9 Months" },
-        { id: "12_months", name: "12 Months" }
+        { id: "1h", name: "Next 1 Hour" },
+        { id: "1d", name: "Next 1 Day" },
+        { id: "7d", name: "Next 7 Days" },
+        { id: "30d", name: "Next 30 Days" },
+        { id: "3m", name: "Next 3 Months" },
+        { id: "6m", name: "Next 6 Months" },
+        { id: "1y", name: "Next 1 Year" }
     ];
 
     useEffect(() => {
@@ -104,7 +109,13 @@ export default function PortfolioAnalysis({ portfolioId }) {
             setPredLoading(true);
             setPredError("");
             try {
-                const result = await fetchStockPrediction(selectedSymbol, selectedModel, selectedHorizon);
+                // Use default params if options are not aligned with horizonOptions
+                let horizon = selectedHorizon;
+                if (!["1h", "1d", "7d", "30d", "3m", "6m", "1y"].includes(horizon)) {
+                    horizon = "7d";
+                    setSelectedHorizon("7d");
+                }
+                const result = await fetchStockPrediction(selectedSymbol, selectedModel, horizon);
                 setPredictionData(result);
             } catch (err) {
                 setPredError(`Failed to load ${selectedModel} prediction for ${selectedSymbol}`);
@@ -117,14 +128,14 @@ export default function PortfolioAnalysis({ portfolioId }) {
     }, [selectedSymbol, selectedModel, selectedHorizon]);
 
     const predictionLabel = useMemo(() => {
-        if (selectedHorizon === "1_week") return "7-Day Prediction";
-        if (selectedHorizon === "1_month") return "1-Month Prediction";
-        if (selectedHorizon === "3_months") return "3-Month Prediction";
-        if (selectedHorizon === "6_months") return "6-Month Prediction";
-        if (selectedHorizon === "9_months") return "9-Month Prediction";
-        if (selectedHorizon === "12_months") return "12-Month Prediction";
-        return "Prediction";
+        const h = horizonOptions.find(o => o.id === selectedHorizon);
+        return h ? h.name : "Prediction";
     }, [selectedHorizon]);
+
+    const predictionStart = useMemo(() => {
+        if (!predictionData || !predictionData.timestamps || !predictionData.historical) return null;
+        return predictionData.timestamps[predictionData.historical.length - 1];
+    }, [predictionData]);
 
     const scatterData = useMemo(() => {
         if (!data?.stocks) return [];
@@ -138,26 +149,13 @@ export default function PortfolioAnalysis({ portfolioId }) {
     }, [data]);
 
     const chartData = useMemo(() => {
-        if (!predictionData) return [];
+        if (!predictionData || !predictionData.timestamps) return [];
 
-        const hist = predictionData.historical.map(d => ({
-            date: d.date,
-            price: d.price,
-            type: 'Historical'
+        return predictionData.timestamps.map((ts, i) => ({
+            date: ts,
+            price: predictionData.historical[i],
+            prediction: predictionData.forecast[i]
         }));
-
-        const pred = predictionData.prediction.map(d => ({
-            date: d.date,
-            prediction: d.price,
-            upper_bound: d.upper_bound,
-            lower_bound: d.lower_bound,
-            bounds: [d.lower_bound, d.upper_bound],
-            type: 'Prediction'
-        }));
-
-        // Merge for a single continuous X-axis
-        // We need to handle the overlap at the connection point
-        return [...hist, ...pred];
     }, [predictionData]);
 
     if (loading) {
@@ -198,22 +196,22 @@ export default function PortfolioAnalysis({ portfolioId }) {
         <div className="space-y-6">
 
             {/* Prediction Section */}
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="card p-6">
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white p-6 rounded-xl border border-slate-200 shadow-[0_6px_16px_rgba(0,0,0,0.05)]">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div>
-                        <h2 className="text-lg font-display font-semibold text-white flex items-center gap-2">
-                            <LineChartIcon size={18} className="text-brand-400" />
-                            AI Stock Prediction
+                        <h2 className="text-lg font-display font-semibold text-slate-800 flex items-center gap-2">
+                            <LineChartIcon size={18} className="text-blue-600" />
+                            AI Stock Prediction — {predictionLabel}
                         </h2>
-                        <p className="text-xs text-slate-400 mt-1">Dynamic forecast using advanced ML models over selected horizon.</p>
+                        <p className="text-xs text-slate-500 mt-1">Dynamic forecast using advanced ML models over selected horizon.</p>
                     </div>
                     <div className="flex flex-col xl:flex-row items-start xl:items-center gap-4 overflow-x-auto pb-2 xl:pb-0 w-full xl:w-auto">
                         <div className="flex items-center gap-2 whitespace-nowrap">
-                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Select Model:</span>
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Select Model:</span>
                             <select
                                 value={selectedModel}
                                 onChange={(e) => setSelectedModel(e.target.value)}
-                                className="bg-[#1a1d2e] border border-white/10 text-white text-xs rounded-lg focus:ring-brand-500 focus:border-brand-500 block p-2 px-3 shadow-xl h-9"
+                                className="bg-white border border-slate-200 text-slate-700 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 px-3 shadow-sm h-9"
                             >
                                 {modelOptions.map(m => (
                                     <option key={m.id} value={m.id}>{m.name}</option>
@@ -221,11 +219,11 @@ export default function PortfolioAnalysis({ portfolioId }) {
                             </select>
                         </div>
                         <div className="flex items-center gap-2 whitespace-nowrap">
-                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Select Stock:</span>
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Select Stock:</span>
                             <select
                                 value={selectedSymbol}
                                 onChange={(e) => setSelectedSymbol(e.target.value)}
-                                className="bg-[#1a1d2e] border border-white/10 text-white text-xs rounded-lg focus:ring-brand-500 focus:border-brand-500 block p-2 px-3 shadow-xl h-9 min-w-[120px]"
+                                className="bg-white border border-slate-200 text-slate-700 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 px-3 shadow-sm h-9 min-w-[120px]"
                             >
                                 {stocks.map(s => (
                                     <option key={s.symbol} value={s.symbol}>{s.symbol}</option>
@@ -233,11 +231,11 @@ export default function PortfolioAnalysis({ portfolioId }) {
                             </select>
                         </div>
                         <div className="flex items-center gap-2 whitespace-nowrap">
-                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Prediction Horizon:</span>
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Horizon:</span>
                             <select
                                 value={selectedHorizon}
                                 onChange={(e) => setSelectedHorizon(e.target.value)}
-                                className="bg-[#1a1d2e] border border-white/10 text-white text-xs rounded-lg focus:ring-brand-500 focus:border-brand-500 block p-2 px-3 shadow-xl h-9"
+                                className="bg-white border border-slate-200 text-slate-700 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 px-3 shadow-sm h-9"
                             >
                                 {horizonOptions.map(h => (
                                     <option key={h.id} value={h.id}>{h.name}</option>
@@ -260,55 +258,106 @@ export default function PortfolioAnalysis({ portfolioId }) {
                         </div>
                     ) : (
                         <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                            <AreaChart data={chartData} margin={{ top: 35, right: 30, left: 10, bottom: 25 }}>
+                                <defs>
+                                    <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.1}/>
+                                        <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                                    </linearGradient>
+                                    <linearGradient id="colorPred" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.1}/>
+                                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+                                    </linearGradient>
+                                </defs>
+                                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
                                 <XAxis
                                     dataKey="date"
-                                    tick={{ fill: "#94a3b8", fontSize: 10 }}
-                                    axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+                                    tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 500 }}
+                                    axisLine={{ stroke: '#f1f5f9' }}
                                     tickLine={false}
                                     minTickGap={30}
+                                    tickFormatter={(val) => {
+                                        const date = new Date(val);
+                                        if (selectedHorizon === "1h") return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                        if (selectedHorizon === "1d") return date.toLocaleTimeString([], { hour: '2-digit' });
+                                        if (selectedHorizon === "1y") return date.toLocaleDateString([], { month: 'short' });
+                                        return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+                                    }}
                                 />
                                 <YAxis
-                                    tick={{ fill: "#94a3b8", fontSize: 11 }}
-                                    axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+                                    tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 500 }}
+                                    axisLine={{ stroke: '#f1f5f9' }}
                                     tickLine={false}
-                                    domain={['auto', 'auto']}
+                                    domain={['dataMin - 2%', 'dataMax + 2%']}
+                                    tickFormatter={(val) => `₹${val.toLocaleString()}`}
+                                    width={70}
                                 />
                                 <RechartsTooltip
-                                    contentStyle={{ backgroundColor: "#0f111a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
-                                    itemStyle={{ fontSize: '12px' }}
+                                    contentStyle={{ 
+                                        backgroundColor: "rgba(255, 255, 255, 0.95)", 
+                                        backdropFilter: "blur(4px)",
+                                        border: "1px solid #e2e8f0", 
+                                        borderRadius: "12px", 
+                                        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                                        padding: "12px"
+                                    }}
+                                    itemStyle={{ fontSize: '12px', padding: '2px 0', fontWeight: 600 }}
+                                    labelStyle={{ fontSize: '11px', color: '#64748b', marginBottom: '6px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em' }}
+                                    formatter={(value) => [`₹${Number(value).toLocaleString()}`]}
                                 />
-                                <Legend verticalAlign="top" height={36} />
+                                <Legend 
+                                    verticalAlign="top" 
+                                    align="right"
+                                    iconType="circle"
+                                    wrapperStyle={{ paddingBottom: '20px', fontSize: '12px', fontWeight: 500, color: '#64748b' }} 
+                                />
+                                
+                                {predictionStart && (
+                                    <ReferenceLine
+                                        x={predictionStart}
+                                        stroke="#6366f1"
+                                        strokeWidth={1.5}
+                                        strokeDasharray="6 4"
+                                        label={{ 
+                                            position: 'top', 
+                                            value: 'PREDICTION GATEWAY', 
+                                            fill: '#6366f1', 
+                                            fontSize: 9, 
+                                            fontWeight: 800,
+                                            letterSpacing: '0.1em',
+                                            offset: 15
+                                        }}
+                                    />
+                                )}
+
                                 <Area
-                                    type="monotone"
-                                    dataKey="bounds"
-                                    stroke="none"
-                                    fill="#ec4899"
-                                    fillOpacity={0.1}
-                                    name="Confidence Band"
-                                    animationDuration={1500}
-                                />
-                                <Line
                                     type="monotone"
                                     dataKey="price"
                                     name="Historical"
-                                    stroke="#818cf8"
-                                    strokeWidth={3}
+                                    stroke="#3b82f6"
+                                    strokeWidth={2.5}
+                                    fillOpacity={1}
+                                    fill="url(#colorPrice)"
                                     dot={false}
+                                    activeDot={{ r: 6, fill: '#3b82f6', stroke: '#fff', strokeWidth: 2 }}
                                     animationDuration={1500}
+                                    connectNulls={true}
                                 />
-                                <Line
+                                <Area
                                     type="monotone"
                                     dataKey="prediction"
-                                    name={predictionLabel}
-                                    stroke="#ec4899"
-                                    strokeWidth={3}
-                                    strokeDasharray="5 5"
-                                    dot={{ r: 4, fill: "#ec4899", strokeWidth: 0 }}
-                                    animationDuration={1500}
+                                    name="AI Forecast"
+                                    stroke="#8b5cf6"
+                                    strokeWidth={2.5}
+                                    strokeDasharray="6 4"
+                                    fillOpacity={1}
+                                    fill="url(#colorPred)"
+                                    dot={false}
+                                    activeDot={{ r: 6, fill: '#8b5cf6', stroke: '#fff', strokeWidth: 2 }}
+                                    animationDuration={2000}
+                                    connectNulls={true}
                                 />
-                            </LineChart>
+                            </AreaChart>
                         </ResponsiveContainer>
                     )}
                 </div>

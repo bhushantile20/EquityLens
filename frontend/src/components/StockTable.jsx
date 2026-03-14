@@ -45,7 +45,7 @@ export default function StockTable({ stocks, onDeleteStock, deletingStockId }) {
     <th
       className={cn(
         "px-4 py-3.5 text-xs font-bold uppercase tracking-widest cursor-pointer group sticky top-0 z-20 whitespace-nowrap",
-        "bg-[#1a1d2e] text-slate-100 border-b-2 border-indigo-500/40",
+        "bg-slate-50 text-slate-600 border-b-2 border-slate-200",
         align === 'right' ? 'text-right' : align === 'center' ? 'text-center' : 'text-left'
       )}
       onClick={() => requestSort(columnKey)}
@@ -62,7 +62,7 @@ export default function StockTable({ stocks, onDeleteStock, deletingStockId }) {
   return (
     <div className="card overflow-hidden">
       <div className="overflow-x-auto max-h-[600px]">
-        <table className="min-w-full divide-y divide-white/5">
+        <table className="min-w-full divide-y divide-slate-200">
           <thead>
             <tr>
               <Th columnKey="symbol">Symbol</Th>
@@ -75,16 +75,16 @@ export default function StockTable({ stocks, onDeleteStock, deletingStockId }) {
               <Th columnKey="pe_ratio" align="right">PE Ratio</Th>
               <Th columnKey="discount_percent" align="right">Discount %</Th>
               <Th columnKey="discount_level" align="center">Discount Level</Th>
-              <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-widest bg-[#1a1d2e] text-slate-100 border-b-2 border-indigo-500/40 sticky top-0 z-20 w-24">Action</th>
+              <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-widest bg-slate-50 text-slate-600 border-b-2 border-slate-200 sticky top-0 z-20 w-24">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/5 bg-transparent">
+          <tbody className="divide-y divide-slate-100 bg-white">
             {sortedStocks.map((stock) => (
               <tr
                 key={stock.id ?? stock.symbol}
                 className={cn(
                   "transition-all duration-200",
-                  stock.id || stock.is_live ? "cursor-pointer hover:bg-white/5" : "cursor-default"
+                  stock.id || stock.is_live ? "cursor-pointer hover:bg-slate-50" : "cursor-default"
                 )}
                 onClick={() => {
                   if (stock.id) {
@@ -98,25 +98,25 @@ export default function StockTable({ stocks, onDeleteStock, deletingStockId }) {
                   }
                 }}
               >
-                <td className="px-4 py-4 text-sm font-bold text-white whitespace-nowrap">{stock.symbol}</td>
-                <td className="px-4 py-4 text-sm text-slate-300 font-medium whitespace-nowrap">{stock.company_name}</td>
-                <td className="px-4 py-4 text-right text-sm font-mono text-slate-300 whitespace-nowrap">
+                <td className="px-4 py-4 text-sm font-bold text-slate-800 whitespace-nowrap">{stock.symbol}</td>
+                <td className="px-4 py-4 text-sm text-slate-700 font-medium whitespace-nowrap">{stock.company_name}</td>
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-600 whitespace-nowrap">
                   {formatMoney(stock.current_price, currencyCodeFromItem(stock))}
                 </td>
-                <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-500 whitespace-nowrap">
                   {formatMoney(stock.min_price, currencyCodeFromItem(stock))}
                 </td>
-                <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-500 whitespace-nowrap">
                   {formatMoney(stock.max_price, currencyCodeFromItem(stock))}
                 </td>
-                <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-500 whitespace-nowrap">
                   {formatMoney(stock.one_year_high, currencyCodeFromItem(stock))}
                 </td>
-                <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-500 whitespace-nowrap">
                   {formatMoney(stock.today_price, currencyCodeFromItem(stock))}
                 </td>
-                <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">{stock.pe_ratio ?? "-"}</td>
-                <td className="px-4 py-4 text-right text-sm font-mono text-slate-400 whitespace-nowrap">
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-500 whitespace-nowrap">{stock.pe_ratio ?? "-"}</td>
+                <td className="px-4 py-4 text-right text-sm font-mono text-slate-500 whitespace-nowrap">
                   {stock.discount_percent !== undefined && stock.discount_percent !== null ? `${stock.discount_percent}%` : "-"}
                 </td>
                 <td className="px-4 py-4 text-center whitespace-nowrap">

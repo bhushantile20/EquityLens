@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
-import { LogIn } from "lucide-react";
+import { LogIn, ArrowLeft } from "lucide-react";
 
 export default function Login() {
   const { login, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
+  const [isDemoLoading, setIsDemoLoading] = useState(false);
 
   if (isAuthenticated) {
     return <Navigate to="/portfolio" replace />;
@@ -29,14 +30,36 @@ export default function Login() {
     }
   };
 
+  const handleDemoLogin = async () => {
+    setError("");
+    setIsDemoLoading(true);
+    try {
+      await login({ username: "user", password: "User@2003" });
+      navigate("/portfolio", { replace: true });
+    } catch (err) {
+      setError(err.response?.data?.detail || "Demo login failed.");
+      setIsDemoLoading(false);
+    }
+  };
+
   return (
-    <section className="flex min-h-[80vh] items-center justify-center p-4">
+    <section className="flex min-h-[80vh] flex-col items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className="w-full max-w-md"
       >
+        <div className="mb-6">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft size={16} />
+            Back to Home
+          </Link>
+        </div>
+        
         <div className="card p-8 shadow-glow ring-1 ring-white/10 relative overflow-hidden">
           <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-brand-500/20 blur-3xl" />
 
@@ -77,8 +100,22 @@ export default function Login() {
               </motion.p>
             )}
 
-            <button type="submit" className="btn-primary w-full py-2.5 mt-2" disabled={loading}>
-              {loading ? "Signing in..." : "Sign In"}
+            <button type="submit" className="btn-primary w-full py-2.5 mt-2" disabled={loading || isDemoLoading}>
+              {loading && !isDemoLoading ? "Signing in..." : "Sign In"}
+            </button>
+            
+            <div className="relative py-2 flex items-center justify-center">
+              <div className="absolute px-3 text-xs font-semibold text-slate-500 uppercase tracking-widest z-10" style={{backgroundColor: "rgb(19, 28, 48)"}}>OR</div>
+              <div className="w-full h-px bg-white/10" />
+            </div>
+
+            <button 
+              type="button" 
+              onClick={handleDemoLogin}
+              className="w-full py-2.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 hover:text-indigo-300 rounded-xl font-semibold transition-colors border border-indigo-500/30 flex items-center justify-center gap-2" 
+              disabled={loading || isDemoLoading}
+            >
+              {isDemoLoading ? "Loading Demo..." : "Play with Demo Profile"}
             </button>
           </form>
 

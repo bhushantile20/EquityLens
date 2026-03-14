@@ -7,3 +7,5 @@ pandas>=2.2.0
 numpy>=1.26.0
 statsmodels>=0.14.0
 tensorflow>=2.15.0
+gunicorn
+python-decouple

@@ -5,10 +5,17 @@ from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 
-def fetch_stock_data(ticker: str, period: str = "1y"):
-    """Fetch 1 year of historical data using yfinance."""
+def fetch_stock_data(ticker: str, period: str = "1y", interval: str = "1d"):
+    """Fetch historical data using yfinance, cached to improve performance."""
+    from django.core.cache import cache
+    cache_key = f"market_data_{ticker}_{period}_{interval}"
+    
+    cached_df = cache.get(cache_key)
+    if cached_df is not None:
+        return cached_df
+
     try:
-        df = yf.download(ticker, period=period, interval="1d")
+        df = yf.download(ticker, period=period, interval=interval, progress=False)
         if df.empty:
             raise ValueError(f"No data found for symbol: {ticker}")
             
@@ -16,10 +23,15 @@ def fetch_stock_data(ticker: str, period: str = "1y"):
             df.columns = df.columns.get_level_values(0)
             
         df = df.reset_index()
-        if 'Date' not in df.columns:
-            df.rename(columns={df.columns[0]: 'Date'}, inplace=True)
+        # Find date column
+        date_col = next((col for col in df.columns if 'date' in col.lower()), df.columns[0])
+        df.rename(columns={date_col: 'Date'}, inplace=True)
             
         df['Date'] = pd.to_datetime(df['Date']).dt.tz_localize(None)
+        
+        # Cache for 30 minutes
+        cache.set(cache_key, df, timeout=1800)
+        
         return df
     except Exception as e:
         logger.error(f"Error fetching data for {ticker}: {e}")
@@ -27,60 +39,47 @@ def fetch_stock_data(ticker: str, period: str = "1y"):
 
 import numpy as np
 
-def format_prediction_response(ticker, df, prediction, metrics=None, historical_count=252):
-    """Format the historical and predicted data for JSON response."""
-    historical = []
-    hist_subset = df.tail(historical_count)
-    for _, row in hist_subset.iterrows():
-        historical.append({
-            "date": row['Date'].strftime("%Y-%m-%d"),
-            "price": round(float(row['Close']), 2)
-        })
-        
-    last_hist_price = float(hist_subset.iloc[-1]['Close'])
+def format_prediction_response(ticker, df, prediction, metrics=None):
+    """
+    Format for the new parallel-array structure:
+    { "historical": [], "forecast": [], "timestamps": [] }
+    """
+    hist_prices = df['Close'].tolist()
+    hist_dates = df['Date'].tolist()
     
-    # Calculate historical volatility
-    daily_returns = df['Close'].pct_change()
-    volatility = daily_returns.std() * np.sqrt(252)
+    # Prediction is list of {date: str, price: float}
+    pred_prices = [p['price'] for p in prediction]
+    pred_dates = [p['date'] for p in prediction]
     
-    if not isinstance(prediction, pd.DataFrame):
-        prediction = pd.DataFrame(prediction)
+    # Combined timestamps
+    # Important: pred_dates[0] is usually the same as hist_dates[-1] for connection
+    # We want a continuous list of timestamps
     
-    # Ensure continuity: first prediction point starts near last historical price
-    first_pred_price = float(prediction.iloc[0]['price'])
-    shift_amount = last_hist_price - first_pred_price
+    # If pred_dates[0] is last_date, we merge from index 1 for the forecast array
+    # But for timestamps, we need all of them.
     
-    # Apply stochastic drift and volatility bounds
-    realistic_prediction = []
-    prices_raw = []
+    historical_data = [round(float(p), 2) for p in hist_prices]
     
-    for i, row in prediction.iterrows():
-        base_price = float(row['price']) + shift_amount
-        # Add random noise based on volatility
-        noise = np.random.normal(0, volatility * base_price * 0.02)
-        new_price = base_price + noise
-        prices_raw.append(new_price)
-        
-    # Smooth the prediction curve
-    prices_smooth = pd.Series(prices_raw).rolling(window=3, min_periods=1).mean().tolist()
-    
-    for i, row in prediction.iterrows():
-        smoothed_price = prices_smooth[i]
-        
-        # Calculate confidence bands
-        band_width = volatility * smoothed_price * 0.1 * (1 + (i / len(prediction)) * 0.5) # Expand band over time
-        
-        realistic_prediction.append({
-            "date": row['date'],
-            "price": round(smoothed_price, 2),
-            "upper_bound": round(smoothed_price + band_width, 2),
-            "lower_bound": round(smoothed_price - band_width, 2)
-        })
-        
+    # Forecast starts with nulls for historical period
+    forecast_data = [None] * (len(hist_prices) - 1)
+    # The pivot point
+    forecast_data.append(round(float(hist_prices[-1]), 2))
+    # The rest of predictions (skipping first if it's the pivot)
+    if pred_dates and pred_dates[0] == hist_dates[-1].strftime("%Y-%m-%d %H:%M:%S"):
+        forecast_data.extend([round(float(p), 2) for p in pred_prices[1:]])
+        all_timestamps = [d.strftime("%Y-%m-%d %H:%M:%S") for d in hist_dates]
+        all_timestamps.extend(pred_dates[1:])
+    else:
+        forecast_data.extend([round(float(p), 2) for p in pred_prices])
+        all_timestamps = [d.strftime("%Y-%m-%d %H:%M:%S") for d in hist_dates]
+        all_timestamps.extend(pred_dates)
+
     response = {
         "ticker": ticker,
-        "historical": historical,
-        "prediction": realistic_prediction
+        "historical": historical_data,
+        "forecast": forecast_data,
+        "timestamps": all_timestamps,
+        "rmse": metrics.get("rmse", 0) if metrics else 0
     }
     
     if metrics:

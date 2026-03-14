@@ -491,18 +491,23 @@ class LiveTickerView(APIView):
 
 class StockPredictionView(APIView):
     """
-    Enhanced AI Analysis: Predicts stock price using various ML models and horizons.
-    GET /api/predict/?symbol=RELIANCE.NS&model=linear_regression&horizon=1_week
+    Enhanced AI Analysis: Predicts price using various ML models and horizons.
+    GET /api/predict/?asset=BTC-INR&model=random_forest&horizon=30d
     """
+    permission_classes = []
 
     def get(self, request):
-        symbol = request.query_params.get("symbol")
-        model_type = request.query_params.get("model", "linear_regression")
-        horizon_str = request.query_params.get("horizon", "1_week")
+        asset = request.query_params.get("asset")
+        # Support 'symbol' for backward compatibility
+        if not asset:
+            asset = request.query_params.get("symbol")
+            
+        model_type = request.query_params.get("model", "random_forest")
+        horizon = request.query_params.get("horizon", "30d")
 
-        if not symbol:
+        if not asset:
             return Response(
-                {"error": "Symbol parameter is required"},
+                {"error": "Asset or Symbol parameter is required"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
@@ -510,16 +515,45 @@ class StockPredictionView(APIView):
             from analytics.services.stock_prediction import predict_stock_price
 
             data = predict_stock_price(
-                symbol, model_type=model_type, horizon=horizon_str
+                asset, model_type=model_type, horizon=horizon
             )
-            data["horizon"] = horizon_str
-            return Response(data, status=status.HTTP_200_OK)
+            
+            # Ensure the output format matches user requirements
+            # If the service already returns the new format (like generate_dynamic_forecast), use it.
+            if "timestamps" in data:
+                return Response(data, status=status.HTTP_200_OK)
+                
+            # Otherwise, convert old format to new format
+            # Old format: { 'historical': [{'date':..., 'price':...}, ...], 'prediction': [{'date':..., 'price':...}, ...], 'metrics': {'rmse':...} }
+            historical_data = data.get("historical", [])
+            prediction_data = data.get("prediction", [])
+            metrics = data.get("metrics", {})
+            
+            historical_prices = [h["price"] for h in historical_data]
+            forecast_prices = [None] * len(historical_prices)
+            
+            # Connect historical and forecast
+            if historical_prices:
+                forecast_prices[-1] = historical_prices[-1]
+            
+            timestamps = [h["date"] for h in historical_data]
+            
+            for p in prediction_data:
+                # Avoid duplicating the first point if it's already there (pivot point)
+                if p["date"] == timestamps[-1]:
+                    continue
+                forecast_prices.append(p["price"])
+                timestamps.append(p["date"])
+                
+            return Response({
+                "historical": historical_prices,
+                "forecast": forecast_prices,
+                "timestamps": timestamps,
+                "rmse": metrics.get("rmse", 0)
+            }, status=status.HTTP_200_OK)
+            
         except Exception as e:
             logger.error(f"Error in StockPredictionView: {str(e)}")
-            return Response(
-                {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
-            logger.error(f"Prediction API error: {str(e)}")
             return Response(
                 {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )

@@ -4,20 +4,23 @@ from sklearn.ensemble import RandomForestRegressor
 from .base import fetch_stock_data, format_prediction_response
 from .compute_metrics import calculate_model_metrics
 
-def predict(ticker, days_ahead=7):
+def predict(ticker, days_ahead=7, period="1y", interval="1d"):
     """
     Simulates a CNN using a Windowed Random Forest Regressor.
-    Random Forest works well for capturing 'convolutional' window features in small datasets.
     """
-    df = fetch_stock_data(ticker)
+    df = fetch_stock_data(ticker, period=period, interval=interval)
     data = df['Close'].values
     
     # For a 'CNN' effect, we use wider windows and multiple statistics as features
     lags = 15
+    if len(data) < lags + 2:
+        from . import linear_reg
+        return linear_reg.predict(ticker, days_ahead=days_ahead, period=period, interval=interval)
+
     X, y = [], []
     for i in range(len(data) - lags):
         window = data[i:i+lags]
-        # Features: raw window + mean + std (simplistic convolution/pooling equivalent)
+        # Features: raw window + mean + std
         features = list(window) + [np.mean(window), np.std(window)]
         X.append(features)
         y.append(data[i+lags])
@@ -36,8 +39,16 @@ def predict(ticker, days_ahead=7):
     
     last_date = df['Date'].max()
     prediction = []
+    
+    # Interval delta
+    if interval == "15m": delta = timedelta(minutes=15)
+    elif interval == "1h": delta = timedelta(hours=1)
+    elif interval == "1wk": delta = timedelta(weeks=1)
+    elif interval == "1mo": delta = timedelta(days=30)
+    else: delta = timedelta(days=1)
+    
     prediction.append({
-        "date": last_date.strftime("%Y-%m-%d"),
+        "date": last_date.strftime("%Y-%m-%d %H:%M:%S"),
         "price": round(float(data[-1]), 2)
     })
     
@@ -47,9 +58,9 @@ def predict(ticker, days_ahead=7):
         features = list(window) + [np.mean(window), np.std(window)]
         pred = model.predict([features])[0]
         
-        future_date = last_date + timedelta(days=i)
+        future_date = last_date + (delta * i)
         prediction.append({
-            "date": future_date.strftime("%Y-%m-%d"),
+            "date": future_date.strftime("%Y-%m-%d %H:%M:%S"),
             "price": round(float(pred), 2)
         })
         current_window.append(pred)

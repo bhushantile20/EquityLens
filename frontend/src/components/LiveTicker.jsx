@@ -8,7 +8,8 @@ export default function LiveTicker() {
     useEffect(() => {
         const fetchTicker = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/ticker/");
+                const baseUrl = (import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000/api/").replace(/\/$/, "");
+                const response = await fetch(`${baseUrl}/ticker/`);
                 if (!response.ok) throw new Error("Failed to fetch ticker data");
                 const data = await response.json();
                 setTickerData(data);

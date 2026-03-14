@@ -1,5 +1,5 @@
 {
-  "timestamp": 1773491184.1030848,
+  "timestamp": 1773508081.8896885,
   "data": {
     "initial_investment": 4692.15,
     "current_value": 159734.25,
@@ -119,7 +119,7 @@
       },
       {
         "date": "2025-04-29",
-        "portfolio_value": 151072.48
+        "portfolio_value": 151072.49
       },
       {
         "date": "2025-04-30",
@@ -311,7 +311,7 @@
       },
       {
         "date": "2025-07-07",
-        "portfolio_value": 160447.93
+        "portfolio_value": 160447.92
       },
       {
         "date": "2025-07-08",
