@@ -1,4 +1,4 @@
-# EquityLens 📈
+# EquityLens 
 
 EquityLens is an advanced AI-powered continuous learning analytical platform for financial markets (Stocks, Commodities, and Cryptocurrencies). It leverages machine learning models (ARIMA, LSTM, CNN, Random Forest) to provide asset price predictions, paired with real-time market data directly integrated with Yahoo Finance. It also features explainable AI (XAI) using SHAP and LIME to interpret deep learning and ensemble predictions.
 
