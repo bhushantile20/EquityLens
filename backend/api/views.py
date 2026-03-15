@@ -405,7 +405,7 @@ class GoldSilverCorrelationAnalysisView(APIView):
             )
         except Exception as exc:
             return Response(
-                {"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                {"error": str(exc)}, status=status.HTTP_400_BAD_REQUEST
             )
 
 
@@ -428,7 +428,7 @@ class ShapExplainView(APIView):
             )
         except Exception as exc:
             return Response(
-                {"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                {"error": str(exc)}, status=status.HTTP_400_BAD_REQUEST
             )
 
 
@@ -451,7 +451,7 @@ class LimeExplainView(APIView):
             )
         except Exception as exc:
             return Response(
-                {"detail": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                {"error": str(exc)}, status=status.HTTP_400_BAD_REQUEST
             )
 
 
@@ -485,7 +485,7 @@ class LiveTickerView(APIView):
         except Exception as e:
             logger.error(f"Error fetching live ticker: {str(e)}")
             return Response(
-                {"detail": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                {"error": str(e)}, status=status.HTTP_400_BAD_REQUEST
             )
 
 
@@ -518,9 +518,18 @@ class StockPredictionView(APIView):
             data = predict_stock_price(asset, model_type=model_type, horizon=horizon)
 
             if data.get("model") == "ERROR":
+                # Ensure the fallback schema from user requirements
                 return Response(
-                    {"error": data.get("error", "Unknown error")},
-                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    {
+                        "error": data.get("error", "Market data unavailable"),
+                        "ticker": asset,
+                        "historical_data": [],
+                        "forecast": [],
+                        "timestamps": [],
+                        "model": "ERROR",
+                        "metrics": {}
+                    },
+                    status=status.HTTP_400_BAD_REQUEST,
                 )
 
             return Response(data, status=status.HTTP_200_OK)
@@ -528,7 +537,15 @@ class StockPredictionView(APIView):
         except Exception as e:
             logger.error(f"Error in StockPredictionView: {str(e)}")
             return Response(
-                {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                {
+                    "error": str(e),
+                    "ticker": asset,
+                    "historical_data": [],
+                    "forecast": [],
+                    "timestamps": [],
+                    "model": "ERROR",
+                    "metrics": {}
+                }, status=status.HTTP_400_BAD_REQUEST
             )
 
 
@@ -549,8 +566,8 @@ class Nifty50PCAView(APIView):
         except Exception as exc:
             logger.error(f"NIFTY 50 Pipeline failed: {str(exc)}")
             return Response(
-                {"detail": f"Pipeline failed: {str(exc)}"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                {"error": f"Pipeline failed: {str(exc)}"},
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
 
@@ -574,8 +591,8 @@ class Nifty50StocksView(APIView):
         except Exception as exc:
             logger.error(f"Nifty50 Stocks API failed: {str(exc)}")
             return Response(
-                {"detail": f"Failed to fetch Nifty50 stocks: {str(exc)}"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                {"error": f"Failed to fetch Nifty50 stocks: {str(exc)}"},
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
 
