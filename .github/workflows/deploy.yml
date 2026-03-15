@@ -31,25 +31,18 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            # 1. Frontend Build
-            cd /home/azureuser/EquityLens/frontend
+            cd ${{ secrets.SERVER_PATH }}/frontend
             echo "VITE_API_BASE_URL=https://euitylens.duckdns.org/api/" > .env
             echo "VITE_MEDIA_URL=https://euitylens.duckdns.org" >> .env
             npm install
             npm run build
             
-            # 2. Backend Setup
-            cd /home/azureuser/EquityLens/backend
+            cd ${{ secrets.SERVER_PATH }}/backend
             source venv/bin/activate
             pip install -r requirements.txt
-            python manage.py makemigrations
             python manage.py migrate
             python manage.py collectstatic --noinput
             
-            # Ensure demo user exists
-            python manage.py create_demo_user || true
-            
-            # 3. Restart Services
             pm2 restart equitylens
             sudo systemctl restart nginx
             echo "Deployment finished successfully!"
