@@ -102,10 +102,37 @@ REST_FRAMEWORK = {
     ],
 }
 
-# CORS configuration
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:5173,http://127.0.0.1:5173', cast=lambda v: [s.strip() for s in v.split(',')])
+# ── CORS ─────────────────────────────────────────────────────────────────────
+# In DEBUG mode, allow any localhost regardless of port (Vite can use 5173/5174/5175).
+# In production, CORS_ALLOWED_ORIGINS is read from the .env file.
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True          # ← no more CORS pain in local dev
+else:
+    CORS_ALLOW_ALL_ORIGINS = False
+    CORS_ALLOWED_ORIGINS = config(
+        'CORS_ALLOWED_ORIGINS',
+        default='https://euitylens.duckdns.org',
+        cast=lambda v: [s.strip() for s in v.split(',')],
+    )
 
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='http://localhost:5173,http://127.0.0.1:5173', cast=lambda v: [s.strip() for s in v.split(',')])
+CSRF_TRUSTED_ORIGINS = config(
+    'CSRF_TRUSTED_ORIGINS',
+    default=(
+        'http://localhost:5173,http://localhost:5174,http://localhost:5175,'
+        'http://127.0.0.1:5173,http://127.0.0.1:5174,'
+        'https://euitylens.duckdns.org'
+    ),
+    cast=lambda v: [s.strip() for s in v.split(',')],
+)
+
+# ── Cache (locmem by default; swap for Redis in production via .env) ──────────
+CACHE_BACKEND = config('CACHE_BACKEND', default='django.core.cache.backends.locmem.LocMemCache')
+CACHES = {
+    'default': {
+        'BACKEND': CACHE_BACKEND,
+        'LOCATION': config('CACHE_LOCATION', default='equitylens-cache'),
+    }
+}
 
 LOGGING = {
     "version": 1,

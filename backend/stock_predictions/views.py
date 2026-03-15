@@ -34,57 +34,60 @@ class PredictionView(APIView):
         if not raw_symbol or not target_time_str:
             return Response({'error': 'Symbol and target_time are required'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Normalize symbol - Only allow .NS symbols for predictions
+        # Only NSE-listed Indian stocks are supported
         if not raw_symbol.endswith('.NS'):
-            return Response({'error': f'Only Indian stocks (NSE) are allowed. Please use a symbol ending with .NS (e.g. {raw_symbol}.NS)'}, status=status.HTTP_400_BAD_REQUEST)
-        
+            return Response(
+                {'error': f'Only Indian stocks (NSE) are allowed. Try {raw_symbol}.NS'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         final_symbol = raw_symbol
-        
+
         try:
-            ticker = yf.Ticker(final_symbol)
-            history = ticker.history(period="1y")
+            ticker_obj = yf.Ticker(final_symbol)
+            history = ticker_obj.history(period="1y")
 
             if history.empty:
-                return Response({'error': f'No data found for symbol {raw_symbol}. Did you mean {symbol_ns}?'}, status=status.HTTP_404_NOT_FOUND)
+                # ── fixed: was `symbol_ns` (undefined) → now just informative message
+                return Response(
+                    {'error': f'No price data found for {final_symbol}. The symbol may be delisted or incorrect.'},
+                    status=status.HTTP_404_NOT_FOUND,
+                )
 
             # Calculate target steps
             now = timezone.now()
             target_time = datetime.fromisoformat(target_time_str.replace('Z', '+00:00'))
             if timezone.is_naive(target_time):
                 target_time = timezone.make_aware(target_time)
-            
+
             delta = target_time - now
-            steps = max(1, int(delta.total_seconds() / 3600)) # Steps in hours
+            steps = max(1, int(delta.total_seconds() / 3600))
 
             prices = history['Close'].values
-            
-            # Get current price using fast_info or fallback
+
+            # Current price via fast_info or last close
             try:
-                current_price = float(ticker.fast_info.get("last_price", prices[-1]))
-            except:
+                current_price = float(ticker_obj.fast_info.get("last_price", prices[-1]))
+            except Exception:
                 current_price = float(prices[-1])
 
-            # Min/Max for 30d window
             history_30d = history.last("30D") if not history.empty else history
             min_price_30d = float(history_30d['Low'].min())
             max_price_30d = float(history_30d['High'].max())
 
-            # 2. Generate Predictions
             arima_pred = train_arima_prediction(prices, steps=steps)
-            lstm_pred = train_lstm_prediction(prices, steps=steps)
-            cnn_pred = train_cnn_prediction(prices, steps=steps)
+            lstm_pred  = train_lstm_prediction(prices, steps=steps)
+            cnn_pred   = train_cnn_prediction(prices, steps=steps)
 
-            # Sanity filter: Clamp to +/- 15% change
-            def clamp_prediction(pred, current):
-                if abs(pred - current) / current > 0.15:
+            def clamp(pred, current, pct=0.15):
+                if current and abs(pred - current) / current > pct:
                     return current * (1.05 if pred > current else 0.95)
                 return pred
 
-            arima_pred = clamp_prediction(arima_pred, current_price)
-            lstm_pred = clamp_prediction(lstm_pred, current_price)
-            cnn_pred = clamp_prediction(cnn_pred, current_price)
+            arima_pred = clamp(arima_pred, current_price)
+            lstm_pred  = clamp(lstm_pred,  current_price)
+            cnn_pred   = clamp(cnn_pred,   current_price)
 
-            # 3. Create Prediction entry
             prediction = Prediction.objects.create(
                 symbol=final_symbol,
                 target_time=target_time,
@@ -93,7 +96,7 @@ class PredictionView(APIView):
                 max_price_30d=max_price_30d,
                 arima_prediction=arima_pred,
                 lstm_prediction=lstm_pred,
-                cnn_prediction=cnn_pred
+                cnn_prediction=cnn_pred,
             )
 
             serializer = PredictionSerializer(prediction)
@@ -103,6 +106,7 @@ class PredictionView(APIView):
             import traceback
             traceback.print_exc()
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class EvaluateView(APIView):
     permission_classes = []
