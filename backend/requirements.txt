@@ -1,11 +1,27 @@
+# Core Django
 Django>=5.0,<7.0
 djangorestframework>=3.15,<4.0
 django-cors-headers>=4.4,<5.0
+python-decouple>=3.8
+
+# Data & ML
 yfinance>=0.2.50,<1.0
-scikit-learn>=1.4.0
 pandas>=2.2.0
 numpy>=1.26.0
+scikit-learn>=1.4.0
 statsmodels>=0.14.0
+
+# Deep Learning (TensorFlow) — optional but imported by lstm_model.py
+# Models fall back to MLPRegressor if tensorflow is unavailable
 tensorflow>=2.15.0
+
+# Explainability — safe try/except in prediction_service.py catches ImportError
+# Install these on the server for full SHAP + LIME feature importance charts
+shap>=0.44.0
+lime>=0.2.0.1
+
+# Production server
 gunicorn
-python-decouple
+
+# Utilities
+requests>=2.31.0
