@@ -71,7 +71,8 @@ class PredictionView(APIView):
             except Exception:
                 current_price = float(prices[-1])
 
-            history_30d = history.last("30D") if not history.empty else history
+            # 22 trading days ~ 1 calendar month
+            history_30d = history.tail(22) if not history.empty else history
             min_price_30d = float(history_30d['Low'].min())
             max_price_30d = float(history_30d['High'].max())
 
