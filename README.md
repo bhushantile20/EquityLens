@@ -1,4 +1,4 @@
-# EquityLens 📈
+# EquityLens 
 
 EquityLens is an advanced AI-powered continuous learning analytical platform for financial markets (Stocks, Commodities, and Cryptocurrencies). It leverages machine learning models (ARIMA, LSTM, CNN, Random Forest) to provide asset price predictions, paired with real-time market data directly integrated with Yahoo Finance. It also features explainable AI (XAI) using SHAP and LIME to interpret deep learning and ensemble predictions.
 
@@ -9,19 +9,6 @@ EquityLens is an advanced AI-powered continuous learning analytical platform for
 <details>
 <summary>Click to view screenshots!</summary>
 
-<img width="1919" height="984" alt="image" src="https://github.com/user-attachments/assets/47931104-fda9-4cce-a45e-8d07a93784e1" />
-<img width="1909" height="983" alt="image" src="https://github.com/user-attachments/assets/98868201-52a0-4853-93cb-66c4a0e33861" />
-<img width="1918" height="971" alt="image" src="https://github.com/user-attachments/assets/77516422-ee08-4c75-986a-42fbef1efa61" />
-<img width="1919" height="975" alt="image" src="https://github.com/user-attachments/assets/cdeb1f49-3dbd-456c-a862-6c50555dc140" />
-<img width="1918" height="985" alt="image" src="https://github.com/user-attachments/assets/7e5db890-4b41-45e8-918e-7a103802d115" />
-<img width="1913" height="969" alt="image" src="https://github.com/user-attachments/assets/927db484-6027-47f7-82aa-abd3af4d73fd" />
-<img width="1918" height="974" alt="image" src="https://github.com/user-attachments/assets/aa684dcd-a5a2-4b96-9e32-0940ec2f9ad9" />
-<img width="1902" height="982" alt="image" src="https://github.com/user-attachments/assets/a57346bc-fcaa-45c6-889d-7f0f4487e655" />
-<img width="1918" height="975" alt="image" src="https://github.com/user-attachments/assets/76e234ef-e687-422f-8b54-4dbe64aa695b" />
-<img width="1894" height="971" alt="image" src="https://github.com/user-attachments/assets/0c07f779-fda6-48d4-8fe8-85a2cc531bc9" />
-<img width="1915" height="980" alt="image" src="https://github.com/user-attachments/assets/a79a254e-9a93-4aed-ad74-a15797d1ebea" />
-<img width="1919" height="984" alt="image" src="https://github.com/user-attachments/assets/c92c2e11-f3ea-4f1d-8266-56baf38fc31a" />
-<img width="1914" height="983" alt="image" src="https://github.com/user-attachments/assets/b4c9dd24-d5f0-4c00-8124-add5f5a4ed4c" />
 
 </details>
 
@@ -29,7 +16,7 @@ EquityLens is an advanced AI-powered continuous learning analytical platform for
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 * **Multi-Asset Forecasting:** Real-time and forward-looking predictions for Indian Equities (NSE), Gold, Silver, and Cryptocurrencies (BTC, ETH).
 * **Advanced ML Pipeline:** Multiple prediction algorithms including Random Forest, ARIMA, LSTM, and simulated CNN/RNN.
@@ -40,7 +27,7 @@ EquityLens is an advanced AI-powered continuous learning analytical platform for
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 **Frontend:**
 * React (Vite)
@@ -63,7 +50,7 @@ EquityLens is an advanced AI-powered continuous learning analytical platform for
 
 ---
 
-## 📐 System Architecture & Sequence Diagram
+## System Architecture & Sequence Diagram
 
 The following sequence diagram illustrates the flow of data from the user requesting a prediction to the AI models serving cached or live generated data.
 
@@ -103,7 +90,7 @@ sequenceDiagram
 
 ---
 
-## ⚙️ Local Setup and Installation
+##  Local Setup and Installation
 
 ### 1. Clone the repository
 ```bash
@@ -141,7 +128,7 @@ npm run dev
 
 ---
 
-## 🌍 Production Deployment workflow
+##  Production Deployment workflow
 
 This project utilizes purely automated CI/CD deployments through GitHub Actions perfectly suited for Azure.
 
