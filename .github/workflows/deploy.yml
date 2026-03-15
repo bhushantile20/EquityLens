@@ -1,4 +1,4 @@
-name: Deploy to Azure
+name: Deploy to Server
 
 on:
   push:
@@ -9,15 +9,47 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to Azure VM
+      - name: Copy files via SSH
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "."
+          target: ${{ secrets.SERVER_PATH }}
+          rm: false
+
+      - name: Execute remote commands
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.AZURE_VM_IP }}
-          username: ${{ secrets.AZURE_VM_USER }}
-          key: ${{ secrets.AZURE_SSH_KEY }}
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
           script: |
-            cd /home/azureuser/equity-lens
-            bash deploy.sh
+            # 1. Frontend Build
+            cd /home/azureuser/EquityLens/frontend
+            echo "VITE_API_BASE_URL=https://euitylens.duckdns.org/api/" > .env
+            echo "VITE_MEDIA_URL=https://euitylens.duckdns.org" >> .env
+            npm install
+            npm run build
+            
+            # 2. Backend Setup
+            cd /home/azureuser/EquityLens/backend
+            source venv/bin/activate
+            pip install -r requirements.txt
+            python manage.py makemigrations
+            python manage.py migrate
+            python manage.py collectstatic --noinput
+            
+            # Ensure demo user exists
+            python manage.py create_demo_user || true
+            
+            # 3. Restart Services
+            pm2 restart equitylens
+            sudo systemctl restart nginx
+            echo "Deployment finished successfully!"
