@@ -1,4 +1,5 @@
 import os
+import tempfile
 import logging
 
 logger = logging.getLogger(__name__)
@@ -16,10 +17,8 @@ class ApiConfig(AppConfig):
         os.environ.setdefault('TF_CPP_MIN_LOG_LEVEL', '3')
         os.environ.setdefault('TF_ENABLE_ONEDNN_OPTS', '0')
 
-        # ── Gunicorn spawns multiple worker processes.  We only want to
-        #    pre-warm once across ALL of them, so we use a /tmp lock file.
-        #    Django dev-server uses RUN_MAIN; Gunicorn does not set it at all.
-        lock_file = '/tmp/equitylens_prewarm.lock'
+        # ── Use a temp-dir lock file that works on both Windows and Linux ──
+        lock_file = os.path.join(tempfile.gettempdir(), 'equitylens_prewarm.lock')
 
         # Skip if another worker already claimed the lock
         if os.path.exists(lock_file):

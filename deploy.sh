@@ -40,6 +40,9 @@ pip install -r requirements.txt --quiet
 echo "    Running database migrations..."
 python manage.py migrate --no-input
 
+echo "    Creating demo user account..."
+python manage.py create_demo_user
+
 echo "    Collecting static files..."
 python manage.py collectstatic --no-input --clear
 

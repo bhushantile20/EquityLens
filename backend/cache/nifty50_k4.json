@@ -1,5 +1,5 @@
 {
-  "timestamp": 1773508793.048661,
+  "timestamp": 1773555313.8509338,
   "data": {
     "pc1_variance": 45.1,
     "pc2_variance": 23.9,
@@ -357,7 +357,7 @@
         "full_symbol": "COALINDIA.NS",
         "company_name": "Coal India Limited",
         "pc1": 3.2013,
-        "pc2": -0.4917,
+        "pc2": -0.4918,
         "cluster": 3,
         "return_1y": 32.13,
         "momentum_3m": 22.98,
