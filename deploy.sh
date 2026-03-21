@@ -6,7 +6,7 @@
 # ==============================================================
 set -e   # exit immediately if any command fails
 
-PROJECT_DIR="/home/azureuser/equity-lens"
+PROJECT_DIR="/home/azureuser/EquityLens"
 APP_NAME="equitylens"
 
 echo ""
@@ -67,5 +67,5 @@ pm2 save
 sudo systemctl reload nginx
 
 echo ""
-echo "✅  Deployment complete! → https://euitylens.duckdns.org"
+echo "✅  Deployment complete! → https://equitylens.bhushantile.online"
 echo ""
