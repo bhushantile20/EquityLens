@@ -5,8 +5,14 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-d#xzro$%2h5m^^--j&ct0#3_#tdq8d*d&5o=2ufeb#xpumq41(')
-DEBUG = config('DEBUG', default=True, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=lambda v: [s.strip() for s in v.split(',')])
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = [
+    'equitylens.bhushantile.online',
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+    '*'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
