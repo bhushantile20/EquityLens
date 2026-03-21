@@ -147,3 +147,6 @@ LOGGING = {
         "level": "INFO",
     },
 }
+
+
+TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN', default="8732910129:AAEzvTOijfcrHtBbvbjx0c1Fkmb4EKZKgPg")

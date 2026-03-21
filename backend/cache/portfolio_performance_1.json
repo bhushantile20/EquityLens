@@ -1,22 +1,10 @@
 {
-  "timestamp": 1773569207.6159968,
+  "timestamp": 1773943709.0807428,
   "data": {
     "initial_investment": 4692.15,
-    "current_value": 159734.25,
-    "total_profit": 155042.1,
+    "current_value": 160810.75,
+    "total_profit": 156118.6,
     "performance": [
-      {
-        "date": "2025-03-13",
-        "portfolio_value": 145122.12
-      },
-      {
-        "date": "2025-03-17",
-        "portfolio_value": 146204.08
-      },
-      {
-        "date": "2025-03-18",
-        "portfolio_value": 147813.7
-      },
       {
         "date": "2025-03-19",
         "portfolio_value": 147665.02
@@ -119,7 +107,7 @@
       },
       {
         "date": "2025-04-29",
-        "portfolio_value": 151072.48
+        "portfolio_value": 151072.49
       },
       {
         "date": "2025-04-30",
@@ -996,6 +984,22 @@
       {
         "date": "2026-03-13",
         "portfolio_value": 159734.25
+      },
+      {
+        "date": "2026-03-16",
+        "portfolio_value": 162491.2
+      },
+      {
+        "date": "2026-03-17",
+        "portfolio_value": 165825.95
+      },
+      {
+        "date": "2026-03-18",
+        "portfolio_value": 167371.55
+      },
+      {
+        "date": "2026-03-19",
+        "portfolio_value": 160810.75
       }
     ]
   }

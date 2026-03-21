@@ -104,6 +104,12 @@ export default function Login() {
               {loading && !isDemoLoading ? "Signing in..." : "Sign In"}
             </button>
             
+            <div className="flex justify-end">
+              <Link to="/forgot-password" className="text-sm font-medium text-brand-400 hover:text-brand-300 transition-colors">
+                Forgot your password?
+              </Link>
+            </div>
+            
             <div className="relative py-2 flex items-center justify-center">
               <div className="absolute px-3 text-xs font-semibold text-slate-500 uppercase tracking-widest z-10" style={{backgroundColor: "rgb(19, 28, 48)"}}>OR</div>
               <div className="w-full h-px bg-white/10" />

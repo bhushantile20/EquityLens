@@ -171,3 +171,34 @@ class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portfolio
         fields = ("id", "name", "description", "type")
+
+
+class ForgotPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField(
+        help_text="Email address of the account"
+    )
+
+
+class VerifyOTPSerializer(serializers.Serializer):
+    email = serializers.EmailField(
+        help_text="Email address of the account"
+    )
+    otp = serializers.CharField(
+        max_length=6,
+        help_text="6-digit OTP received via Telegram"
+    )
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    otp = serializers.CharField(max_length=6)
+    new_password = serializers.CharField(
+        write_only=True,
+        min_length=8,
+        help_text="New password for the account"
+    )
+    
+    def validate_new_password(self, value):
+        from django.contrib.auth.password_validation import validate_password
+        validate_password(value)
+        return value

@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
 import Portfolio from "./pages/Portfolio";
 import Stocks from "./pages/Stocks";
 import StockDetail from "./pages/StockDetail";
@@ -35,6 +36,18 @@ function AnimatedRoutes() {
               exit={{ opacity: 0, y: -10 }}
             >
               <Login />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+            >
+              <ForgotPassword />
             </motion.div>
           }
         />

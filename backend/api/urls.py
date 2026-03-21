@@ -23,6 +23,7 @@ from api.views import (
     LimeExplainView,
     PortfolioPerformanceView,
 )
+from api.auth_views import ForgotPasswordView, VerifyOTPView, ResetPasswordView
 
 router = DefaultRouter()
 router.register(r"portfolios", PortfolioViewSet, basename="portfolio")
@@ -33,6 +34,9 @@ urlpatterns = [
     # Auth endpoints
     path("register/", RegisterView.as_view(), name="register"),
     path("login/", LoginView.as_view(), name="login"),
+    path("auth/forgot-password/", ForgotPasswordView.as_view(), name="forgot-password"),
+    path("auth/verify-otp/", VerifyOTPView.as_view(), name="verify-otp"),
+    path("auth/reset-password/", ResetPasswordView.as_view(), name="reset-password"),
     # Custom endpoints
     path("gold-prediction/", GoldPredictionView.as_view(), name="gold-prediction"),
     path(
