@@ -32,8 +32,8 @@ jobs:
           port: 22
           script: |
             cd ${{ secrets.SERVER_PATH }}/frontend
-            echo "VITE_API_BASE_URL=https://euitylens.duckdns.org/api/" > .env
-            echo "VITE_MEDIA_URL=https://euitylens.duckdns.org" >> .env
+            echo "VITE_API_BASE_URL=https://equitylens.bhushantile.online/api/" > .env
+            echo "VITE_MEDIA_URL=https://equitylens.bhushantile.online" >> .env
             npm install
             npm run build
             

@@ -111,7 +111,7 @@ else:
     CORS_ALLOW_ALL_ORIGINS = False
     CORS_ALLOWED_ORIGINS = config(
         'CORS_ALLOWED_ORIGINS',
-        default='https://euitylens.duckdns.org',
+        default='https://equitylens.bhushantile.online',
         cast=lambda v: [s.strip() for s in v.split(',')],
     )
 
@@ -120,7 +120,7 @@ CSRF_TRUSTED_ORIGINS = config(
     default=(
         'http://localhost:5173,http://localhost:5174,http://localhost:5175,'
         'http://127.0.0.1:5173,http://127.0.0.1:5174,'
-        'https://euitylens.duckdns.org'
+        'https://equitylens.bhushantile.online'
     ),
     cast=lambda v: [s.strip() for s in v.split(',')],
 )
