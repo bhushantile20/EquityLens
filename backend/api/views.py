@@ -59,7 +59,16 @@ class LoginView(APIView):
 
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        if not serializer.is_valid():
+            return Response(
+                {
+                    "detail": "Login validation failed.",
+                    "errors": serializer.errors,
+                    "received_data": list(request.data.keys())
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            
         user = authenticate(
             username=serializer.validated_data["username"],
             password=serializer.validated_data["password"],
