@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from rest_framework.routers import DefaultRouter
 
 def health_check(request):
-    return JsonResponse({"status": "ok"})
+    return JsonResponse({"status": "ok", "version": "v1.2-verbose-login", "time": "17:01-UTC"})
 
 from api.views import (
     AssetForecastView,

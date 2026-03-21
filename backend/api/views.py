@@ -9,7 +9,8 @@ from rest_framework.views import APIView
 
 import logging
 
-from api.serializers import (
+from django.utils import timezone
+from .serializers import (
     AddStockToPortfolioSerializer,
     LoginSerializer,
     PortfolioSerializer,
