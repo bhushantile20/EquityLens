@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# ── Paths (must match your Azure VM clone location) ──────────
-PROJECT_DIR="/home/azureuser/equity-lens/backend"
+# ── Paths (calculated relative to this script) ──────────
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_DIR="$SCRIPT_DIR"
 SOCK_FILE="$PROJECT_DIR/equitylens.sock"
-LOG_DIR="/home/azureuser/equity-lens/logs"
+LOG_DIR="$(dirname "$PROJECT_DIR")/logs"
 
 # ── Make sure log directory exists ───────────────────────────
 mkdir -p "$LOG_DIR"
